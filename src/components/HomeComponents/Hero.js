@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import heroImg from "../../assets/imgs/hero.jpg"
 const Hero = () => {
   return (
-    <main className="w-full h-[calc(100vh-80px)] flex items-center justify-between px-[5%]">
-      <section className=" ">
-        <ul className="bg-primaryColor w-[400px] h-[full] font-bold text-2xl mb-[100px]">
+    <main className="w-full h-[1200px] xl:h-[calc(100vh-100px)]  flex flex-col xl:flex-row gap-14  xl:gap-0 items-start  xl:items-center justify-between px-[5%]  py-[100px] xl:py-0 ">
+      <section className=" order-2 xl:order-1">
+        <ul className="bg-primaryColor w-[310px] h-[full] font-bold text-sm sm:text-base md:text-2xl mb-[100px]">
           <li className="pl-[40px] py-[10px] w-[300px] border-b border-optionBorderColor">
             Buy
           </li>
@@ -25,7 +25,7 @@ const Hero = () => {
           </li>
         </ul>
 
-        <ul className="bg-primaryColor w-[400px] h-full font-bold text-2xl">
+        <ul className="bg-primaryColor w-[310px]  font-bold text-sm sm:text-base md:text-2xl ">
           <li className="pl-[40px] py-[10px] w-[300px] border-b border-optionBorderColor">
             Sell
           </li>
@@ -37,8 +37,8 @@ const Hero = () => {
         </ul>
       </section>
 
-      <section>
-        <img src={heroImg} alt="banner" className="h-[418px]" />
+      <section className="order-1 xl:order-2">
+        <img src={heroImg} alt="banner" className="h-[418px] " />
       </section>
     </main>
   );
