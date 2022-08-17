@@ -22,7 +22,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
     <header className="w-full h-[100px] flex bg-primaryColor justify-between items-center py-4 px-[4%] sm:px-[3%] md:px-[5%] gap-[30px] z-30">
       <h1
         className={`text-secondaryColor font-bold text-[32px]  flex-[9]   ${
-          user.fullname
+          user?.fullname
             ? "md:flex-[10] lg:flex-[3] xl:flex-[4]"
             : " md:flex-1 lg:flex-[4] xl:flex-[3] "
         }`}
@@ -47,7 +47,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
       <nav
         className={`hidden md:flex justify-between items-center  font-bold gap-[10px] text-sm sm:text-base ${
-          user.fullname
+          user?.fullname
             ? "md:flex-[4] lg:flex-[2] xl:flex-[2] "
             : "md:flex-1 lg:flex-[3] xl:flex-[2]"
         }`}
@@ -59,12 +59,12 @@ const [openAvatar, setOpenAvatar] = useState(false)
       </nav>
       <div
         className={`hidden md:flex justify-around items-center  ${
-          user.fullname
+          user?.fullname
             ? "md:flex-1 ml-8 lg:flex-[1] xl:flex-1"
             : "md:flex-1 lg:flex-[3] xl:flex-1 gap-[20px] "
         }`}
       >
-        {user.fullname ? (
+        {user?.fullname ? (
           <>
             <div className="flex w-[80px] h-auto flex-col items-between justify-center relative">
               <p

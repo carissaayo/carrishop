@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./redux/reducers/userSlice";
+import { getUser,getUserInfo } from "./redux/reducers/userSlice";
 
 import "./App.css";
 
@@ -21,28 +21,40 @@ import GetAppointment from "./pages/Appointment/GetAppointment";
 import User from "./pages/user/User";
 import AllGadgets from "./pages/gadget/AllGadgets";
 import SearchGadget from "./pages/gadget/SearchGadget";
+import Loading from "./components/Loading";
+import { useCookies } from "react-cookie";
+
 const getUserFromLocalStorage = () => {
   let userToken = localStorage.getItem("user");
   userToken = userToken ? JSON.parse(userToken) : {};
   console.log(userToken);
   return userToken;
 };
-
 function App() {
-
+  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+  
 
     let dispatch = useDispatch();
-    const { done, message, error, code, user } = useSelector(
+    const { done, message, error, code, user ,pending} = useSelector(
       (state) => state.user
     );
 
 useEffect(()=>{
   let userToken = localStorage.getItem("user");
   userToken = userToken ? JSON.parse(userToken) : {};
-  console.log(userToken);
+userToken && setCookie("access_token", user?.access_token);
  
 dispatch(getUser(userToken));
+if(user){
+console.log("hello");
+  dispatch(getUserInfo({ token: user?.access_token }))
+}
+
 },[])
+
+if(pending)return <Loading/>
+
+
   return (
     <div className="App bg-[#F4F4F9]">
       <BrowserRouter>

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import { userLogin } from "../../redux/reducers/userSlice";
+import { userLogin,loading } from "../../redux/reducers/userSlice";
 import { useDispatch,useSelector } from "react-redux";
 const Login = () => {
   const navigate= useNavigate();
   let dispatch = useDispatch();
-    const { done, message, error,user} = useSelector((state) => state.user);
+    const { done, message, error,pending} = useSelector((state) => state.user);
     
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
@@ -16,6 +16,7 @@ const Login = () => {
     e.preventDefault();
     if (!email || !password)return
     try {
+      dispatch(loading)
       dispatch(userLogin({email,password,saveSession}));
     } catch (error) {
       console.log(error);

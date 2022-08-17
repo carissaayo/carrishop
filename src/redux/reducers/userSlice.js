@@ -1,20 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// Get Token from LocalStorage
-const getUserFromLocalStorage = () => {
-  let userToken = localStorage.getItem("user");
-  userToken = userToken ? JSON.parse(userToken) : {};
-  console.log(userToken);
-  return userToken;
-};
 
 // Login User
 export const userLogin = createAsyncThunk(
   "users/user-login",
-  async ({email, password,saveSession}) => {
-     let message = "";
+  async ({ email, password, saveSession }) => {
+    let message = "";
     let code = 0;
-    let user= {};
+    let user = {};
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -33,20 +26,22 @@ export const userLogin = createAsyncThunk(
       console.log(res.data);
       message = res.data.message;
       code = res.data.statusCode;
-    
-       if (code === 200) {
-        if(saveSession){
+
+      if (code === 200) {
+        if (saveSession) {
+          
           localStorage.setItem("user", JSON.stringify(res.data.data));
         }
-       }
-      return { message, code,user };
+      }
+      return { message, code, user };
     } catch (error) {
       console.log(error);
       message = error.response.data.message;
       code = error.response.status;
-      
+
       return { message, code };
-    } }
+    }
+  }
 );
 
 // Register User
@@ -70,17 +65,16 @@ export const registerUser = createAsyncThunk(
       phone,
     };
     try {
-      const res= await axios.post(url, data, config)
+      const res = await axios.post(url, data, config);
       console.log(res.data);
-  message= res.data.message;
-code = res.data.statusCode
-      return {message,code}
-
+      message = res.data.message;
+      code = res.data.statusCode;
+      return { message, code };
     } catch (error) {
       console.log(error);
       message = error.response.data.message;
       code = error.response.status;
-      return {message,code}
+      return { message, code };
     }
   }
 );
@@ -88,7 +82,7 @@ code = res.data.statusCode
 // Reset Password 1
 export const resetPassword = createAsyncThunk(
   "users/reset-password",
-  async ( email) => {
+  async (email) => {
     let message = "";
     let code = 0;
     let user = {};
@@ -109,7 +103,7 @@ export const resetPassword = createAsyncThunk(
       console.log(res.data);
       message = res.data.message;
       code = res.data.statusCode;
-    
+
       return { message, code, user };
     } catch (error) {
       console.log(error);
@@ -158,44 +152,40 @@ export const changePassword = createAsyncThunk(
   }
 );
 
-
 // Get User Information
-export const getUserInfo = createAsyncThunk(
-  "user/info",
-  async ({ token }) => {
-    let message = "";
-    let code = 0;
-    let user = [];
-    const config = {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    const url = `https://api-staging-fairshop.herokuapp.com/api/v1/users/info`;
+export const getUserInfo = createAsyncThunk("user/info", async ({ token }) => {
+  let message = "";
+  let code = 0;
+  let user = [];
+  const config = {
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const url = `https://api-staging-fairshop.herokuapp.com/api/v1/users/info`;
 
-    try {
-      const res = await axios.get(url, config);
-      console.log(res.data);
-      message = res.data.message;
-      code = res.data.statusCode;
-      user = res.data.data;
+  try {
+    const res = await axios.get(url, config);
+    console.log(res.data);
+    message = res.data.message;
+    code = res.data.statusCode;
+    user = res.data.data;
 
-      return { message, code, user };
-    } catch (error) {
-      console.log(error);
-      message = error.response.data.message;
-      code = error.response.status;
+    return { message, code, user };
+  } catch (error) {
+    console.log(error);
+    message = error.response.data.message;
+    code = error.response.status;
 
-      return { message, code };
-    }
+    return { message, code };
   }
-);
+});
 
 // User Account Verification
 export const accountVerification = createAsyncThunk(
   "users/account-verification",
-  async ({newdata,token}) => {
+  async ({ newdata, token }) => {
     let message = "";
     let code = 0;
     let user = {};
@@ -208,8 +198,6 @@ export const accountVerification = createAsyncThunk(
     };
     const url =
       "https://api-staging-fairshop.herokuapp.com/api/v1/users/accounts/verification";
-
-   
 
     try {
       const res = await axios.put(url, newdata, config);
@@ -233,29 +221,28 @@ export const userSlice = createSlice({
   initialState: {
     pending: false,
     error: false,
-    user: {},
+    user: undefined,
     done: false,
     message: "",
+    userInfo: {},
   },
   reducers: {
+    loading: (state) => {
+      state.pending = true;
+    },
     getUser: (state, action) => {
-      state.user=action.payload;
+      state.user = action.payload;
       console.log(state.user);
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
+
     deleteUser: (state) => {
       localStorage.removeItem("user");
-      state.user={}
-      state.done= false
-      // state.user =[]
+      state.user = {};
+      state.done = false;
     },
   },
   extraReducers: {
+    // Login Reducer
     [userLogin.pending]: (state) => {
       state.pending = true;
       state.error = false;
@@ -263,11 +250,11 @@ export const userSlice = createSlice({
       state.message = "";
     },
     [userLogin.fulfilled]: (state, action) => {
-      const { message, code } = action.payload;
+      const { message, code,user } = action.payload;
       console.log(message, code);
       state.pending = false;
       state.done = code === 200 ? true : false;
-  console.log(state.done)
+state.user= user
       state.message = message;
       state.error = code !== 200 ? true : false;
     },
@@ -275,6 +262,9 @@ export const userSlice = createSlice({
       state.pending = false;
       state.error = true;
     },
+
+    // Register User Reducer
+
     [registerUser.pending]: (state) => {
       state.pending = true;
       state.error = false;
@@ -291,6 +281,8 @@ export const userSlice = createSlice({
       state.pending = false;
       state.error = true;
     },
+
+    // Regset User Password Reducer
     [resetPassword.pending]: (state) => {
       state.pending = true;
       state.error = false;
@@ -309,6 +301,8 @@ export const userSlice = createSlice({
       state.pending = false;
       state.error = true;
     },
+
+    // Change User password Reducer
     [changePassword.pending]: (state) => {
       state.pending = true;
       state.error = false;
@@ -327,6 +321,30 @@ export const userSlice = createSlice({
       state.pending = false;
       state.error = true;
     },
+
+    // Get user Information Reducer
+    [getUserInfo.pending]: (state) => {
+      state.pending = true;
+      state.error = false;
+      state.done = false;
+      state.message = "";
+    },
+    [getUserInfo.fulfilled]: (state, action) => {
+      const { message, code, user } = action.payload;
+      console.log(message, code, user);
+      state.pending = false;
+      state.done = code === 200 ? true : false;
+      state.message = message;
+      state.error = code !== 200 ? true : false;
+      state.userInfo = user;
+      console.log(user);
+    },
+    [getUserInfo.rejected]: (state, action) => {
+      state.pending = false;
+      state.error = true;
+    },
+
+    // Account verification Reducer
     [accountVerification.pending]: (state) => {
       state.pending = true;
       state.error = false;
@@ -348,8 +366,7 @@ export const userSlice = createSlice({
   },
 });
 
-
 // Action creators are generated for each case reducer function
-export const {deleteUser,getUser } = userSlice.actions;
+export const { deleteUser, getUser, loading } = userSlice.actions;
 
 export default userSlice.reducer;
