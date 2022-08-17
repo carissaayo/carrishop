@@ -11,17 +11,12 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
   const [password, setPassword] = useState("");
-  console.log(done);
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password)return
     try {
       dispatch(userLogin({email,password,saveSession}));
-      console.log(done);
-      if(done){
-        navigate("/");
-        console.log("hehe");
-      }
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +26,7 @@ const Login = () => {
 
  useEffect(() => {
   if(done){
-        console.log(window.history.back());
+        window.location.replace("/");
   }
  }, [handleSubmit]);
   return (

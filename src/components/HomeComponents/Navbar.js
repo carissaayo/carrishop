@@ -74,15 +74,22 @@ const [openAvatar, setOpenAvatar] = useState(false)
                 <span class="material-symbols-outlined">account_circle</span>
               </p>
               <nav
-                className={` flex-col top-[50px] left-[-40px] bg-[white]  justify-between items-start  font-bold gap-[10px] text-base text-secondaryColor absolute ${
+                className={` flex-col top-[50px] left-[-200px] bg-[white] w-[400px] justify-between items-start  font-bold gap-[10px] text-base text-secondaryColor absolute ${
                   openAvatar ? "flex" : "hidden"
                 }`}
               >
                 <Link
-                  to="/"
+                  to="/user/info"
                   className="py-4 px-8 border-b border-mobileNavBorder w-full"
                 >
                   Account
+                </Link>
+
+                <Link
+                  to="/appointment/book-appointment"
+                  className="py-4 px-8 border-b border-mobileNavBorder w-full"
+                >
+                  Book Appointment
                 </Link>
                 <Link
                   to="/logout"

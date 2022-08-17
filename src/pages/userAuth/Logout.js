@@ -13,7 +13,7 @@ const Logout = () => {
         const confirmSignOut = () => {
           dispatch(deleteUser());
           // navigate("/")
-        window.open("/");
+        window.open("/","_self");
         };
   return (
     <div className="w-3/5 m-auto h-screen  flex flex-col gap-[50px] justify-center items-center ">
