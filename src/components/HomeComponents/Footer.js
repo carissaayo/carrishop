@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="bg-primaryColor h-[50vh]  py-8">
-      <section className="flex justify-between border-b border-footerborderColor  px-[5%] py-5 pb-[60px] flex-wrap">
-        <div className="flex flex-col justify-between mb-[20px] md:mb-0 ">
+    <footer className="bg-primaryColor  h-full md:h-[50vh]  py-8">
+      <section className="flex justify-between border-b border-footerborderColor  px-[5%] py-5 pb-[60px] flex-wrap md:gap-[30px]">
+        <div className="flex flex-col justify-between mb-[20px] md:mb-0 w-[40%] sm:w-auto">
           <h1 className="text-secondaryColor font-bold text-[32px] flex-[2]">
             <Link to="/" className="text-inherit">
               Fairshop
@@ -21,7 +21,7 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <ul className="font-bold ">
+        <ul className="font-bold mb-[20px] md:mb-0 w-[40%]  md:w-[20%] lg:w-auto   ">
           <li className=" text-2xl mb-[20px]">Services</li>
           <li className="text-lg mb-[20px]">
             <Link to="/">Buy From Us</Link>
@@ -31,7 +31,7 @@ const Footer = () => {
           </li>
         </ul>
 
-        <ul className="font-bold ">
+        <ul className="font-bold mb-[20px] md:mb-0 w-[40%]  md:w-[20%] lg:w-auto ">
           <li className=" text-2xl mb-[20px]">Company</li>
           <li className="text-lg mb-[20px]">
             <Link to="/">About Us</Link>
@@ -45,7 +45,7 @@ const Footer = () => {
           </li>
         </ul>
 
-        <ul className="font-bold ">
+        <ul className="font-bold w-[40%]  md:w-[20%] lg:w-auto  ">
           <li className=" text-2xl mb-[20px]">Legal</li>
           <li className="text-lg mb-[20px]">
             <Link to="/">Terms</Link>

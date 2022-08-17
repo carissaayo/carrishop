@@ -10,6 +10,7 @@ module.exports = {
       whiteBg: "#FFFFFF",
       black: "#000000",
       footerborderColor: "#D7B1B1",
+      mobileNavBorder: "#dee2e6",
     },
     extend: {},
   },
