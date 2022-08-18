@@ -4,7 +4,7 @@ import axios from "axios";
 // User information
 export const bookAppointment = createAsyncThunk(
   "appointment/book-appointment",
-  async ({data,token}) => {
+  async ({phoneData,token}) => {
     console.log(token);
     let message = "";
     let code = 0;
@@ -19,7 +19,7 @@ export const bookAppointment = createAsyncThunk(
       "https://api-staging-fairshop.herokuapp.com/api/v1/appointments";
 
     try {
-      const res = await axios.post(url, data, config);
+      const res = await axios.post(url, phoneData, config);
       console.log(res.data);
       message = res.data.message;
       code = res.data.statusCode;
@@ -31,13 +31,13 @@ export const bookAppointment = createAsyncThunk(
       message = error.response.data.message;
       code = error.response.status;
 
-      return { message, code };
+      return { message, code ,user};
     }
   }
 );
 
 export const getAppointmentTime = createAsyncThunk(
-  "appointment/book-appointment",
+  "appointment/get-appointment-time",
   async ({token}) => {
     let message = "";
     let code = 0;
@@ -63,13 +63,13 @@ export const getAppointmentTime = createAsyncThunk(
       message = error.response.data.message;
       code = error.response.status;
 
-      return { message, code };
+      return { message, code,user };
     }
   }
 );
 
 export const getUserAppointment = createAsyncThunk(
-  "appointment/book-appointment",
+  "appointment/get-appointment",
   async ({ token }) => {
     let message = "";
     let code = 0;
@@ -106,6 +106,8 @@ export const appointmentSlice = createSlice({
     error: false,
     done: false,
     message: "",
+    appointmentTime:[],
+    userAppointment:[]
   },
   reducers: {
     loginStart: (state, action) => {
@@ -121,6 +123,9 @@ export const appointmentSlice = createSlice({
       localStorage.removeItem("user");
       // state.user =[]
     },
+    clearAppointment: (state) => {
+      state.done = false;
+    }
   },
   extraReducers: {
     [bookAppointment.pending]: (state) => {
@@ -149,12 +154,14 @@ export const appointmentSlice = createSlice({
       state.message = "";
     },
     [getAppointmentTime.fulfilled]: (state, action) => {
-      const { message, code } = action.payload;
-      console.log(message, code);
+      const { message, code,user } = action.payload;
+      console.log(message, code,user.length);
       state.pending = false;
       state.done = code === 200 ? true : false;
+      console.log(state.appointmentTime);
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.appointmentTime = user
     },
     [getAppointmentTime.rejected]: (state, action) => {
       state.pending = false;
@@ -168,12 +175,13 @@ export const appointmentSlice = createSlice({
       state.message = "";
     },
     [getUserAppointment.fulfilled]: (state, action) => {
-      const { message, code } = action.payload;
+      const { message, code,user } = action.payload;
       console.log(message, code);
       state.pending = false;
       state.done = code === 200 ? true : false;
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.userAppointment = user.doc
     },
     [getUserAppointment.rejected]: (state, action) => {
       state.pending = false;
@@ -183,6 +191,6 @@ export const appointmentSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { deleteUser } = appointmentSlice.actions;
+export const { clearAppointment } = appointmentSlice.actions;
 
 export default appointmentSlice.reducer;

@@ -152,36 +152,6 @@ export const changePassword = createAsyncThunk(
   }
 );
 
-// Get User Information
-export const getUserInfo = createAsyncThunk("user/info", async ({ token }) => {
-  let message = "";
-  let code = 0;
-  let user = [];
-  const config = {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-  const url = `https://api-staging-fairshop.herokuapp.com/api/v1/users/info`;
-
-  try {
-    const res = await axios.get(url, config);
-    console.log(res.data);
-    message = res.data.message;
-    code = res.data.statusCode;
-    user = res.data.data;
-
-    return { message, code, user };
-  } catch (error) {
-    console.log(error);
-    message = error.response.data.message;
-    code = error.response.status;
-
-    return { message, code };
-  }
-});
-
 // User Account Verification
 export const accountVerification = createAsyncThunk(
   "users/account-verification",
@@ -233,7 +203,15 @@ export const userSlice = createSlice({
     getUser: (state, action) => {
       state.user = action.payload;
       console.log(state.user);
+    },updateUserInfo: (state, action) => {
+      const { message, code, info } = action.payload;
+state.message = message;
+state.error = code !== 200 ? true : false;
+      state.userInfo = info;
+      state.pending = false;
+       state.done = code === 200 ? true : false;
     },
+   
 
     deleteUser: (state) => {
       localStorage.removeItem("user");
@@ -322,27 +300,6 @@ state.user= user
       state.error = true;
     },
 
-    // Get user Information Reducer
-    [getUserInfo.pending]: (state) => {
-      state.pending = true;
-      state.error = false;
-      state.done = false;
-      state.message = "";
-    },
-    [getUserInfo.fulfilled]: (state, action) => {
-      const { message, code, user } = action.payload;
-      console.log(message, code, user);
-      state.pending = false;
-      state.done = code === 200 ? true : false;
-      state.message = message;
-      state.error = code !== 200 ? true : false;
-      state.userInfo = user;
-      console.log(user);
-    },
-    [getUserInfo.rejected]: (state, action) => {
-      state.pending = false;
-      state.error = true;
-    },
 
     // Account verification Reducer
     [accountVerification.pending]: (state) => {
@@ -367,6 +324,7 @@ state.user= user
 });
 
 // Action creators are generated for each case reducer function
-export const { deleteUser, getUser, loading } = userSlice.actions;
+export const { deleteUser, getUser, loading,  updateUserInfo } =
+  userSlice.actions;
 
 export default userSlice.reducer;

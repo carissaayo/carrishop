@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser,getUserInfo } from "./redux/reducers/userSlice";
+import { getUser, loading } from "./redux/reducers/userSlice";
 
 import "./App.css";
 
@@ -22,73 +22,134 @@ import User from "./pages/user/User";
 import AllGadgets from "./pages/gadget/AllGadgets";
 import SearchGadget from "./pages/gadget/SearchGadget";
 import Loading from "./components/Loading";
-import { useCookies } from "react-cookie";
+import { CookiesProvider, useCookies } from "react-cookie";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import Error from "./pages/Error";
 
-const getUserFromLocalStorage = () => {
-  let userToken = localStorage.getItem("user");
-  userToken = userToken ? JSON.parse(userToken) : {};
-  console.log(userToken);
-  return userToken;
-};
+
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookies(["cookie-name"]);
+  const [cookies, setCookie] = useCookies(["cookie-name"]);
   
 
     let dispatch = useDispatch();
-    const { done, message, error, code, user ,pending} = useSelector(
+    const {  user ,pending} = useSelector(
       (state) => state.user
     );
 
+       const { pending: appointmentPending } = useSelector(
+         (state) => state.appointment
+       );
+
 useEffect(()=>{
+  user && setCookie("access_token", user?.access_token);
   let userToken = localStorage.getItem("user");
   userToken = userToken ? JSON.parse(userToken) : {};
-userToken && setCookie("access_token", user?.access_token);
- 
-dispatch(getUser(userToken));
-if(user){
-console.log("hello");
-  dispatch(getUserInfo({ token: user?.access_token }))
+  // userToken.length && setCookie("access_token", user?.access_token);
+  // console.log(cookies);
+  //  console.log(user?.access_token);
+if(!user){
+  dispatch(loading)
+  dispatch(getUser(userToken));
+  // dispatch(findUser(userToken));
 }
 
 },[])
 
-if(pending)return <Loading/>
+if (pending || appointmentPending) return <Loading />;
 
 
   return (
-    <div className="App bg-[#F4F4F9]">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/">
-            <Route index element={<Home />} />
-            <Route path="register" element={<Register />} />
-            <Route path="recover-email" element={<EmailRecovery />} />
-            <Route path="reset-password" element={<ResetPassword />} />
-            <Route path="verify-reset" element={<ChangePassword />} />
-            <Route
-              path="account-verification"
-              element={<AccountVerification />}
-            />
-            <Route path="login" element={<Login />} />
-            <Route path="logout" element={<Logout />} />
-          </Route>
-          <Route path="/user">
-            <Route path="means-of-identity" element={<UserInformation />} />
-            <Route path="verify-invite-code" element={<InviteCodeValidity />} />
-            <Route path="info" element={<User />} />
-          </Route>
+    <CookiesProvider>
+      <div className="App bg-[#F4F4F9]">
+        <BrowserRouter>
 
-          <Route path="/appointment">
-            <Route path="book-appointment" element={<BookAppointment />} />
-            <Route path="get-appointment" element={<GetAppointment />} />
-          </Route>
-          <Route path="/gadgets">
-            <Route path="all" element={<AllGadgets />} />
-            <Route path=":gadgetID" element={<SearchGadget />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+          <Routes>
+            <Route path="*" element={
+              <Error/>
+            }/>
+            <Route path="/">
+              <Route index element={<Home />} />
+              <Route path="register" element={<Register />} />
+              <Route
+                path="recover-email"
+                element={
+                  <ProtectedRoute user={user&&user}>
+                    <EmailRecovery />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="reset-password" element={<ResetPassword />} />
+              <Route path="verify-reset" element={
+              <ProtectedRoute user={user&&user}>
+                <ChangePassword />
+              </ProtectedRoute>
+                } />
+              <Route
+                path="account-verification"
+                element={
+              <ProtectedRoute user={user&&user}>
+                <AccountVerification />
+              </ProtectedRoute>
+              
+              }
+              />
+              <Route path="login" element={<Login />} />
+              <Route path="logout" element={
+              <ProtectedRoute user={user&&user}>
+              <Logout />
+              </ProtectedRoute>    
+              } />
+            </Route>
+
+            <Route path="/users">
+              <Route path="means-of-identity" element=
+              {
+                <ProtectedRoute user={user&&user}>
+
+                  <UserInformation />
+                </ProtectedRoute>
+              
+              } />
+              <Route
+                path="verify-invite-code"
+                element={
+              <ProtectedRoute user={user&&user}>
+
+                  <InviteCodeValidity />
+              </ProtectedRoute>
+              
+              }
+              />
+              <Route path=":userId" element={
+              <ProtectedRoute user={user&&user}>
+
+              <User />
+              </ProtectedRoute>
+              } />
+            </Route>
+
+            <Route path="/appointment">
+              <Route path="book-appointment" element={
+              <ProtectedRoute user={user}>
+
+              <BookAppointment />
+              </ProtectedRoute>
+              } />
+              <Route path="get-appointment" element={
+              <ProtectedRoute user={user&&user}>
+
+              <GetAppointment />
+              </ProtectedRoute>
+              } />
+            </Route>
+            <Route path="/gadgets">
+              <Route path="all" element={<AllGadgets />} />
+              <Route path=":gadgetID" element={<SearchGadget />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </CookiesProvider>
   );
 }
 

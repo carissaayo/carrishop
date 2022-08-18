@@ -79,10 +79,16 @@ const [openAvatar, setOpenAvatar] = useState(false)
                 }`}
               >
                 <Link
-                  to="/user/info"
+                  to={`/users/${user?.fullname}`}
                   className="py-4 px-8 border-b border-mobileNavBorder w-full"
                 >
                   Account
+                </Link>
+                <Link
+                  to="/appointment/get-appointment"
+                  className="py-4 px-8 border-b border-mobileNavBorder w-full"
+                >
+                  Check Appointment Time
                 </Link>
 
                 <Link
@@ -90,6 +96,12 @@ const [openAvatar, setOpenAvatar] = useState(false)
                   className="py-4 px-8 border-b border-mobileNavBorder w-full"
                 >
                   Book Appointment
+                </Link>
+                <Link
+                  to="/appointment/get-appointment"
+                  className="py-4 px-8 border-b border-mobileNavBorder w-full"
+                >
+                  Get Appointment
                 </Link>
                 <Link
                   to="/logout"

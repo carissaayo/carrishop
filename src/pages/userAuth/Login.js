@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
-import { userLogin,loading } from "../../redux/reducers/userSlice";
+import { userLogin,loading,getUserInfo } from "../../redux/reducers/userSlice";
 import { useDispatch,useSelector } from "react-redux";
 const Login = () => {
-  const navigate= useNavigate();
+
   let dispatch = useDispatch();
-    const { done, message, error,pending} = useSelector((state) => state.user);
+    const { done, message, error,user} = useSelector((state) => state.user);
     
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
@@ -14,22 +13,25 @@ const Login = () => {
  
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!email || !password)return
+      if (!email || !password)return
     try {
       dispatch(loading)
       dispatch(userLogin({email,password,saveSession}));
+   
     } catch (error) {
       console.log(error);
     }
 
   };
   
+if(user?.fullname)window.history.back()
 
  useEffect(() => {
   if(done){
-        window.location.replace("/");
+    window.history.back();
   }
  }, [handleSubmit]);
+
   return (
     <main className="w-full h-screen">
       <div className="flex w-full h-full items-center justify-center">
