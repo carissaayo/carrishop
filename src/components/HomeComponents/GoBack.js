@@ -3,6 +3,7 @@ import {ChevronLeftIcon}from"@heroicons/react/solid"
 const GoBack = () => {
     const backHandler=()=>{
         window.history.back();
+        //  window.location.reload();
     }
   return (
     <div className="border-secondaryColor border-2 flex w-[100px] h-[40px] rounded-3xl items-center justify-center text-sm lg:text-base font-bold cursor-pointer" onClick={backHandler}>

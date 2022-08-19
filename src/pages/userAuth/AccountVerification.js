@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { accountVerification, loading } from "../../redux/reducers/userSlice";
+import {
+  accountVerification,
+  loading,
+  clearAccounDetails,
+} from "../../redux/reducers/userSlice";
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../../components/HomeComponents/Navbar";
 import GoBack from "../../components/HomeComponents/GoBack";
@@ -59,6 +63,11 @@ const AccountVerification = () => {
     newdata.append("id_file", id_file);
     console.log(newdata.get("id_file"));
   };
+
+
+  useEffect(()=>{
+dispatch(clearAccounDetails());
+  },[])
   return (
     <main className="w-full h-full">
       <Navbar />

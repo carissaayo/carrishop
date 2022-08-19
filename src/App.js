@@ -44,16 +44,13 @@ useEffect(()=>{
   user && setCookie("access_token", user?.access_token);
   let userToken = localStorage.getItem("user");
   userToken = userToken ? JSON.parse(userToken) : {};
-  // userToken.length && setCookie("access_token", user?.access_token);
-  // console.log(cookies);
-  //  console.log(user?.access_token);
+  
 if(!user){
   dispatch(loading)
   dispatch(getUser(userToken));
-  // dispatch(findUser(userToken));
 }
 
-},[])
+},[user])
 
 if (pending || appointmentPending) return <Loading />;
 

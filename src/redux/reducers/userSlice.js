@@ -211,7 +211,10 @@ state.error = code !== 200 ? true : false;
       state.pending = false;
        state.done = code === 200 ? true : false;
     },
-   
+    clearAccounDetails: (state) => {
+      state.done = false;
+      state.error = false
+    },
 
     deleteUser: (state) => {
       localStorage.removeItem("user");
@@ -232,7 +235,7 @@ state.error = code !== 200 ? true : false;
       console.log(message, code);
       state.pending = false;
       state.done = code === 200 ? true : false;
-state.user= user
+      state.user= user
       state.message = message;
       state.error = code !== 200 ? true : false;
     },
@@ -324,7 +327,7 @@ state.user= user
 });
 
 // Action creators are generated for each case reducer function
-export const { deleteUser, getUser, loading,  updateUserInfo } =
+export const { deleteUser, getUser, loading, updateUserInfo, clearAccounDetails } =
   userSlice.actions;
 
 export default userSlice.reducer;

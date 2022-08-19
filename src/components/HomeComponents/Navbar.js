@@ -10,8 +10,6 @@ const [openAvatar, setOpenAvatar] = useState(false)
   );
   const navigate = useNavigate();
  
-
- 
   const handleSignOut=()=>{
     navigate("/logout");
   }

@@ -106,26 +106,34 @@ export const appointmentSlice = createSlice({
     error: false,
     done: false,
     message: "",
-    appointmentTime:[],
-    userAppointment:[]
+    appointmentTime: [],
+    userAppointment: [],
   },
   reducers: {
-    loginStart: (state, action) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
-    },
-    deleteUser: (state) => {
-      localStorage.removeItem("user");
-      // state.user =[]
-    },
     clearAppointment: (state) => {
       state.done = false;
-    }
+      state.error = false;
+    },
+    getAppointment: (state, action) => {
+      const { message, code, user } = action.payload;
+      console.log(message, code, user.length);
+      state.pending = false;
+      state.done = code === 200 ? true : false;
+      console.log(state.appointmentTime);
+      state.message = message;
+      state.error = code !== 200 ? true : false;
+      state.appointmentTime = user;
+    },
+    getUserAppointments: (state, action) => {
+      const { message, code, user } = action.payload;
+      console.log(message, code, user.length);
+      state.pending = false;
+      state.done = code === 200 ? true : false;
+      console.log(state.appointmentTime);
+      state.message = message;
+      state.error = code !== 200 ? true : false;
+      state.userAppointment = user;
+    },
   },
   extraReducers: {
     [bookAppointment.pending]: (state) => {
@@ -154,14 +162,14 @@ export const appointmentSlice = createSlice({
       state.message = "";
     },
     [getAppointmentTime.fulfilled]: (state, action) => {
-      const { message, code,user } = action.payload;
-      console.log(message, code,user.length);
+      const { message, code, user } = action.payload;
+      console.log(message, code, user.length);
       state.pending = false;
       state.done = code === 200 ? true : false;
       console.log(state.appointmentTime);
       state.message = message;
       state.error = code !== 200 ? true : false;
-      state.appointmentTime = user
+      state.appointmentTime = user;
     },
     [getAppointmentTime.rejected]: (state, action) => {
       state.pending = false;
@@ -175,13 +183,13 @@ export const appointmentSlice = createSlice({
       state.message = "";
     },
     [getUserAppointment.fulfilled]: (state, action) => {
-      const { message, code,user } = action.payload;
+      const { message, code, user } = action.payload;
       console.log(message, code);
       state.pending = false;
       state.done = code === 200 ? true : false;
       state.message = message;
       state.error = code !== 200 ? true : false;
-      state.userAppointment = user.doc
+      state.userAppointment = user.doc;
     },
     [getUserAppointment.rejected]: (state, action) => {
       state.pending = false;
@@ -191,6 +199,7 @@ export const appointmentSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { clearAppointment } = appointmentSlice.actions;
+export const { clearAppointment, getAppointment, getUserAppointments } =
+  appointmentSlice.actions;
 
 export default appointmentSlice.reducer;

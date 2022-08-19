@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { userLogin,loading,getUserInfo } from "../../redux/reducers/userSlice";
 import { useDispatch,useSelector } from "react-redux";
 const Login = () => {
-
+let navigate =useNavigate()
   let dispatch = useDispatch();
     const { done, message, error,user} = useSelector((state) => state.user);
     
@@ -28,7 +28,8 @@ if(user?.fullname)window.history.back()
 
  useEffect(() => {
   if(done){
-    window.history.back();
+    // navigate(-1)
+        window.open("/", "_self");
   }
  }, [handleSubmit]);
 
