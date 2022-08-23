@@ -3,9 +3,8 @@ import { deleteUser } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const Logout = () => {
-      const { done, message, error, code, user } = useSelector(
+      const { done} = useSelector(
         (state) => state.user
-        
       );
   const navigate = useNavigate();
         let dispatch = useDispatch();

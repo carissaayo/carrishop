@@ -3,8 +3,8 @@ module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
     colors: {
-      primaryColor: "#F9C80E",
-      secondaryColor: "#000000",
+      primaryColor: "white",
+      secondaryColor: "#F9C80E",
       optionBorderColor: "#EDBE0C",
       cardListBg: "#ECEBE4",
       whiteBg: "#FFFFFF",

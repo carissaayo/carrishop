@@ -1,10 +1,9 @@
 import { useNavigate, Link ,useParams} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUserInfo,loading,getUser, updateUserInfo } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import GoBack from "../../components/HomeComponents/GoBack";
 import axios from "axios";
-import Loading from "../../components/Loading";
 
 const User = () => {
   const navigate = useNavigate();
@@ -47,10 +46,11 @@ let info = [];
   useEffect(() => {
      if(user){
 console.log("lo");
+
          loadUserInfo()
      }
   }, [userId]);
-  
+
 if(error) return (
   <div className="flex h-screen w-full items-center justify-center">
     <h1 >Error</h1>

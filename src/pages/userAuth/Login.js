@@ -28,7 +28,6 @@ if(user?.fullname)window.history.back()
 
  useEffect(() => {
   if(done){
-    // navigate(-1)
         window.open("/", "_self");
   }
  }, [handleSubmit]);

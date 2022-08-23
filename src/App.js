@@ -57,7 +57,7 @@ if (pending || appointmentPending) return <Loading />;
 
   return (
     <CookiesProvider>
-      <div className="App bg-[#F4F4F9]">
+      <div className="]">
         <BrowserRouter>
 
           <Routes>
