@@ -1,28 +1,62 @@
 import { Link } from "react-router-dom";
+import { ChevronRight } from "react-bootstrap-icons";
+import phoneImg from "../../assets/imgs/featured-phone.png";
+
 import Card from "./Card";
-import FilterAndSearch from "./FilterAndSearch";
-const ItemHeader = ({title}) => {
+const ItemHeader = ({title,text}) => {
   return (
-    <div className="flex bg-whiteBg justify-between items-center h-[60px] w-full px-[30px] mb-[40px]">
-      <h1 className="font-bold text-2xl capitalize">{title}</h1>
-      <Link to="/" className="text-primaryColor font-bold">
-        See All
+    <div className="flex  justify-between items-center h-[35px] w-full ">
+      <h1 className="font-bold text-2xl capitalize border-b-2 border-secondaryColor">{title}</h1>
+      <Link to="/" className=" font-bold flex items-center">
+        {text?text :"See All"}
+        <span className="ml-2">
+          <ChevronRight size={30}/>
+        </span>
       </Link>
     </div>
   );
 };
-const CardList = ({ phone ,title}) => {
+const CardList = ({ title, text}) => {
   return (
-    <main className="w-full h-full bg-cardListBg px-[5%] py-[40px] mb-[80px]">
-      {phone && <FilterAndSearch />}
-      <ItemHeader title={title} />
-      <section className=" w-full h-100 flex gap-[10px] justify-evenly items-center flex-wrap sm:px-[14%] md:px-[0%] ">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+    <main className="w-full   mb-[80px]">
+      <ItemHeader title={title} text={text}/>
+      <section className="w-full flex border-y border-[#EEEEEE] rounded-l-3xl gap-10 items-center justify-between ">
+        <Card
+          type="Phone"
+          name="Redmi Note 9c"
+          spec="6GB RAM 248GB Internal Memory"
+          image={phoneImg}
+          price="769,999"
+          discount="30"
+          discountPrice="700,000"
+        />
+        <Card
+          type="Phone"
+          name="Redmi Note 9c"
+          spec="6GB RAM 248GB Internal Memory"
+          image={phoneImg}
+          price="769,999"
+       
+        />
+        <Card
+          type="Phone"
+          name="Redmi Note 9c"
+          spec="6GB RAM 248GB Internal Memory"
+          image={phoneImg}
+          price="769,999"
+          
+          discount="30"
+          discountPrice="700,000"
+        />
+        <Card
+          type="Phone"
+          name="Redmi Note 9c"
+          spec="6GB RAM 248GB Internal Memory"
+          image={phoneImg}
+          price="769,999"
+        addedToCart
+        
+        />
       </section>
     </main>
   );

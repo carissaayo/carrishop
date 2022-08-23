@@ -1,26 +1,24 @@
 import { Link } from "react-router-dom";
-
+import ctaImg from "../../assets/imgs/cta.png"
 const CTA = () => {
   return (
-    <section className="bg-black w-full  flex flex-col items-center  justify-center text-whiteBg  h-[60vh] px-[2%]">
-      
-      <h1 className="uppercase   text-lg sm:text-2xl md:text-4xl font-bold mb-[20px]">
-        Get best deals from us
-      </h1>
-      <p className=" text-base sm:text-lg md:text-2xl mb-[20px] text-center">
-        Promotions, new products and sales. Directly to your inbox.
-      </p>
-      <div className="bg-whiteBg  w-full sm:w-3/4 md:w-2/5 h-[65px] flex justify-between items-center pr-[15px] rounded-3xl">
-        <input
-          type="text"
-          placeholder="Email address"
-          className="w-full  h-full rounded-3xl pl-[15px]  text-black outline-none "
-        />
-        <Link
-          to="/"
-          className="flex w-[130px] h-[40px] rounded-3xl items-center justify-center bg-black text-white"
-        >
-          Register
+    <section className="bg-[#FCA311] w-full flex h-[40vh] px-12 items-center gap-4">
+      <div className="flex-[3] flex flex-col h-4/6 gap-[40px]">
+        <h1 className="font-semibold uppercase text-2xl ">Sell to us</h1>
+        <p className="text-xl">
+          Want to sell your Phone, Laptop, Accesories or <br />
+          Gadgets?
+        </p>
+        <p className="">
+          We buy at fair price and payments are made immediately
+        </p>
+      </div>
+      <div className="flex-[2]">
+        <img src={ctaImg} alt="cta" className="" />
+      </div>
+      <div className="flex-1 ">
+        <Link to="/" className="bg-secondaryColor p-4 rounded-2xl ">
+          Click here to sell
         </Link>
       </div>
     </section>
