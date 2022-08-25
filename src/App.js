@@ -29,6 +29,7 @@ import Error from "./pages/Error";
 import Loading from "./components/Loading";
 import SideNav from "./components/SideNav";
 import Navbar from "./components/HomeComponents/Navbar";
+import SellToUs from "./pages/SellToUs";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -87,6 +88,7 @@ function App() {
                     }
                   />
                   <Route path="contact" element={<Contact />} />
+                  <Route path="sell-to-us" element={<SellToUs />} />
                   <Route path="register" element={<Register />} />
                   <Route
                     path="recover-email"
