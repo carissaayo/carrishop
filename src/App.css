@@ -4,6 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins&display=swap');
 
 
+html{
+  scroll-behavior: smooth;
+}
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 1,
@@ -24,4 +27,22 @@ h1,h2,h3,h4,h5,h6{
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+}
+
+.scrollup {
+  position: fixed;
+  bottom: -30%;
+  right: 1.5rem;
+  z-index: 30;
+  transition: .3s;
+        background: #C86FFF;
+    height: 50px;
+    width: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 48px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px 3px rgb(108 98 98 / 20%);
 }

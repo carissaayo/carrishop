@@ -1,74 +1,77 @@
 import { Link } from "react-router-dom";
+import { Facebook,Twitter, Instagram } from "react-bootstrap-icons";
+
 const Footer = () => {
   return (
-    <footer className="bg-primaryColor  h-full md:h-[50vh]  py-8">
-      <section className="flex justify-between border-b border-footerborderColor  px-[5%] py-5 pb-[60px] flex-wrap md:gap-[30px]">
-        <div className="flex flex-col justify-between mb-[20px] md:mb-0 w-[40%] sm:w-auto">
-          <h1 className="text-secondaryColor font-bold text-[32px] flex-[2]">
-            <Link to="/" className="text-inherit">
+    <footer className="hidden md:block bg-black text-primaryColor  h-full md:h-[50vh] py-auto py-8">
+      <section className="flex  justify-center md:justify-between   px-10 py-5 pb-[60px] flex-wrap md:gap-[30px] items-center">
+        <div className="  mb-[20px] md:mb-0 w-[80%] md:w-auto">
+          <h1 className=" font-bold text-[32px] flex-[2]">
+            <Link to="/" className="text-primaryColor ">
               Fairshop
             </Link>
           </h1>
-          <div className="flex justify-between text-2xl">
-            <Link to="/">
-              <i class="bi bi-facebook"></i>
-            </Link>
-            <Link to="/">
-              <i class="bi bi-twitter" width="32"></i>
-            </Link>
-            <Link to="/">
-              <i class="bi bi-instagram" width="32"></i>
-            </Link>
-          </div>
+          <p className="text-primaryColor ">Fair prices you can trust</p>
         </div>
-        <ul className="font-bold mb-[20px] md:mb-0 w-[40%]  md:w-[20%] lg:w-auto   ">
-          <li className=" text-2xl mb-[20px]">Services</li>
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Buy From Us</Link>
+        <ul className="font-bold mb-[20px] md:mb-0   w-[80%] md:w-auto  ">
+          <li className=" text-xl mb-[20px]">Quick Links</li>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Home</Link>
           </li>
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Sell To Us</Link>
-          </li>
-        </ul>
-
-        <ul className="font-bold mb-[20px] md:mb-0 w-[40%]  md:w-[20%] lg:w-auto ">
-          <li className=" text-2xl mb-[20px]">Company</li>
-          <li className="text-lg mb-[20px]">
+          <li className="text-base mb-[20px]">
             <Link to="/">About Us</Link>
           </li>
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Careers</Link>
-          </li>
-
-          <li className="text-lg">
-            <Link to="/">FAQs</Link>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Contact Us</Link>
           </li>
         </ul>
 
-        <ul className="font-bold w-[40%]  md:w-[20%] lg:w-auto  ">
-          <li className=" text-2xl mb-[20px]">Legal</li>
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Terms</Link>
+        <ul className="font-bold mb-[20px] md:mb-0  w-[80%] md:w-auto ">
+          <li className=" text-xl mb-[20px]">Products</li>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Phones</Link>
           </li>
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Privacy Policy</Link>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Laptops</Link>
           </li>
 
-          <li className="text-lg mb-[20px]">
-            <Link to="/">Cookies Policy</Link>
+          <li className="text-base">
+            <Link to="/">Accessories</Link>
+          </li>
+        </ul>
+
+        <ul className="font-bold  w-[80%] md:w-auto  ">
+          <li className=" text-xl mb-[20px]">Categories</li>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Mobile Phones</Link>
+          </li>
+          <li className="text-base mb-[20px]">
+            <Link to="/">Home & Entertainment</Link>
+          </li>
+
+          <li className="text-base mb-[20px]">
+            <Link to="/">Gadgets</Link>
           </li>
         </ul>
 
         <ul className="font-bold ">
-          <li className=" text-2xl mb-[20px]">Contact</li>
-          <li className="text-lg ">
-            <Link to="/">hello@fairshop.com</Link>
-          </li>
+          <li className=" text-xl mb-[20px]">Let's Socialize</li>
+          <div className="flex justify-between text-2xl ">
+            <Link to="/">
+              <Instagram size={22} />
+            </Link>
+            <Link to="/">
+              <Twitter size={22} />
+            </Link>
+            <Link to="/">
+              <Facebook size={22} />
+            </Link>
+          </div>
         </ul>
       </section>
-      <div className="flex w-full justify-center items-center h-[70px] font-bold">
+      {/* <div className="flex w-full justify-center items-center h-[70px] font-bold">
         <Link to="/">&copy;2022 Fairshop</Link>
-      </div>
+      </div> */}
     </footer>
   );
 };

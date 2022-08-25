@@ -1,20 +1,38 @@
 import { SearchIcon } from "@heroicons/react/solid";
 
-const Search = () => {
+const Search = ({ mobile }) => {
   return (
-    <section className="h-full border-2 border-secondaryColor  flex  items-center justify-between gap-5 w-[600px] rounded-3xl pl-3">
+    <section
+      className={` border-2 border-[#FCA311]   items-center justify-between  rounded-3xl pl-3 h-[50px] ${
+        mobile
+          ? "w-[90%] mx-auto   flex lg:hidden mb-12 gap-4"
+          : "  w-2/5  hidden lg:flex lg:flex-[5] "
+      } `}
+    >
       <input
         type="text"
         placeholder="Search for products"
-        className="bg-transparent flex-[8] border-0 h-[90%] outline-none"
+        className={`${
+          mobile ? "" : ""
+        } bg-transparent flex-[8]  border-0 h-[90%] outline-none`}
       />
-      <select name="search" id="" className="flex-[4] font-medium cursor-pointer ">
+      <select
+        name="search"
+        id=""
+        className={` font-medium cursor-pointer ${
+          mobile ? "hidden sm:block " : "hidden xl:block  xl:flex-[4]"
+        } `}
+      >
         <option value="All Categories">All Categories</option>
         <option value="phones">Phones</option>
         <option value="laptops">Laptops</option>
       </select>
 
-      <div className="bg-secondaryColor border-secondaryColor  h-full flex-[2] text-[white] flex  items-center justify-center rounded-r-2xl">
+      <div
+        className={`bg-[#FCA311] border-[#FCA311]  h-full  flex-[2] text-[white] flex  items-center justify-center rounded-r-2xl ${
+          mobile ? "" : ""
+        }`}
+      >
         <SearchIcon className="w-6 cursor-pointer" />
       </div>
     </section>

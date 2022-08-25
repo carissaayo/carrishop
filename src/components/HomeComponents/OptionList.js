@@ -1,4 +1,4 @@
-import {ChevronLeft,ChevronRight} from "react-bootstrap-icons";
+import { ChevronLeft, ChevronRight } from "react-bootstrap-icons";
 
 import gamepad from "../../assets/imgs/game pad.png";
 import phoneImg from "../../assets/imgs/phone.png";
@@ -9,40 +9,56 @@ import laptopImg from "../../assets/imgs/laptops.png";
 
 const OptionList = () => {
   return (
-    <section className="w-full bg-secondaryColor h-[150px] flex items-center justify-between gap-5 mb-20">
+    <section className=" w-full bg-secondaryColor h-[150px] flex items-center justify-between gap-5 mb-20 mx-auto md:m-0">
       <div className="flex items-center justify-center flex-1 cursor-pointer">
         <ChevronLeft />
       </div>
 
-      <section className="flex items-center  flex-[14] justify-between">
-        <div className="flex items-center flex-col gap-4">
-          <img src={gamepad} alt="" className="w-[50px] " />
-          <p>Game consoles</p>
+      <section className="flex items-center  xs:flex-[14] justify-between gap-2 md:gap-0">
+        <div className="flex xs:items-center flex-col gap-4 ">
+          <img
+            src={gamepad}
+            alt=""
+            className="w-[20px] xs:w-[30px] sm:w-[50px]  "
+          />
+          <p className="text-xs sm:text-base">Game consoles</p>
         </div>
 
-        <div className="flex items-center flex-col gap-4">
-          <img src={phoneImg} alt="" className="w-[50px] " />
-          <p>Mobile Phones</p>
+        <div className="flex xs:items-center flex-col gap-4 ">
+          <img
+            src={phoneImg}
+            alt=""
+            className="w-[20px] xs:w-[30px] sm:w-[50px] "
+          />
+          <p className="text-xs sm:text-base">Mobile Phones</p>
         </div>
 
-        <div className="flex items-center flex-col gap-4">
-          <img src={tabletImg} alt="" className="w-[50px] " />
-          <p>Tablets</p>
+        <div className="flex xs:items-center flex-col gap-4 ">
+          <img
+            src={tabletImg}
+            alt=""
+            className="w-[20px] xs:w-[30px] sm:w-[50px] "
+          />
+          <p className="text-xs sm:text-base">Tablets</p>
         </div>
 
-        <div className="flex items-center flex-col gap-4">
-          <img src={laptopImg} alt="" className="w-[50px] " />
-          <p>Laptops</p>
+        <div className="flex xs:items-center flex-col gap-4 ">
+          <img
+            src={laptopImg}
+            alt=""
+            className="w-[20px] xs:w-[30px] sm:w-[50px]"
+          />
+          <p className="text-xs md:text-base">Laptops</p>
         </div>
 
-        <div className="flex items-center flex-col gap-4">
-          <img src={tvImg} alt="" className="w-[50px] " />
-          <p>TV</p>
+        <div className="hidden md:flex items-center flex-col gap-4 ">
+          <img src={tvImg} alt="" className=" sm:w-[50px]" />
+          <p className="text-sm sm:text-base">TV</p>
         </div>
 
-        <div className="flex items-center flex-col gap-4">
-          <img src={soundImg} alt="" className="w-[50px] " />
-          <p>Sound System</p>
+        <div className=" items-center flex-col gap-4 hidden md:flex  ">
+          <img src={soundImg} alt="" className="w-[30px] sm:w-[50px]" />
+          <p className=" sm:text-base">Sound System</p>
         </div>
       </section>
 

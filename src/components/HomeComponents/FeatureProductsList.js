@@ -7,13 +7,12 @@ import FeaturedProduct from "./FeaturedProduct";
 
 const FeatureProductsList = () => {
   return (
-
-    <section className="w-full flex items-center justify-center flex-col mb-20">
-      <h1 className="border-b-2 border-secondaryColor w-[max-content] pb-3 font-bold text-[32px]">
+    <section className="w-full flex items-center justify-center flex-col mb-20 px-4 md:px-0 ">
+      <h1 className="border-b-2 border-secondaryColor w-[max-content] pb-3 font-bold text-xl md:text-[32px] text-left md:text-center">
         Featured Products
       </h1>
 
-      <div className="w-full flex border border-[#EEEEEE] rounded-l-3xl gap-10 items-center justify-between  h-[500px] ">
+      <div className=" w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full flex md:border border-[#EEEEEE] rounded-3xl lg:rounded-l-3xl gap-0 lg:gap-10 items-center justify-between  2xl:h-[500px]  flex-wrap xl:flex-nowrap py-10 md:py-0">
         <FeaturedProduct
           type="Phone"
           name="Redmi Note 9c 6GB RAM 248GB Internal Memory "

@@ -5,12 +5,16 @@ import phoneImg from "../../assets/imgs/featured-phone.png";
 import Card from "./Card";
 const ItemHeader = ({title,text}) => {
   return (
-    <div className="flex  justify-between items-center h-[35px] w-full ">
-      <h1 className="font-bold text-2xl capitalize border-b-2 border-secondaryColor">{title}</h1>
-      <Link to="/" className=" font-bold flex items-center">
-        {text?text :"See All"}
+    <div className="flex  justify-between items-center h-[35px] w-full md:w-[90%] lg:w-[95%] xl:w-full  ">
+      <h1 className="font-bold sm:text-2xl capitalize border-b-2 border-secondaryColor ">
+        {title}
+      </h1>
+      <Link to="/" className=" font-bold flex items-center ">
+        <p className={`${text ? "hidden sm:block" : ""}  sm:text-base`}>
+          {text ? text : "See All"}
+        </p>
         <span className="ml-2">
-          <ChevronRight size={30}/>
+          <ChevronRight size={30} />
         </span>
       </Link>
     </div>
@@ -18,9 +22,9 @@ const ItemHeader = ({title,text}) => {
 };
 const CardList = ({ title, text}) => {
   return (
-    <main className="w-full   mb-[80px]">
-      <ItemHeader title={title} text={text}/>
-      <section className="w-full flex border-y border-[#EEEEEE] rounded-l-3xl gap-10 items-center justify-between ">
+    <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
+      <ItemHeader title={title} text={text} />
+      <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 md:pt-0">
         <Card
           type="Phone"
           name="Redmi Note 9c"
@@ -36,7 +40,6 @@ const CardList = ({ title, text}) => {
           spec="6GB RAM 248GB Internal Memory"
           image={phoneImg}
           price="769,999"
-       
         />
         <Card
           type="Phone"
@@ -44,7 +47,6 @@ const CardList = ({ title, text}) => {
           spec="6GB RAM 248GB Internal Memory"
           image={phoneImg}
           price="769,999"
-          
           discount="30"
           discountPrice="700,000"
         />
@@ -54,8 +56,7 @@ const CardList = ({ title, text}) => {
           spec="6GB RAM 248GB Internal Memory"
           image={phoneImg}
           price="769,999"
-        addedToCart
-        
+          addedToCart
         />
       </section>
     </main>

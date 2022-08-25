@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {  MenuIcon, XIcon } from "@heroicons/react/solid";
 import { ShoppingBagIcon,UserIcon } from "@heroicons/react/outline";
 import {  useSelector } from "react-redux";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import logo from "../../assets/imgs/new-logo.png"
 import Search from "./Search";
 
@@ -16,47 +16,57 @@ const [openAvatar, setOpenAvatar] = useState(false)
     navigate("/logout");
   }
  
-  
+   const [scrolled, setScrolled] = useState(false);
+
+   useEffect(() => {
+     const onScroll = () => {
+       if (window.scrollY > 200) {
+    
+         setScrolled(true);
+       } else {
+         setScrolled(false);
+       }
+     };
+
+     window.addEventListener("scroll", onScroll);
+
+     return () => window.removeEventListener("scroll", onScroll);
+   }, []);
 
   return (
-    <header className="w-full h-[150px] flex bg-primaryColor justify-between items-center py-12 px-8 pl-12   gap-[0px] z-30">
-      <div className="">
-      <MenuIcon className="w-10 " />
+    <header
+      className={`${
+        scrolled ? " top-0 transition-[all .2s linear] z-40 " : ""
+      } sticky w-full h-[120px] sm:h-[150px] flex bg-primaryColor justify-between items-center  px-2 sm:px-10 2xl:pl-4 gap-4 sm:gap-8 md:gap-4 2xl:gap-10 z-30`}
+    >
+      <div className="flex flex-col gap-2 flex-[0.8] sm:fex-1 items-center">
+        <MenuIcon className="w-10 " />
       </div>
-      <Link to="/" className={` font-bold text-[32px]  `}>
+
+      <Link
+        to="/"
+        className={` font-bold text-[32px] flex-[3] sm:flex-[5] lg:flex-[3] `}
+      >
         <img src={logo} alt="Fairshop logo" className="w-[200px]" />
       </Link>
-      <div className="text-sm text-secondaryColor flex-1 block md:hidden">
-        {openMobile ? (
-          <XIcon
-            className="w-9 h-9 cursor-pointer"
-            onClick={() => setOpenMobile(false)}
-          />
-        ) : (
-          <MenuIcon
-            className="w-9 h-9 cursor-pointer"
-            onClick={() => setOpenMobile(true)}
-          />
-        )}
-      </div>
+
       <Search />
-      <section className="flex h-full justify-between items-center gap-2">
+      <section className="flex h-full justify-between items-center gap-2 flex-[3]sm:flex-[3] md:flex-[1.5]  2xl:flex-1">
         <div className="relative cursor-pointer">
-          <ShoppingBagIcon className="w-10 " />
-          <p className="bg-secondaryColor absolute flex items-center justify-center w-6 rounded-full font-bold bottom-[-5px] right-0">
+          <ShoppingBagIcon className="w-8 sm:w-10 " />
+          <p className="bg-[#FCA311] absolute flex items-center justify-center w-6 rounded-full font-bold bottom-[-5px] right-0">
             0
           </p>
         </div>
         <p className="font-bold">&#8358; 0.00 </p>
       </section>
 
-      <section className="flex h-full justify-between items-center gap-2">
-        <UserIcon className="w-9 h-9 cursor-pointer" />
-        <p className=" cursor-pointer">Register</p>
-        <span>or</span>
-        <p className="cursor-pointer">Sign in</p>
+      <section className="flex h-full justify-between items-center gap-2 flex-[1] md:flex-[3] 2xl:flex-[2]">
+        <UserIcon className="w-8 sm:w-10 cursor-pointer" />
+        <p className=" cursor-pointer hidden md:block ">Register</p>
+        <span className=" hidden md:block">or</span>
+        <p className="cursor-pointer hidden md:block">Sign in</p>
       </section>
-     
     </header>
   );
 };

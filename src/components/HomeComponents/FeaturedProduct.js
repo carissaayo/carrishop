@@ -16,17 +16,17 @@ const FeaturedProduct = ({
       to="/"
       className={`${
         dealOfTheDay
-          ? " relative h-full border-secondaryColor border-2 rounded-3xl pb-10"
-          : "h-4/5 border-r border-[#eeeeee] "
-      } w-2/5 flex flex-col justify-center items-center gap-5`}
+          ? " relative h-full border-secondaryColor border-2 rounded-3xl "
+          : " h-full 2xl:h-4/5 border md:border-r rounded-3xl border-[#eeeeee] pt-8"
+      } w-[100%] md:w-[45%] lg:w-[30%] xl:w-2/5  flex flex-col justify-center items-center gap-5 pb-10 mb-[50px] lg:mb-0`}
     >
       {dealOfTheDay && (
         <section className="flex justify-between w-full">
           <p className=" flex items-center justify-center pl-3">
             {dealOfTheDay && "Deal of the day"}
           </p>
-          <div className=" bg-secondaryColor w-[120px] h-[70px] flex items-center justify-center rounded-tr-3xl rounded-bl-3xl relative top-2 right-0">
-            <p className="text-primaryColor">{discount && discount}% OFF</p>
+          <div className=" bg-secondaryColor  w-[90px] 2xl:w-[120px] h-[50px] 2xl:h-[70px] flex items-center justify-center rounded-tr-3xl rounded-bl-3xl relative top-0 2xl:top-2 right-0">
+            <p className="text-primaryColor ">{discount && discount}% OFF</p>
           </div>
         </section>
       )}
