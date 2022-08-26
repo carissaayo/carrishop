@@ -5,7 +5,7 @@ const Search = ({ mobile }) => {
     <section
       className={` border-2 border-[#FCA311]   items-center justify-between  rounded-3xl pl-3 h-[50px] ${
         mobile
-          ? "w-[90%] mx-auto   flex lg:hidden mb-12 gap-4"
+          ? "w-[80%] xs:w-[90%] mx-auto   flex lg:hidden mb-12 gap-4"
           : "  w-2/5  hidden lg:flex lg:flex-[5] "
       } `}
     >
