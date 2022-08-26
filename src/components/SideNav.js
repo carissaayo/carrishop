@@ -68,7 +68,7 @@ const SideNav = () => {
                   isActive ? "font-bold text-secondaryColor" : ""
                 } `}
               />
-              <p className="text-xs sm:text-base">Contact Us</p>
+              <p className="text-[10px] xs:text-xs sm:text-base">Contact Us</p>
             </div>
           )}
         </NavLink>
