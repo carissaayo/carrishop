@@ -25,7 +25,7 @@ const Card = ({
       <img src={image} alt="product" className="w-[200px] h-[200px]" />
       <h1 className=" text-base font-semibold ">{name}</h1>
       <h1 className="text-sm font-semibold">{spec}</h1>
-      <div className="flex items-center justify-between  w-full sm:w-[80%] md:w-auto">
+      <div className="flex items-center justify-between  w-full sm:w-[80%] md:w-[90%]">
         {discount && (
           <p className="font-bold   text-[18px]">
             &#8358;

@@ -17,7 +17,7 @@ const FeaturedProduct = ({
       className={`${
         dealOfTheDay
           ? " relative h-full border-secondaryColor border-2 rounded-3xl "
-          : " h-full 2xl:h-4/5 border md:border-r rounded-3xl border-[#eeeeee] pt-8"
+          : " h-full 2xl:h-[90%] border md:border-r rounded-3xl border-[#eeeeee] pt-8"
       } w-[100%] md:w-[45%] lg:w-[30%] xl:w-2/5  flex flex-col justify-center items-center gap-5 pb-10 mb-[50px] lg:mb-0`}
     >
       {dealOfTheDay && (

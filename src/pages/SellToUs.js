@@ -1,6 +1,12 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
+import { ChevronRight } from 'react-bootstrap-icons';
 import Footer from '../components/HomeComponents/Footer';
+import FeaturedProduct from '../components/HomeComponents/FeaturedProduct';
+
+import phoneImg from "../assets/imgs/featured-phone.png"
+import tabletImg from "../assets/imgs/featured-tablet.png";
+import soundImg from "../assets/imgs/featured-sound.png";
+import notebookImg from "../assets/imgs/ultrabook.png";
 import sell1 from "../assets/imgs/sell1.png";
 import sell2 from "../assets/imgs/sell2.png";
 import sell3 from "../assets/imgs/sell3.png";
@@ -8,11 +14,36 @@ import sell4 from "../assets/imgs/sell4.png";
 import appointment from "../assets/imgs/appointment.png";
 import wallet from "../assets/imgs/wallet.png";
 import verify from "../assets/imgs/verify.png";
+import grid1 from "../assets/imgs/grid1.png";
+import grid2 from "../assets/imgs/grid2.png";
+import grid3 from "../assets/imgs/grid3.png";
+import grid5 from "../assets/imgs/grid5.jfif";
+import grid6 from "../assets/imgs/grid6.png";
+import grid7 from "../assets/imgs/grid7.jfif";   
 
+
+const ItemHeader = ({ title, text }) => {
+  return (
+    <div className="flex  justify-between items-center h-[35px] w-full md:w-[90%] lg:w-[95%] xl:w-full  ">
+      <h1 className="font-bold sm:text-2xl capitalize border-b-2 border-secondaryColor ">
+        {title}
+      </h1>
+      <Link to="/" className=" font-bold flex items-center ">
+        <p className={`${text ? "hidden sm:block" : ""}  sm:text-base`}>
+          {text ? text : "See All"}
+        </p>
+        <span className="ml-2">
+          <ChevronRight size={30} />
+        </span>
+      </Link>
+    </div>
+  );
+};
 
 const SellToUs = () => {
   return (
     <main className="h-full w-full">
+      {/* Banner */}
       <section className="w-full  bg-[#F5F5F5] mb-20 flex items-start justify-between h-[70vh]">
         <div className="flex-[2] flex items-center h-[70%] justify-center ">
           <div className="w-[80%] px-6 flex flex-col gap-8">
@@ -39,6 +70,7 @@ const SellToUs = () => {
         </div>
       </section>
 
+      {/* Steps */}
       <section className="w-full h-[70vh]">
         <h1 className="text-center text-2xl mb-6">SELL FASTER. BUY SMARTER</h1>
         <p className="text-center text-xl mb-10">
@@ -83,6 +115,117 @@ const SellToUs = () => {
           </div>
         </section>
       </section>
+
+      {/* Card List */}
+      <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
+        <ItemHeader title="Top Categories" text="View all categories" />
+        {/* Cards Container */}
+        <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full   lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center pt-10 grid  ">
+          <div className="bg-[#F6F6F6] gaming flex  flex-col items-start pl-8">
+            {/* item */}
+            <div className="justify-self-end relative">
+              <img src={grid1} alt="" className=" " />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">
+                Gaming & Consoles
+              </h4>
+              <h2 className="text-xl font-bold">NEW GAMING EXPERIENCE</h2>
+            </div>
+          </div>
+
+          {/* item */}
+          <div className="bg-[#F6F6F6] phone flex  flex-col items-start pl-8">
+            <div className="justify-self-end relative">
+              <img src={grid2} alt="" className=" " />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">Phones</h4>
+              <h2 className="text-xl font-bold">Iphone 13 Pro Max</h2>
+            </div>
+          </div>
+
+          {/* item */}
+          <div className="bg-[#F6F6F6] audio flex  flex-col items-start pl-8">
+            <div className="justify-self-end relative">
+              <img src={grid3} alt="" className="" />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
+              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+            </div>
+          </div>
+
+          {/* item */}
+          <div className="bg-[#F6F6F6] mouse flex  flex-col items-start pl-8">
+            <div className="justify-self-end relative">
+              <img src={grid5} alt="" className="relative " />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
+              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+            </div>
+          </div>
+
+          {/* item */}
+          <div className="bg-[#F6F6F6] camera flex  flex-col items-start pl-8">
+            <div className="justify-self-end relative">
+              <img src={grid6} alt="" className=" " />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
+              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+            </div>
+          </div>
+
+          {/* item */}
+          <div className="bg-[#F6F6F6] powerbank flex  flex-col items-start pl-8">
+            <div className="justify-self-end relative">
+              <img src={grid7} alt="" className=" h-[232px]" />
+            </div>
+            <div className="justify-self-center mb-10">
+              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
+              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Fast Selling */}
+      <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
+        <ItemHeader
+          title="Fast Selling"
+          text="View all fast selling products "
+        />
+        <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 ">
+          <FeaturedProduct
+            type="Phone"
+            name="Redmi Note 9c"
+            image={phoneImg}
+            price="769,999"
+          />
+          <FeaturedProduct
+            type="Laptop"
+            name="Notebook 360 Flip"
+            image={notebookImg}
+            price="769,999"
+          />
+
+          <FeaturedProduct
+            type="Tablet"
+            name="Ipad Revolve"
+            image={tabletImg}
+            price="769,999"
+          />
+          <FeaturedProduct
+            type="Home & Entertainment"
+            name="Sound System"
+            image={soundImg}
+            price="769,999"
+            addedToCart
+          />
+        </section>
+      </main>
 
       <Footer />
     </main>
