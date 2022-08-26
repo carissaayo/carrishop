@@ -17,7 +17,7 @@ const Home = () => {
 
 
   return (
-    <main className="w-full h-full relative ">
+    <main className="w-full h-full">
       {/* <Navbar openMobile={openMobile} setOpenMobile={setOpenMobile} /> */}
       <Search mobile/>
       <Hero />
