@@ -3,7 +3,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 const Search = ({ mobile }) => {
   return (
     <section
-      className={` border-2 border-[#FCA311]   items-center justify-center xs:justify-between  rounded-3xl xs:pl-3 h-[50px] ${
+      className={` border-2 border-[#FCA311]   items-center justify-center xs:justify-between  rounded-3xl pl-4 xs:pl-3 h-[50px] ${
         mobile
           ? "w-[80%] xs:w-[90%] mx-auto   flex lg:hidden mb-12 xs:gap-4"
           : "  w-2/5  hidden lg:flex lg:flex-[5] "
@@ -14,7 +14,7 @@ const Search = ({ mobile }) => {
         placeholder="Search for products"
         className={`${
           mobile ? "" : ""
-        } bg-transparent  flex-[4] xs:flex-[8]  border-0 h-[90%] outline-none`}
+        } bg-transparent  w-[80%]  xs:flex-[8]  border-0 h-[90%] outline-none`}
       />
       <select
         name="search"
@@ -29,7 +29,7 @@ const Search = ({ mobile }) => {
       </select>
 
       <div
-        className={`bg-[#FCA311] border-[#FCA311]  h-full flex-[4]  xs:flex-[2] text-[white] flex  items-center justify-center rounded-r-2xl ${
+        className={`bg-[#FCA311] border-[#FCA311]  h-full   w-[20%]  xs:flex-[2] text-[white] flex  items-center justify-center rounded-r-2xl ${
           mobile ? "" : ""
         }`}
       >
