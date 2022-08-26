@@ -3,7 +3,7 @@ import { SearchIcon } from "@heroicons/react/solid";
 const Search = ({ mobile }) => {
   return (
     <section
-      className={` border-2 border-[#FCA311]   items-center justify-center xs:justify-between  rounded-3xl pl-3 h-[50px] ${
+      className={` border-2 border-[#FCA311]   items-center justify-center xs:justify-between  rounded-3xl xs:pl-3 h-[50px] ${
         mobile
           ? "w-[80%] xs:w-[90%] mx-auto   flex lg:hidden mb-12 xs:gap-4"
           : "  w-2/5  hidden lg:flex lg:flex-[5] "
