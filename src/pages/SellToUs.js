@@ -44,9 +44,9 @@ const SellToUs = () => {
   return (
     <main className="h-full w-full">
       {/* Banner */}
-      <section className="w-full  h-[100vh] bg-[#F5F5F5] mb-20 flex  flex-col gap-0 md:gap-0 md:flex-row items-start md:items-center lg:items-start  justify-between md:h-[60vh] xl:h-[60vh] 2xl:h-[70vh]  relative ">
-        <div className="flex-[2] flex items-start pt-10 md:pt-0 md:items-center h-full xl:h-[70%]  justify-center words order-2 md:order-1">
-          <div className=" w-[90%] lg:w-[80%] px-2 xl:px-6 flex flex-col gap-8">
+      <section className="w-full  h-full bg-[#F5F5F5] mb-20 flex  flex-col gap-0 md-gap-5 lg:flex-row items-start md:items-center lg:items-start  justify-between  xl:h-[60vh] 2xl:h-[70vh]  relative ">
+        <div className="flex-[2] flex items-start pt-10 md:pt-0 md:items-center h-full xl:h-[70%]  justify-center words order-2 lg:order-1">
+          <div className=" w-[90%] lg:w-[80%] px-2 xl:px-6 flex flex-col gap-8 mb-20 lg:mb-0">
             <h1 className=" text-2xl lg:text-4xl ">
               SELLING JUST GOT <span className="text-[#FCA311]">EASIER!</span>
             </h1>
@@ -62,26 +62,26 @@ const SellToUs = () => {
           </div>
         </div>
         {/* Images Section */}
-        <div className="   flex-[2] 2xl:flex-[3] flex  items-center lg:items-start order-1 md:order-2  flex-wrap sm:flex-nowrap mb-10 md:mb-0">
+        <div className=" pt-10  flex-[2] 2xl:flex-[3] flex   items-center lg:items-start order-1 lg:order-2  flex-wrap sm:flex-nowrap m mb-10 gap-8 md:gap-0 md:mb-0">
           <img
             src={sell1}
             alt=""
-            className=" w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
+            className=" w-[40%] sm:w-[150px]  lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
           />
           <img
             src={sell2}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0  three"
+            className="w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 three"
           />
           <img
             src={sell3}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-20"
+            className="w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-10"
           />
           <img
             src={sell4}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
+            className="w-[40%] sm:w-[150px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
           />
         </div>
       </section>
