@@ -66,22 +66,22 @@ const SellToUs = () => {
           <img
             src={sell1}
             alt=""
-            className=" w-[180px] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
+            className=" w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
           />
           <img
             src={sell2}
             alt=""
-            className="w-[180px] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0  three"
+            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0  three"
           />
           <img
             src={sell3}
             alt=""
-            className="w-[180px] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-20"
+            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-20"
           />
           <img
             src={sell4}
             alt=""
-            className="w-[180px] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
+            className="w-[40%] sm:w-[150px] lg:w-[130px] xl:w-[150px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
           />
         </div>
       </section>
