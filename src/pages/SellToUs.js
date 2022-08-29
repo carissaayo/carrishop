@@ -87,19 +87,21 @@ const SellToUs = () => {
       </section>
 
       {/* Steps */}
-      <section className="w-full h-[70vh]">
-        <h1 className="text-center text-2xl mb-6">SELL FASTER. BUY SMARTER</h1>
-        <p className="text-center text-xl mb-10">
+      <section className="w-full  h-full sm:h-[100vh] lg:h-[70vh] mb-20">
+        <h1 className="text-center text-lg xs:text-xl sm:text-2xl mb-6">
+          SELL FASTER. BUY SMARTER
+        </h1>
+        <p className="text-center text-base xs:text-lg sm:text-xl mb-10">
           Start selling on FairShop in 3 easy steps
         </p>
 
-        <section className="flex w-full items-center justify-between h-[30vh] gap-0 ">
+        <section className="flex w-full items-center  justify-center lg:justify-between h-full sm:h-[40vh] lg:h-[35vh]  gap-10 lg:gap-0 flex-wrap lg:flex-nowrap">
           {/* Item  */}
-          <div className="w-[30%] flex flex-col items-center justify-center gap-4">
+          <div className=" w-[90%] xs:w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col items-center justify-center gap-4 h-full lg:h-full">
             <div className="bg-[#FCA311] w-[100px] h-[100px] rounded-full flex items-center justify-center">
               <img src={appointment} alt="" className="w-[50px]" />
             </div>
-            <h3 className="">Book an Appointment</h3>
+            <h3 className="text-center">Book an Appointment</h3>
             <p className="text-center 2xl:w-[80%]">
               Book and Appointment by filling this form, call or whatsApp our
               agent.
@@ -107,11 +109,11 @@ const SellToUs = () => {
           </div>
 
           {/* Item  */}
-          <div className=" w-[30%] flex flex-col items-center justify-center gap-4">
+          <div className=" w-[90%] xs:w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col items-center justify-center gap-4 h-full">
             <div className="bg-[#FCA311] w-[100px] h-[100px] rounded-full flex items-center justify-center">
               <img src={verify} alt="" className="w-[50px]" />
             </div>
-            <h3 className="">Get your device inspected</h3>
+            <h3 className="text-center">Get your device inspected</h3>
             <p className="text-center 2xl:w-[80%]">
               Come with your device to any of our offices or branches for
               inspection.
@@ -119,11 +121,11 @@ const SellToUs = () => {
           </div>
 
           {/* Item  */}
-          <div className="w-[30%] flex flex-col items-center justify-center gap-4">
+          <div className="w-[90%] xs:w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col items-center justify-center gap-4 h-full">
             <div className="bg-[#FCA311] w-[100px] h-[100px] rounded-full flex items-center justify-center">
               <img src={wallet} alt="" className="w-[50px]" />
             </div>
-            <h3 className="">Get Paid immediately</h3>
+            <h3 className="text-center">Get Paid immediately</h3>
             <p className="text-center 2xl:w-[80%]">
               After inspection, we will reach a fair agreement with you and you
               will receive payment immediately.
