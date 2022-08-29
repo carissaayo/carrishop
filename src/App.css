@@ -62,3 +62,49 @@ h1,h2,h3,h4,h5,h6{
 .powerbank{
   grid-area: powerbank;
 }
+
+
+.bannerstyles{
+  display: grid;
+  grid-template-columns: 1fr 1fr 150px 150px ;
+  grid-template-rows: 1fr 1fr ;
+  grid-template-areas: "word word images images"
+                       "word word images images";
+}
+
+
+.words{
+  grid-area: word;
+}
+
+.images{
+  grid-area: images;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+justify-items: end;
+grid-template-areas: "one two"
+                      "three four";
+/* position: absolute;
+left: -60% ;
+top:35% */
+position: relative;
+top:30%;
+gap: 0px;
+}
+
+.one{
+grid-area:one
+}
+
+.two{
+  grid-area: two;
+}
+
+.three{
+  grid-area: three;
+}
+
+.four{
+  grid-area: four;
+}
