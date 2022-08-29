@@ -33,8 +33,13 @@ if(user?.fullname)window.history.back()
  }, [handleSubmit]);
 
   return (
-    <main className="w-full h-screen">
-      <div className="flex w-full h-full items-center justify-center">
+    <main className="w-full h-full">
+      <div className="w-full bg-black text-primaryColor flex flex-col items-center justify-center h-[20vh] gap-5">
+        <h1 className="text-2xl font-bold ">My Account </h1>
+        <h2 className="text-lg">HOME / PRIVACY POLICY</h2>
+      </div>
+
+      <div className="flex w-full items-center justify-center">
         <form action="" className="" onSubmit={(e) => handleSubmit(e)}>
           <h2 className="">Sign In</h2>
 

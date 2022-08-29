@@ -29,6 +29,20 @@ h1,h2,h3,h4,h5,h6{
   background-size: contain;
 }
 
+.register-bg{
+  background-image: url("./assets/imgs/bg-register.jfif");
+    background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.overlay{
+  background-color: rgba(0, 0, 0, 0.673);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr ;

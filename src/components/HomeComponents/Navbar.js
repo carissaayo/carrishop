@@ -20,7 +20,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
    useEffect(() => {
      const onScroll = () => {
-       if (window.scrollY > 200) {
+       if (window.scrollY > 120) {
     
          setScrolled(true);
        } else {
@@ -63,9 +63,9 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
       <section className="flex h-full justify-between items-center gap-2 flex-[1] md:flex-[3] 2xl:flex-[2]">
         <UserIcon className="w-8 sm:w-10 cursor-pointer" />
-        <p className=" cursor-pointer hidden md:block ">Register</p>
+        <Link to="/register" className=" cursor-pointer hidden md:block ">Register</Link>
         <span className=" hidden md:block">or</span>
-        <p className="cursor-pointer hidden md:block">Sign in</p>
+        <Link to="/login" className="cursor-pointer hidden md:block">Sign in</Link>
       </section>
     </header>
   );
