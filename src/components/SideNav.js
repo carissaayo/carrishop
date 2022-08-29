@@ -22,7 +22,7 @@ const SideNav = () => {
             </div>
           )}
         </NavLink>
-        <NavLink to="/market">
+        <NavLink to="/privacy-policy">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
               <Bag

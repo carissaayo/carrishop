@@ -66,28 +66,28 @@ const SellToUs = () => {
           <img
             src={sell1}
             alt=""
-            className=" w-[40%] sm:w-[150px]  lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
+            className="w-[35%] xs:w-[40%] sm:w-[150px]  lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
           />
           <img
             src={sell2}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 three"
+            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 three"
           />
           <img
             src={sell3}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-10"
+            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-10"
           />
           <img
             src={sell4}
             alt=""
-            className="w-[40%] sm:w-[150px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
+            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
           />
         </div>
       </section>
 
       {/* Steps */}
-      <section className="w-full  h-full sm:h-[100vh] lg:h-[70vh] mb-20">
+      <section className="w-full  h-full mb-20 lg:mb-0  lg:py-20 ">
         <h1 className="text-center text-lg xs:text-xl sm:text-2xl mb-6">
           SELL FASTER. BUY SMARTER
         </h1>
@@ -95,9 +95,9 @@ const SellToUs = () => {
           Start selling on FairShop in 3 easy steps
         </p>
 
-        <section className="flex w-full items-center  justify-center lg:justify-between h-full sm:h-[40vh] lg:h-[35vh]  gap-10 lg:gap-0 flex-wrap lg:flex-nowrap">
+        <section className="flex w-full items-center  justify-center lg:justify-between h-full   gap-10 lg:gap-0 flex-wrap lg:flex-nowrap">
           {/* Item  */}
-          <div className=" w-[90%] xs:w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col items-center justify-center gap-4 h-full lg:h-full">
+          <div className=" w-[90%] xs:w-[70%] sm:w-[40%] lg:w-[30%] flex flex-col items-center justify-center gap-4 h-full ">
             <div className="bg-[#FCA311] w-[100px] h-[100px] rounded-full flex items-center justify-center">
               <img src={appointment} alt="" className="w-[50px]" />
             </div>
@@ -138,72 +138,72 @@ const SellToUs = () => {
       <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
         <ItemHeader title="Top Categories" text="View all categories" />
         {/* Cards Container */}
-        <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full   lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center pt-10 grid  ">
+        <section className="w-[90%] sm:w-[70%] md:w-[80%] lg:w-[95%] xl:w-full   lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center   grid  ">
+          {/* item */}
           <div className="bg-[#F6F6F6] gaming flex  flex-col items-start pl-8">
-            {/* item */}
-            <div className="justify-self-end relative">
+            <div className="flex  items-end relative">
               <img src={grid1} alt="" className=" " />
             </div>
             <div className="justify-self-center mb-10">
               <h4 className="text-[#A5A5A5] text-base mb-5">
                 Gaming & Consoles
               </h4>
-              <h2 className="text-xl font-bold">NEW GAMING EXPERIENCE</h2>
+              <h2 className="xl:text-lg font-bold">NEW GAMING EXPERIENCE</h2>
             </div>
           </div>
 
           {/* item */}
-          <div className="bg-[#F6F6F6] phone flex  flex-col items-start pl-8">
-            <div className="justify-self-end relative">
+          <div className="bg-[#F6F6F6] phone flex  flex-col items-start pl-8 w-full">
+            <div className="flex  justify-end w-full relative">
               <img src={grid2} alt="" className=" " />
             </div>
             <div className="justify-self-center mb-10">
               <h4 className="text-[#A5A5A5] text-base mb-5">Phones</h4>
-              <h2 className="text-xl font-bold">Iphone 13 Pro Max</h2>
+              <h2 className="xl:text-lg font-bold">Iphone 13 Pro Max</h2>
             </div>
           </div>
 
           {/* item */}
-          <div className="bg-[#F6F6F6] audio flex  flex-col items-start pl-8">
-            <div className="justify-self-end relative">
+          <div className="bg-[#F6F6F6] audio flex  flex-col items-start pl-8 w-full">
+            <div className="flex  justify-end w-full  relative">
               <img src={grid3} alt="" className="" />
             </div>
             <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+              <h4 className="text-[#A5A5A5] text-base mb-5">Accessories</h4>
+              <h2 className="xl:text-lg font-bold">BLUETOOTH SPEAKERS</h2>
             </div>
           </div>
 
           {/* item */}
-          <div className="bg-[#F6F6F6] mouse flex  flex-col items-start pl-8">
-            <div className="justify-self-end relative">
-              <img src={grid5} alt="" className="relative " />
+          <div className="bg-[#F6F6F6] mouse flex  flex-col items-start pl-8 w-full">
+            <div className="flex  justify-end w-full  relative">
+              <img src={grid5} alt="" className=" " />
             </div>
             <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+              <h4 className="text-[#A5A5A5] text-base mb-5">Accessories</h4>
+              <h2 className="xl:text-lg font-bold">NEW WIRELESS MOUSES</h2>
             </div>
           </div>
 
           {/* item */}
-          <div className="bg-[#F6F6F6] camera flex  flex-col items-start pl-8">
-            <div className="justify-self-end relative">
+          <div className="bg-[#F6F6F6] camera flex  flex-col items-start pl-8 w-full">
+            <div className="flex  justify-end w-full  relative">
               <img src={grid6} alt="" className=" " />
             </div>
             <div className="justify-self-center mb-10">
               <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+              <h2 className="xl:text-lg font-bold">ULTRA-HD DIGITAL CAMERA</h2>
             </div>
           </div>
 
           {/* item */}
-          <div className="bg-[#F6F6F6] powerbank flex  flex-col items-start pl-8">
-            <div className="justify-self-end relative">
-              <img src={grid7} alt="" className=" h-[232px]" />
+          <div className="bg-[#F6F6F6] powerbank flex  flex-col items-start pl-8 w-full">
+            <div className="flex  justify-end w-full  relative">
+              <img src={grid3} alt="" className="" />
             </div>
             <div className="justify-self-center mb-10">
               <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="text-xl font-bold">BLUETOOTH SPEAKERS</h2>
+              <h2 className="xl:text-lg font-bold">43410 mA POWER BANK</h2>
             </div>
           </div>
         </section>

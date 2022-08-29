@@ -38,6 +38,21 @@ h1,h2,h3,h4,h5,h6{
 
 }
 
+@media screen and (max-width:1098px){
+  .grid{
+  grid-template-columns: 1fr  ;
+  grid-template-areas: "gaming"
+                          "phone"
+                          "audio"
+                       "mouse"
+                       "camera"
+                       "powerbank";
+  grid-template-rows: 400px 400px ;    
+}
+
+}
+
+
 .gaming{
   grid-area: gaming;
 }
@@ -63,9 +78,6 @@ h1,h2,h3,h4,h5,h6{
   grid-area: powerbank;
 }
 
-@media screen and (max-width:700px){
-  
-}
 
 
 

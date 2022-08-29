@@ -30,6 +30,7 @@ import Loading from "./components/Loading";
 import SideNav from "./components/SideNav";
 import Navbar from "./components/HomeComponents/Navbar";
 import SellToUs from "./pages/SellToUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -89,6 +90,8 @@ function App() {
                   />
                   <Route path="contact" element={<Contact />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
+
+                  <Route path="privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="register" element={<Register />} />
                   <Route
                     path="recover-email"
