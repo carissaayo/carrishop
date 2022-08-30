@@ -24,7 +24,7 @@ const CardList = ({ title, text}) => {
   return (
     <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
       <ItemHeader title={title} text={text} />
-      <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 md:pt-0">
+      <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 ">
         <Card
           type="Phone"
           name="Redmi Note 9c"

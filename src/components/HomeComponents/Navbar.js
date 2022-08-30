@@ -18,6 +18,10 @@ const [openAvatar, setOpenAvatar] = useState(false)
  
    const [scrolled, setScrolled] = useState(false);
 
+
+   const openUser= ()=>{
+
+   }
    useEffect(() => {
      const onScroll = () => {
        if (window.scrollY > 120) {
@@ -37,7 +41,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
     <header
       className={`${
         scrolled ? " top-0 transition-[all .2s linear] z-40 " : ""
-      } sticky w-full h-[120px] sm:h-[150px] flex bg-primaryColor justify-between items-center  px-2 sm:px-10 2xl:pl-4 gap-4 sm:gap-8 md:gap-4 2xl:gap-10 z-30`}
+      } sticky w-full h-[120px] sm:h-[150px] flex bg-primaryColor justify-between items-center  px-2 sm:px-10 2xl:pl-4 gap-4 sm:gap-8 md:gap-4 2xl:gap-10 z-30 relative`}
     >
       <div className="flex flex-col gap-2 flex-[0.8] sm:fex-1 items-center">
         <MenuIcon className="w-10 " />
@@ -51,7 +55,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
       </Link>
 
       <Search />
-      <section className="flex h-full justify-between items-center gap-2 flex-[3]sm:flex-[3] md:flex-[1.5]  2xl:flex-1">
+      <section className="flex h-full justify-between items-center gap-2 flex-[2] sm:flex-[3] md:flex-[1.5]  2xl:flex-1">
         <div className="relative cursor-pointer">
           <ShoppingBagIcon className="w-8 sm:w-10 " />
           <p className="bg-[#FCA311] absolute flex items-center justify-center w-6 rounded-full font-bold bottom-[-5px] right-0">
@@ -61,11 +65,26 @@ const [openAvatar, setOpenAvatar] = useState(false)
         <p className="font-bold">&#8358; 0.00 </p>
       </section>
 
-      <section className="flex h-full justify-between items-center gap-2 flex-[1] md:flex-[3] 2xl:flex-[2]">
-        <UserIcon className="w-8 sm:w-10 cursor-pointer" />
-        <Link to="/register" className=" cursor-pointer hidden md:block ">Register</Link>
+      <section className="flex h-full justify-between items-center gap-2 flex-[2] md:flex-[3] 2xl:flex-[2]">
+   
+          <UserIcon className="w-8 sm:w-10 cursor-pointer" onClick={()=>setOpenAvatar(!openAvatar)} />
+        
+        <Link to="/register" className=" cursor-pointer hidden md:block ">
+          Register
+        </Link>
         <span className=" hidden md:block">or</span>
-        <Link to="/login" className="cursor-pointer hidden md:block">Sign in</Link>
+        <Link to="/login" className="cursor-pointer hidden md:block">
+          Sign in
+        </Link>
+        <div className={` bg-primaryColor z-70   w-[200px] absolute flex items-center justify-evenly  h-[100px] md:hidden right-2 top-24 rounded-lg transition-translate duration-200 ease-linear ${openAvatar?"translate-y-0":"translate-y-[-200%]"} box-shadow`}>
+          <Link to="/login" className="cursor-pointer md:hidden block">
+            Sign in
+          </Link>
+          <span className=" md:hidden block">or</span>
+          <Link to="/register" className=" cursor-pointer md:hidden block ">
+            Register
+          </Link>
+        </div>
       </section>
     </header>
   );

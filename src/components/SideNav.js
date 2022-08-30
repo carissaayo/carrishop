@@ -1,6 +1,4 @@
 import { NavLink } from "react-router-dom";
-// import { HomeIcon} from "@heroicons/react/solid";
-import { HomeIcon, ShoppingBagIcon } from "@heroicons/react/outline";
 import {Headset,InfoCircle,House,BagCheck,Bag} from "react-bootstrap-icons";
 const SideNav = () => {
   return (

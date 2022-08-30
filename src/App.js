@@ -23,6 +23,7 @@ import GetAppointment from "./pages/Appointment/GetAppointment";
 import User from "./pages/user/User";
 import AllGadgets from "./pages/gadget/AllGadgets";
 import SearchGadget from "./pages/gadget/SearchGadget";
+import SingleProduct from "./pages/gadget/SingleProduct";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Error from "./pages/Error";
 // Components
@@ -31,6 +32,7 @@ import SideNav from "./components/SideNav";
 import Navbar from "./components/HomeComponents/Navbar";
 import SellToUs from "./pages/SellToUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import LoginComponent from "./components/Login";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -72,6 +74,7 @@ function App() {
     <CookiesProvider>
       <BrowserRouter>
         <main className=" h-full relative">
+          {/* <LoginComponent/> */}
           <Navbar />
           <main className="w-full h-full  md:flex justify-between gap-4 ">
             <SideNav />
@@ -177,6 +180,7 @@ function App() {
                 <Route path="/gadgets">
                   <Route path="all" element={<AllGadgets />} />
                   <Route path=":gadgetID" element={<SearchGadget />} />
+                  <Route path="name" element={<SingleProduct />} />
                 </Route>
               </Routes>
               <a

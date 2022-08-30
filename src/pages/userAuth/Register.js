@@ -109,6 +109,14 @@ const Register = () => {
                 <p className="text-[red]">{message}</p>
               </div>
             )}
+
+            {/* <div className="mb-8 flex gap-5">
+              <p className="">Already have an Account?</p>
+              <Link to="/login" className="text-secondaryColor">
+                Login
+              </Link>
+            </div> */}
+
             <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
               <button type="submit" className="uppercase text-primaryColor">
                 Register
@@ -119,19 +127,20 @@ const Register = () => {
         <div className="md:w-[10px] md:h-[90%] md:border-r border-[#EEEEEE] flex md:block w-full items-center">
           <div className="flex-[2] h-[10px] border-t border-[#EEEEEE] md:hidden"></div>
           <div className="flex-[0.5] md:hidden relative">
-            <p className="relative left-2 xs:left-4 sm:left-8 bottom-1 font-bold">OR</p>
+            <p className="relative left-2 xs:left-4 sm:left-8 bottom-1 font-bold">
+              OR
+            </p>
           </div>
           <div className="flex-[2] h-[10px] border-t border-[#EEEEEE] md:hidden"></div>
         </div>
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-1">
           <h1 className="font-bold text-2xl mb-10 text-center">LOGIN</h1>
           <p className="text-[#707070] text-center w-full lg:w-[90%] md:mx-auto mb-10 text-sm sm:text-lg md:text-sm lg:text-lg">
-            Login here by filling you're username and password or use your
+            Login here by filling your username and password or use your
             favorite social network account to enter to the site. Site login
             will simplify the purchase process and allows you to manage your
             personal account.
           </p>
-
           <div className="flex items-center ">
             <Link
               to="/login"
