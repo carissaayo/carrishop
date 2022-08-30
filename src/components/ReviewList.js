@@ -4,7 +4,7 @@ import reviewImg from "../assets/imgs/review.png";
 
 const ReviewList = () => {
   return (
-    <section className='mb-20'>
+    <section className='mb-20 '>
       {/* Review Item */}
       <Review name="Mitchelle" image={reviewImg} />
       {/* Review Item */}

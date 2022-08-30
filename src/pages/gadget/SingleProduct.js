@@ -1,4 +1,4 @@
-import { StarFill, Star } from "react-bootstrap-icons";
+import { StarFill, Star,ChevronDown } from "react-bootstrap-icons";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { Link } from "react-router-dom";
 import p1 from "../../assets/imgs/p1.jfif";
@@ -8,19 +8,19 @@ import CardList from "../../components/HomeComponents/CardList";
 
 import CTA from "../../components/HomeComponents/CTA";
 import Footer from "../../components/HomeComponents/Footer";
-import reviewImg from "../../assets/imgs/review.png"
 import ReviewList from "../../components/ReviewList";
+import AddReview from "../../components/AddReview";
 const SingleProduct = () => {
   return (
     <main className="w-full h-full">
       {/* Images and Description */}
-      <section className="w-full h-full flex items-start justify-between mb-40">
+      <section className="w-full h-full flex items-start justify-between mb-20 md:mb-40 flex-col lg:flex-row gap-10 lg:gap-0">
         {/* Product Images */}
-        <div className="flex-[2] ">
+        <div className="w-[90%] xs:w-[70%] mx-auto lg:flex-[2] ">
           <div className="mb-14">
             <img src={p1} alt="" />
           </div>
-          <div className="flex pl-12 w-[90%] justify-between">
+          <div className="flex pl-12 w-[70%] xs:w-[90%] sm:w-[70%] lg:w-[90%] justify-between">
             <img
               src={p1}
               alt=""
@@ -31,10 +31,12 @@ const SingleProduct = () => {
           </div>
         </div>
         {/* Product Desc */}
-        <div className="flex-[4]">
-          <h2 className="mb-4 text-[#343434]">Phones </h2>
-          <h1 className="mb-8">Samsung A21 - 6GB 124 Internal Memory</h1>
-          <div className="flex gap-2 items-center mb-10">
+        <div className="w-[90%] xs:w-[80%] mx-auto lg:flex-[2] xl:flex-[3] 2xl:flex-[4]">
+          <h2 className="mb-4 text-[#343434] text-lg ">Phones </h2>
+          <h1 className="mb-8 text-lg">
+            Samsung A21 - 6GB 124 Internal Memory
+          </h1>
+          <div className="flex gap-2 items-center mb-10 flex-col sm:flex-row">
             {/* Rating */}
             <div className="flex gap-2">
               <StarFill className="text-lg  text-secondaryColor" />
@@ -45,7 +47,7 @@ const SingleProduct = () => {
               <p className="text-[#868686]">(4)</p>
             </div>
             {/* Line */}
-            <div className="w-2 h-6 border-r-2 border-[#868686]"></div>
+            <div className="w-[50%] h-2 sm:w-2 sm:h-6  border-b-2 sm:border-b-0 sm:border-r-2 border-[#868686]"></div>
 
             {/* Availability in Stock */}
             <p className="text-lg text-[#868686]">
@@ -56,42 +58,44 @@ const SingleProduct = () => {
           </div>
 
           {/* Specs */}
-          <section className="w-[70%] mb-10">
+          <section className="mx-auto w-full lg:mx-0 lg:w-[95%] xl:w-[70%] mb-10">
             {/* Spec */}
-            <div className="flex items-center justify-between border-b border-[#E4E4E4] pb-4">
-              <h2 className="text-xl font-bold">Display</h2>
-              <p className="text-[#777777]">
-                4.5 inch HD Touch Screen (1280 * 720)
-              </p>
+            <div className="flex items-center justify-between border-b border-[#E4E4E4] pb-4  ">
+              <h2 className="text-base xs:text-xl font-bold">Display</h2>
+              <p className="text-[#777777]">5.5 Retina HD</p>
             </div>
 
             {/* Spec */}
             <div className="flex items-center justify-between border-b border-[#E4E4E4] py-4">
-              <h2 className="text-xl font-bold">Processor</h2>
+              <h2 className="text-base xs:text-xl font-bold">Processor</h2>
               <p className="text-[#777777]">Apple A10</p>
             </div>
 
             {/* Spec */}
             <div className="flex items-center justify-between border-b border-[#E4E4E4] py-4">
-              <h2 className="text-xl font-bold">OS</h2>
+              <h2 className="text-base xs:text-xl font-bold">OS</h2>
               <p className="text-[#777777]">IOS 11</p>
             </div>
 
             {/* Spec */}
             <div className="flex items-center justify-between border-b border-[#E4E4E4] py-4">
-              <h2 className="text-xl font-bold">Internal Memory</h2>
+              <h2 className="text-base xs:text-xl font-bold">
+                Internal Memory
+              </h2>
               <p className="text-[#777777]">128GB</p>
             </div>
 
             {/* Spec */}
             <div className="flex items-center justify-between border-b border-[#E4E4E4] py-4">
-              <h2 className="text-xl font-bold">Battery Capacity</h2>
+              <h2 className="text-base xs:text-xl font-bold">
+                Battery Capacity
+              </h2>
               <p className="text-[#777777]">1960mAh</p>
             </div>
           </section>
 
           <h1 className="mb-10 text-2xl"> &#8358; 768,999</h1>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-col sm:flex-row ">
             <button className="uppercase py-4 px-6 flex items-center justify-center bg-[#FCA311] rounded-full text-primaryColor cursor-pointer">
               + Add to Cart
             </button>
@@ -106,14 +110,15 @@ const SingleProduct = () => {
         </div>
       </section>
 
-      {/* Description */}
-      <section className="w-full h-full mb-20 ">
-        <div className="flex w-full gap-20 text-xl cursor-pointer mb-10">
-          <h2 className="">Description</h2>
-          <h2 className="text-[#707070]">Specifications</h2>
-          <h2 className="text-[#707070]">Reviews(4)</h2>
+      {/* Description Section*/}
+      <section className="mx-auto w-[90%] md:w-full h-full mb-20 ">
+        {/* Desktop */}
+        <div className="md:flex w-full gap-20 text-xl  mb-10 hidden">
+          <h2 className="cursor-pointer">Description</h2>
+          <h2 className="text-[#707070] cursor-pointer">Specifications</h2>
+          <h2 className="text-[#707070] cursor-pointer">Reviews(4)</h2>
         </div>
-        <p className="w-[80%] text-[#707070] mb-10">
+        <p className="w-[95%] lg:w-[80%] text-[#707070]     mb-10 hidden md:block">
           Praesent ornare, ex a interdum consectetur, lectus diam sodales elit,
           vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper
           viverra. In lobortis egestas massa. Nam nec massa nisi. Suspendisse
@@ -123,6 +128,74 @@ const SingleProduct = () => {
           porta diam nisi, id finibus nunc tincidunt eu.
         </p>
 
+        {/* Mobile */}
+        <section className="">
+          {/* Description */}
+          <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
+            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+              <h2 className="cursor-pointer flex w-full items-center justify-between">
+                Description{" "}
+                <span className="">
+                  <ChevronDown />{" "}
+                </span>
+              </h2>
+            </div>
+            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+              Praesent ornare, ex a interdum consectetur, lectus diam sodales
+              elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
+              semper viverra. In lobortis egestas massa. Nam nec massa nisi.
+              Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat.
+              Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices
+              dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus,
+              non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt
+              eu.
+            </p>
+          </div>
+
+          {/* Specifications */}
+          <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
+            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+              <h2 className="cursor-pointer flex w-full items-center justify-between">
+                Specifications{" "}
+                <span className="">
+                  <ChevronDown />{" "}
+                </span>
+              </h2>
+            </div>
+            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+              Praesent ornare, ex a interdum consectetur, lectus diam sodales
+              elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
+              semper viverra. In lobortis egestas massa. Nam nec massa nisi.
+              Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat.
+              Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices
+              dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus,
+              non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt
+              eu.
+            </p>
+          </div>
+
+          {/* Review */}
+          <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
+            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+              <h2 className="cursor-pointer flex w-full items-center justify-between">
+                Reviews(2){" "}
+                <span className="">
+                  <ChevronDown />{" "}
+                </span>
+              </h2>
+            </div>
+            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+              Praesent ornare, ex a interdum consectetur, lectus diam sodales
+              elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
+              semper viverra. In lobortis egestas massa. Nam nec massa nisi.
+              Suspendisse potenti. Quisque suscipit vulputate dui quis volutpat.
+              Ut id elit facilisis, feugiat est in, tempus lacus. Ut ultrices
+              dictum metus, a ultricies ex vulputate ac. Ut id cursus tellus,
+              non tempor quam. Morbi porta diam nisi, id finibus nunc tincidunt
+              eu.
+            </p>
+          </div>
+        </section>
         {/* Key Details */}
         <div className="">
           <h2 className="font-bold text-xl mb-5">Key Product Details</h2>
@@ -142,19 +215,20 @@ const SingleProduct = () => {
       />
       {/* Rating con */}
       <section className="mb-20 w-full">
-        <h1 className="font-bold text-xl mb-10">Fair Shop Customer Ratings</h1>
+        <h1 className="font-bold text-xl mb-10 pl-8 md:pl-0">
+          Fair Shop Customer Ratings
+        </h1>
 
-        <section className="flex items-start">
-          <div className="flex-1">
-            <h1 className="text-[#FFA000] text-[70px]">4.4</h1>
-            <div className="w-full">
-              <div className="flex gap-2 flex-col w-[40%] mb-4">
+        <section className="flex flex-col  items-start w-[90%] md:w-full mx-auto md:mx-0 gap-10 md:gap-0">
+          <div className=" w-full md:flex-1">
+            <h1 className="text-[#FFA000] text-[70px] ">4.4</h1>
+            <div className="w-full ">
+              <div className="flex gap-2 md:flex-col w-[40%] mb-4">
                 <div className="flex gap-2">
                   <StarFill className="text-2xl text-secondaryColor" />
                   <StarFill className="text-2xl  text-secondaryColor" />
                   <StarFill className="text-2xl text-secondaryColor" />
                 </div>
-
                 <div className="flex gap-2 justify-center">
                   <StarFill className="text-2xl  text-secondaryColor" />
                   <StarFill className="text-2xl  text-secondaryColor" />
@@ -164,7 +238,7 @@ const SingleProduct = () => {
             </div>
           </div>
           {/* Rating Progress Bars */}
-          <div className="flex-[4] ">
+          <div className="w-full md:flex-[4] ">
             {/* Star 5 */}
             <div className="flex gap-10">
               <ProgressBar
@@ -266,73 +340,11 @@ const SingleProduct = () => {
       </section>
 
       {/* Comment Section */}
-      <section className="w-[80%] mb-20">
-        <h1 className="mb-10 text-2xl font-bold">Customer Reviews</h1>
+      <section className="w-[90%] md:w-[80%] mb-20 pl-8 md:pl-0 ">
+        <h1 className="mb-10 text-xl md:text-2xl font-bold">Customer Reviews</h1>
         <ReviewList />
         {/* Add new Review */}
-        <section className="w-full mb-20">
-          <h1 className="mb-10 text-2xl font-bold">Add a Review</h1>
-          <div className="flex gap-14 items-center mb-10">
-            <p className="text-lg">Your Rating</p>
-            <div className="flex gap-2">
-              <Star className="text-lg  text-secondaryColor cursor-pointer" />
-              <Star className="text-lg  text-secondaryColor cursor-pointer" />
-              <Star className="text-lg  text-secondaryColor cursor-pointer" />
-              <Star className="text-lg  text-secondaryColor cursor-pointer" />
-              <Star className="text-lg  text-secondaryColor cursor-pointer" />
-            </div>
-          </div>
-
-          {/* Review Textarea */}
-          <div className="flex items-start gap-12 mb-10">
-            <label htmlFor="review" className="">
-              Your Review <span className="text-[#FF0000] ml-2">*</span>
-            </label>
-            <textarea
-              name="review"
-              id="review"
-              cols="30"
-              rows="10"
-              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
-            />
-          </div>
-          {/* Name of User  */}
-          <div className="flex items-start gap-24 mb-10">
-            <label htmlFor="name" className="">
-              Name<span className="text-[#FF0000] ml-2">*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
-            />
-          </div>
-
-          {/* User Email */}
-          <div className="flex items-start gap-24 mb-10">
-            <label htmlFor="name" className="">
-              Name<span className="text-[#FF0000] ml-2">*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
-            />
-          </div>
-
-          {/* Save details */}
-          <div className="flex items-start gap-8 mb-10">
-            <input
-              type="checkbox"
-              name="name"
-              className="border border-[#EEEEEE] w-12 h-8 rounded-sm"
-            />
-            <p className="text-lg">
-              Save my name and email on this website incase of next time I
-              comment
-            </p>
-          </div>
-        </section>
+        <AddReview />
       </section>
       <CTA />
       <Footer />
