@@ -8,7 +8,8 @@ import CardList from "../../components/HomeComponents/CardList";
 
 import CTA from "../../components/HomeComponents/CTA";
 import Footer from "../../components/HomeComponents/Footer";
-
+import reviewImg from "../../assets/imgs/review.png"
+import ReviewList from "../../components/ReviewList";
 const SingleProduct = () => {
   return (
     <main className="w-full h-full">
@@ -265,8 +266,73 @@ const SingleProduct = () => {
       </section>
 
       {/* Comment Section */}
-      <section className="w-full">
-        <h1 className="">Customer Reviews</h1>
+      <section className="w-[80%] mb-20">
+        <h1 className="mb-10 text-2xl font-bold">Customer Reviews</h1>
+        <ReviewList />
+        {/* Add new Review */}
+        <section className="w-full mb-20">
+          <h1 className="mb-10 text-2xl font-bold">Add a Review</h1>
+          <div className="flex gap-14 items-center mb-10">
+            <p className="text-lg">Your Rating</p>
+            <div className="flex gap-2">
+              <Star className="text-lg  text-secondaryColor cursor-pointer" />
+              <Star className="text-lg  text-secondaryColor cursor-pointer" />
+              <Star className="text-lg  text-secondaryColor cursor-pointer" />
+              <Star className="text-lg  text-secondaryColor cursor-pointer" />
+              <Star className="text-lg  text-secondaryColor cursor-pointer" />
+            </div>
+          </div>
+
+          {/* Review Textarea */}
+          <div className="flex items-start gap-12 mb-10">
+            <label htmlFor="review" className="">
+              Your Review <span className="text-[#FF0000] ml-2">*</span>
+            </label>
+            <textarea
+              name="review"
+              id="review"
+              cols="30"
+              rows="10"
+              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
+            />
+          </div>
+          {/* Name of User  */}
+          <div className="flex items-start gap-24 mb-10">
+            <label htmlFor="name" className="">
+              Name<span className="text-[#FF0000] ml-2">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
+            />
+          </div>
+
+          {/* User Email */}
+          <div className="flex items-start gap-24 mb-10">
+            <label htmlFor="name" className="">
+              Name<span className="text-[#FF0000] ml-2">*</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              className="border border-[#EEEEEE] outline-[#EEEEEE] outline-2 w-[80%] p-4"
+            />
+          </div>
+
+          {/* Save details */}
+          <div className="flex items-start gap-8 mb-10">
+            <input
+              type="checkbox"
+              name="name"
+              className="border border-[#EEEEEE] w-12 h-8 rounded-sm"
+            />
+            <p className="text-lg">
+              Save my name and email on this website incase of next time I
+              comment
+            </p>
+          </div>
+        </section>
       </section>
       <CTA />
       <Footer />
