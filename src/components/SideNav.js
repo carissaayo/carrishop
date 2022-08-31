@@ -8,18 +8,6 @@ const SideNav = () => {
       <MenuIcon className="w-10 " />
       </div> */}
 
-        <NavLink to="/">
-          {({ isActive }) => (
-            <div className="flex flex-col gap-2  w-full h-full items-center">
-              <House
-                className={` text-[30px] md:text-[40px] ${
-                  isActive ? "font-bold text-secondaryColor" : ""
-                } `}
-              />
-              <p className="text-[10px] xs:text-xs sm:text-base">Home</p>
-            </div>
-          )}
-        </NavLink>
         <NavLink to="/privacy-policy">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
@@ -33,18 +21,6 @@ const SideNav = () => {
           )}
         </NavLink>
 
-        <NavLink to="/about-us" className=" ">
-          {({ isActive }) => (
-            <div className="flex flex-col gap-2   h-full items-center ">
-              <InfoCircle
-                className={`text-[30px] md:text-[40px] ${
-                  isActive ? "font-bold text-secondaryColor" : ""
-                } `}
-              />
-              <p className="text-[10px] xs:text-xs sm:text-base">About Us</p>
-            </div>
-          )}
-        </NavLink>
         <NavLink to="/sell-to-us">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
@@ -57,7 +33,18 @@ const SideNav = () => {
             </div>
           )}
         </NavLink>
-
+        <NavLink to="/about-us" className=" ">
+          {({ isActive }) => (
+            <div className="flex flex-col gap-2   h-full items-center ">
+              <InfoCircle
+                className={`text-[30px] md:text-[40px] ${
+                  isActive ? "font-bold text-secondaryColor" : ""
+                } `}
+              />
+              <p className="text-[10px] xs:text-xs sm:text-base">About Us</p>
+            </div>
+          )}
+        </NavLink>
         <NavLink to="/contact">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
