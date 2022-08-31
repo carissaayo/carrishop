@@ -14,7 +14,7 @@ const Card = ({
   return (
     <Link
       to="/"
-      className={`h-[450px] md:h-[90%] border-2 border-[#eeeeee] 
+      className={`h-[450px] md:h-[90%]  border-2 border-[#eeeeee] 
      w-[100%] md:w-[45%] lg:w-[30%] xl:w-2/5  flex flex-col justify-center items-center  gap-5 rounded-3xl p-4 relative mb-[40px] lg:mb-0`}
     >
       {discount && (

@@ -9,7 +9,7 @@ import laptopImg from "../../assets/imgs/laptops.png";
 
 const OptionList = () => {
   return (
-    <section className=" w-full bg-secondaryColor h-[150px] flex items-center justify-between gap-5 mb-20 mx-auto md:m-0">
+    <section className=" w-full bg-secondaryColor h-[150px] flex items-center justify-between gap-5 mb-20 mx-auto md:mx-0">
       <div className="flex items-center justify-center flex-1 cursor-pointer">
         <ChevronLeft />
       </div>

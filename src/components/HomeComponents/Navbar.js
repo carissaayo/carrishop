@@ -55,7 +55,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
       </Link>
 
       <Search />
-      <section className="flex h-full items-center  flex-[2] sm:flex-[2] md:flex-[1.5]  2xl:flex-1 justify-end md:justify-start">
+      <section className="flex h-full items-center  flex-[2] sm:flex-[2] md:flex-[1.5]  2xl:flex-1 justify-end ">
         <div className="relative cursor-pointer">
           <ShoppingBagIcon className="w-8 sm:w-10 " />
           <p className="bg-[#FCA311] absolute flex items-center justify-center w-6 rounded-full font-bold bottom-[-5px] right-0">
@@ -65,7 +65,7 @@ const [openAvatar, setOpenAvatar] = useState(false)
         <p className="font-bold">&#8358; 0.00 </p>
       </section>
 
-      <section className="flex h-full gap-2 items-center flex-[0.4] sm:flex-[1] md:flex-[3] 2xl:flex-[2] justify-end md:justify-start ">
+      <section className="flex h-full gap-2 items-center flex-[0.4] sm:flex-[1] md:flex-[3] 2xl:flex-[2] justify-end  ">
         <UserIcon
           className="w-8 sm:w-10 cursor-pointer "
           onClick={() => setOpenAvatar(!openAvatar)}

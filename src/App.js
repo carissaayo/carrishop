@@ -33,6 +33,7 @@ import Navbar from "./components/HomeComponents/Navbar";
 import SellToUs from "./pages/SellToUs";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LoginComponent from "./components/Login";
+import Shop from "./pages/Shop";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -93,6 +94,7 @@ function App() {
                   />
                   <Route path="contact" element={<Contact />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
+                  <Route path="buy" element={<Shop />} />
 
                   <Route path="privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="register" element={<Register />} />

@@ -64,6 +64,9 @@ const AddReview = () => {
           Save my name and email on this website incase of next time I comment
         </p>
       </div>
+      <div className="flex items-start gap-8 mb-10">
+        <button className="bg-[#FCA311] text-primaryColor p-4 px-6 md:px-10 md:text-xl rounded-full">Add Review</button>
+      </div>
     </section>
   );
 }

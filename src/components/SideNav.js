@@ -4,12 +4,10 @@ const SideNav = () => {
   return (
     <section className="w-full md:w-[150px] md:min-w-[150px] bg-primaryColor md:z-10  fixed md:relative z-50 bottom-0 left-0 h-[15vh] md:h-auto p-4 xs:p-3 sm:px-10 md:px-0">
       <section className=" md:fixed flex md:flex-col gap-6 xs:gap-8
-       sm:gap-[30px] h-full md:h-[55vh] items-center w-full md:w-[130px] justify-center sm:justify-between bg-primaryColor ">
-        {/* <div className="flex flex-col gap-2   items-center">
-      <MenuIcon className="w-10 " />
-      </div> */}
+       sm:gap-[30px] h-full md:h-[55vh] items-center w-full md:w-[130px] justify-center xs:justify-evenly md:justify-between bg-primaryColor ">
+       
 
-        <NavLink to="/privacy-policy">
+        <NavLink to="/buy">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
               <Bag
