@@ -296,11 +296,11 @@ const SingleProduct = () => {
           Fair Shop Customer Ratings
         </h1>
 
-        <section className="flex flex-col  items-start w-[90%] md:w-full mx-auto md:mx-0 gap-10 md:gap-0">
+        <section className="flex flex-col md:flex-row items-start w-[90%] md:w-full mx-auto md:mx-0 gap-10 md:gap-0">
           <div className=" w-full md:flex-1">
             <h1 className="text-[#FFA000] text-[70px] ">4.4</h1>
             <div className="w-full ">
-              <div className="flex gap-2 md:flex-col md:w-[10%] mb-4">
+              <div className="flex gap-2 md:flex-col md:w-[80px] mb-4">
                 <div className="flex gap-2">
                   <StarFill className="text-2xl text-secondaryColor" />
                   <StarFill className="text-2xl  text-secondaryColor" />

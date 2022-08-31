@@ -113,6 +113,8 @@ background-color: rgba(0, 0, 0, 0.394);
   height: 100%;
 }
 
+
+/* Sell to us */
 .grid{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr ;
@@ -161,6 +163,45 @@ background-color: rgba(0, 0, 0, 0.394);
 .powerbank{
   grid-area: powerbank;
 }
+
+
+/* Product-page */
+.review{
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-template-rows: 40px 40px 1fr;
+  grid-template-areas: "image name "
+                       "image ratings "
+                       "image comment ";
+}
+@media screen and (max-width:1098px){
+  .review{
+  grid-template-columns: 130px 1fr  ;
+ grid-template-areas: "image name "
+                       "ratings ratings "
+                       "comment comment ";
+  grid-template-rows: 1fr 50px 1fr;
+   
+}
+
+}
+
+.name{
+  grid-area:name;
+}
+
+.image{
+  grid-area:image;
+}
+
+.ratings{
+  grid-area:ratings;
+}
+
+.comment{
+  grid-area:comment;
+}
+
 
 
 
