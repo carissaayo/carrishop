@@ -3,7 +3,7 @@ import {Headset,InfoCircle,House,BagCheck,Bag} from "react-bootstrap-icons";
 const SideNav = () => {
   return (
     <section className="w-full md:w-[150px] md:min-w-[150px] bg-primaryColor md:z-10  fixed md:relative z-50 bottom-0 left-0 h-[15vh] md:h-auto p-4 xs:p-3 sm:px-10 md:px-0">
-      <section className=" md:fixed flex md:flex-col gap-4 xs:gap-[30px] h-full md:h-[55vh] items-center w-full md:w-[130px] sm:justify-between bg-primaryColor ">
+      <section className=" md:fixed flex md:flex-col gap-8 xs:gap-[30px] h-full md:h-[55vh] items-center w-full md:w-[130px] justify-center xs:justify-between bg-primaryColor ">
         {/* <div className="flex flex-col gap-2   items-center">
       <MenuIcon className="w-10 " />
       </div> */}
