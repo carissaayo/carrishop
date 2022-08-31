@@ -10,9 +10,19 @@ import CTA from "../../components/HomeComponents/CTA";
 import Footer from "../../components/HomeComponents/Footer";
 import ReviewList from "../../components/ReviewList";
 import AddReview from "../../components/AddReview";
+import { useState } from "react";
 
 
 const SingleProduct = () => {
+    // Mobile 
+    const [openDesc, setOpenDesc] = useState(false)
+    const [openReview, setOpenReview] = useState(false)
+    const [openSpecs, setOpenSpecs] = useState(false)
+    const [content, setContent] = useState("Desc")
+    // Desktop 
+
+
+
   return (
     <main className="w-full h-full">
       {/* Images and Description */}
@@ -116,11 +126,36 @@ const SingleProduct = () => {
       <section className="mx-auto w-[90%] md:w-full h-full mb-20 ">
         {/* Desktop */}
         <div className="md:flex w-full gap-20 text-xl  mb-10 hidden">
-          <h2 className="cursor-pointer">Description</h2>
-          <h2 className="text-[#707070] cursor-pointer">Specifications</h2>
-          <h2 className="text-[#707070] cursor-pointer">Reviews(4)</h2>
+          <h2
+            className={`cursor-pointer ${
+              content === "Desc" ? "text-black" : "text-[#707070]"
+            }`}
+            onClick={() => setContent("Desc")}
+          >
+            Description
+          </h2>
+          <h2
+            className={`cursor-pointer ${
+              content === "Specs" ? "text-black" : "text-[#707070]"
+            }`}
+            onClick={() => setContent("Specs")}
+          >
+            Specifications
+          </h2>
+          <h2
+            className={`cursor-pointer ${
+              content === "Review" ? "text-black" : "text-[#707070]"
+            }`}
+            onClick={() => setContent("Review")}
+          >
+            Reviews(4)
+          </h2>
         </div>
-        <p className="w-[95%] lg:w-[80%] text-[#707070]     mb-10 hidden md:block">
+        <p
+          className={`w-[95%] lg:w-[80%] text-[#707070]     mb-10 hidden ${
+            content === "Desc" && "md:block"
+          }`}
+        >
           Praesent ornare, ex a interdum consectetur, lectus diam sodales elit,
           vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper
           viverra. In lobortis egestas massa. Nam nec massa nisi. Suspendisse
@@ -129,13 +164,34 @@ const SingleProduct = () => {
           ultricies ex vulputate ac. Ut id cursus tellus, non tempor quam. Morbi
           porta diam nisi, id finibus nunc tincidunt eu.
         </p>
-
+        <p
+          className={`w-[95%] lg:w-[80%] text-[#707070]     mb-10 hidden ${
+            content === "Specs" && "md:block"
+          }`}
+        >
+          Praesent ornare, ex a interdum consectetur, lectus diam sodales elit,
+          vitae egestas est enim ornare nisl. Nullam in lectus nec sem semper
+          viverra. In lobortis egestas massa. Nam nec massa nisi.
+        </p>
+        <p
+          className={`w-[95%] lg:w-[80%] text-[#707070]     mb-10 hidden ${
+            content === "Review" && "md:block"
+          }`}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+          expedita accusantium non recusandae, quaerat corporis at rem ipsa
+          minus consectetur eum facilis id nam vero, magni dolor illum aliquam
+          aperiam?
+        </p>
 
         {/* Mobile */}
-        <section className="">
+        <section className="transiton-display duration-400 ease-in-out">
           {/* Description */}
           <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
-            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+            <div
+              className="block w-full gap-20 text-xl  mb-10 md:hidden "
+              onClick={() => setOpenDesc(!openDesc)}
+            >
               <h2 className="cursor-pointer flex w-full items-center justify-between">
                 Description{" "}
                 <span className="">
@@ -143,7 +199,11 @@ const SingleProduct = () => {
                 </span>
               </h2>
             </div>
-            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+            <p
+              className={`w-[95%] lg:w-[80%] text-[#707070] ${
+                openDesc ? "block " : "hidden"
+              }`}
+            >
               Praesent ornare, ex a interdum consectetur, lectus diam sodales
               elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
               semper viverra. In lobortis egestas massa. Nam nec massa nisi.
@@ -157,7 +217,10 @@ const SingleProduct = () => {
 
           {/* Specifications */}
           <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
-            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+            <div
+              className="block w-full gap-20 text-xl  mb-10 md:hidden"
+              onClick={() => setOpenSpecs(!openSpecs)}
+            >
               <h2 className="cursor-pointer flex w-full items-center justify-between">
                 Specifications{" "}
                 <span className="">
@@ -165,7 +228,11 @@ const SingleProduct = () => {
                 </span>
               </h2>
             </div>
-            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+            <p
+              className={`w-[95%] lg:w-[80%] text-[#707070] ${
+                openSpecs ? "block" : "hidden"
+              }`}
+            >
               Praesent ornare, ex a interdum consectetur, lectus diam sodales
               elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
               semper viverra. In lobortis egestas massa. Nam nec massa nisi.
@@ -179,7 +246,10 @@ const SingleProduct = () => {
 
           {/* Review */}
           <div className="w-full mb-10 border-t border-[#E4E4E4] pt-2 block md:hidden">
-            <div className="block w-full gap-20 text-xl  mb-10 md:hidden">
+            <div
+              className="block w-full gap-20 text-xl  mb-10 md:hidden"
+              onClick={() => setOpenReview(!openReview)}
+            >
               <h2 className="cursor-pointer flex w-full items-center justify-between">
                 Reviews(2){" "}
                 <span className="">
@@ -187,7 +257,11 @@ const SingleProduct = () => {
                 </span>
               </h2>
             </div>
-            <p className="w-[95%] lg:w-[80%] text-[#707070] ">
+            <p
+              className={`w-[95%] lg:w-[80%] text-[#707070] ${
+                openReview ? "block" : "hidden"
+              }`}
+            >
               Praesent ornare, ex a interdum consectetur, lectus diam sodales
               elit, vitae egestas est enim ornare nisl. Nullam in lectus nec sem
               semper viverra. In lobortis egestas massa. Nam nec massa nisi.
@@ -226,7 +300,7 @@ const SingleProduct = () => {
           <div className=" w-full md:flex-1">
             <h1 className="text-[#FFA000] text-[70px] ">4.4</h1>
             <div className="w-full ">
-              <div className="flex gap-2 md:flex-col w-[40%] mb-4">
+              <div className="flex gap-2 md:flex-col md:w-[10%] mb-4">
                 <div className="flex gap-2">
                   <StarFill className="text-2xl text-secondaryColor" />
                   <StarFill className="text-2xl  text-secondaryColor" />
@@ -344,7 +418,9 @@ const SingleProduct = () => {
 
       {/* Comment Section */}
       <section className="w-[90%] md:w-[80%] mb-20 pl-8 md:pl-0 ">
-        <h1 className="mb-10 text-xl md:text-2xl font-bold">Customer Reviews</h1>
+        <h1 className="mb-10 text-xl md:text-2xl font-bold">
+          Customer Reviews
+        </h1>
         <ReviewList />
         {/* Add new Review */}
         <AddReview />
