@@ -16,7 +16,7 @@ const SideNav = () => {
                   isActive ? " text-secondaryColor" : ""
                 } `}
               />
-              <p className="text-[10px] xs:text-xs sm:text-base">Buy</p>
+              <p className="text-base">Buy</p>
             </div>
           )}
         </NavLink>
@@ -41,7 +41,7 @@ const SideNav = () => {
                   isActive ? "font-bold text-secondaryColor" : ""
                 } `}
               />
-              <p className="text-[10px] xs:text-xs sm:text-base">About Us</p>
+              <p className="text-base">About Us</p>
             </div>
           )}
         </NavLink>
@@ -53,7 +53,7 @@ const SideNav = () => {
                   isActive ? "font-bold text-secondaryColor" : ""
                 } `}
               />
-              <p className="text-[10px] xs:text-xs sm:text-base">Contact Us</p>
+              <p className="text-base">Contact Us</p>
             </div>
           )}
         </NavLink>

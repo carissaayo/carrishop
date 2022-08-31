@@ -10,6 +10,8 @@ import CTA from "../../components/HomeComponents/CTA";
 import Footer from "../../components/HomeComponents/Footer";
 import ReviewList from "../../components/ReviewList";
 import AddReview from "../../components/AddReview";
+
+
 const SingleProduct = () => {
   return (
     <main className="w-full h-full">
@@ -127,6 +129,7 @@ const SingleProduct = () => {
           ultricies ex vulputate ac. Ut id cursus tellus, non tempor quam. Morbi
           porta diam nisi, id finibus nunc tincidunt eu.
         </p>
+
 
         {/* Mobile */}
         <section className="">
