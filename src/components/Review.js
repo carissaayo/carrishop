@@ -8,7 +8,7 @@ const Review = ({name,image}) => {
         <img
           src={image}
           alt=""
-          className="w-[70px] h-[60px] sm:w-[100px] sm:h-[100px] md:w-[100px] md:h-[100px] rounded-full "
+          className="w-[100px] sm:h-[100px] md:w-[100px] md:h-[100px] rounded-full "
         />
       </div>
       {/* <div className=""> */}

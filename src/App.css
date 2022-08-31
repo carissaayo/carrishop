@@ -70,9 +70,9 @@ h1,h2,h3,h4,h5,h6{
     font-family: 'Montserrat', sans-serif;  
 }
 
-a:hover{
+/* a:hover{
   color:#F9C80E
-}
+} */
 
 ul.list{
   list-style-type: circle;
@@ -181,6 +181,18 @@ background-color: rgba(0, 0, 0, 0.394);
                        "ratings ratings "
                        "comment comment ";
   grid-template-rows: 1fr 50px 1fr;
+   
+}
+
+}
+
+@media screen and (max-width:600px){
+  .review{
+  grid-template-columns: 130px 1fr  ;
+ grid-template-areas: "image name "
+                       "ratings ratings "
+                       "comment comment ";
+  grid-template-rows: 110px 50px 1fr;
    
 }
 
