@@ -26,6 +26,11 @@ import SearchGadget from "./pages/gadget/SearchGadget";
 import SingleProduct from "./pages/gadget/SingleProduct";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Error from "./pages/Error";
+import Cart from "./pages/Cart";
+
+
+
+
 // Components
 import Loading from "./components/Loading";
 import SideNav from "./components/SideNav";
@@ -62,12 +67,7 @@ const [values, setValues] = useState([50]);
     return () => window.removeEventListener("scroll", scrollUp);
   }, []);
 
-  useEffect(() => {
-    if(window.innerWidth > 840){
-      setSideBar(false)
-      console.log(window.innerWidth);
-    }
-  },[window.innerWidth])
+ 
   // Setting Cookies
   useEffect(() => {
     user && setCookie("access_token", user?.access_token);
@@ -132,6 +132,7 @@ const [values, setValues] = useState([50]);
                   />
                   <Route path="contact" element={<Contact />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
+                  <Route path="cart" element={<Cart />} />
                   <Route
                     path="buy"
                     element={

@@ -56,12 +56,12 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
       <Search />
       <section className="flex h-full items-center  flex-[2] sm:flex-[2] md:flex-[1.5]  2xl:flex-1 justify-end ">
-        <div className="relative cursor-pointer">
+        <Link to="/cart" className="relative cursor-pointer">
           <ShoppingBagIcon className="w-8 sm:w-10 " />
           <p className="bg-[#FCA311] absolute flex items-center justify-center w-6 rounded-full font-bold bottom-[-5px] right-0">
             0
           </p>
-        </div>
+        </Link>
         <p className="font-bold">&#8358; 0.00 </p>
       </section>
 
