@@ -11,7 +11,6 @@ const Cart = () => {
       {/* Cart */}
       <section className=" w-[95%] sm:w-[90%] mx-auto md:mx-0 md:w-full flex flex-col 2xl:flex-row justify-between gap-8">
         <section className="flex-[5]">
-          {/* Cart Titles */}
           {/* Desktop  */}
           <div className="hidden sm:flex w-full justify-between p-4 border-b border-[#F2F2F2] items-center">
             <h1 className="text-sm md:text-base flex-1 "></h1>
@@ -37,7 +36,7 @@ const Cart = () => {
                 className="mx-auto sm:mx-0 w-[80%] sm:w-[60%] md:w-[50%] outline-[#EEEEEE] border-[#EEEEEE] border p-3"
                 placeholder="Coupon Code"
               />
-              <button className="mx-auto sm:mx-0 w-[50%] md:w-auto bg-[#FCA311] p-4 rounded-full px-6 text-primaryColor">
+              <button className="mx-auto sm:mx-0 sm:w-[50%] md:w-auto bg-[#FCA311] p-4 rounded-full px-6 text-primaryColor">
                 APPLY COUPON
               </button>
             </div>
@@ -56,10 +55,10 @@ const Cart = () => {
             CART TOTAL
           </p>
           {/* Delivery Info */}
-          <div className="flex w-full border-b border-[#F2F2F2] items-center p-4">
+          <div className="flex w-full border-b border-[#F2F2F2] items-center p-4 flex-col sm:flex-row gap-4 sm:gap-0">
             <p className="flex-1">Delivery</p>
             <div className="flex-[3] ">
-              <p className="flex justify-end mb-2 items-center">
+              <p className="flex justify-end mb-2 items-center text-sm sm:text-base">
                 Flat rate: <span className="text-[#FCA311] ml-4">₦100,000</span>
                 <input
                   type="radio"
@@ -68,7 +67,7 @@ const Cart = () => {
                   className="rounded-xl w-4 h-4 ml-2"
                 />
               </p>
-              <p className="flex justify-end mb-2 items-center">
+              <p className="flex justify-end mb-2 items-center text-sm sm:text-base">
                 Local pickup:{" "}
                 <span className="text-[#FCA311] ml-4">₦100,000</span>
                 <input
@@ -78,19 +77,19 @@ const Cart = () => {
                   className="rounded-xl w-4 h-4 ml-2"
                 />
               </p>
-              <p className="text-[#8D8D8D] flex justify-end pr-4">
+              <p className="text-[#8D8D8D] flex justify-end pr-4 text-sm sm:text-base">
                 Shipping to{" "}
                 <span className="text-black  ml-2 cursor-pointer">LAGOS</span>
               </p>
             </div>
           </div>
           {/* Total */}
-          <div className="w-full flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-center justify-center text-sm sm:text-base">
             <div className="flex items-center justify-between p-4 w-full">
               <h3 className="text-xl">Total</h3>
               <p className="text-[#FCA311] text-xl">₦100,000</p>
             </div>
-            <button className="w-[60%] 2xl:w-[90%]  bg-[#FCA311] p-4 px-6 text-primaryColor rounded-full">
+            <button className="sm:w-[60%] 2xl:w-[90%]  bg-[#FCA311] p-4 px-6 text-primaryColor rounded-full">
               PROCEED TO CHECKOUT
             </button>
           </div>
