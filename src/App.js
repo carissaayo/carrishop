@@ -91,7 +91,7 @@ const [values, setValues] = useState([50]);
                 : "hidden"
             }`}
           >
-            {/* when onn Shop page */}
+            {/* Mobilr SIdebar when onn Shop page */}
             <ShopSidebar
               values={values}
               setValues={setValues}
@@ -99,7 +99,7 @@ const [values, setValues] = useState([50]);
               setSideBar={setSideBar}
             />
             <div
-              className={`w-[30%] bg-[black] opacity-75 transform-display duration-500 ease-linear ${
+              className={`w-[20%] sm:w-[30%] bg-[black] opacity-75 transform-display duration-500 ease-linear ${
                 sideBar ? "block" : "hidden "
               }`}
               onClick={() => setSideBar(false)}

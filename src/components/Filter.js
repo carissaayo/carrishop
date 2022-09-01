@@ -2,7 +2,7 @@ import { ChevronRight, Plus } from "react-bootstrap-icons";
 
 const Filter = () => {
   return (
-    <section className="w-[80%] mx-auto md:mx-0 md:w-[45%] lg:w-full mb-10">
+    <section className=" w-[90%] sm:w-[80%] mx-auto md:mx-0 md:w-[45%] lg:w-full mb-10">
       <h2 className="border-b-2  border-[#FCA311] w-[max-content] text-xl">
         Filters
       </h2>

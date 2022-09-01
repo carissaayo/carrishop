@@ -2,7 +2,7 @@ import { ChevronRight } from "react-bootstrap-icons";
 
 const Categories = () => {
   return (
-    <div className="border w-[80%] mx-auto md:mx-0 md:w-[45%] lg:w-full border-[#EEEEEE] mb-10 text-[#343434]">
+    <div className="border hidden sm:block w-[90%] sm:w-[80%] mx-auto md:mx-0 md:w-[45%] lg:w-full border-[#EEEEEE] mb-10 text-[#343434]">
       <h2 className="font-bold p-4 border-b border-[#EEEEEE] text-black">
         Browse Categories
       </h2>
