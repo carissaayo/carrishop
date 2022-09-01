@@ -9,17 +9,19 @@ const Cart = () => {
       </div>
 
       {/* Cart */}
-      <section className="w-[90%] mx-auto md:mx-0 md:w-full flex flex-col 2xl:flex-row justify-between gap-8">
+      <section className=" w-[95%] sm:w-[90%] mx-auto md:mx-0 md:w-full flex flex-col 2xl:flex-row justify-between gap-8">
         <section className="flex-[5]">
           {/* Cart Titles */}
-          <div className="flex w-full justify-between p-4 border-b border-[#F2F2F2] items-center">
-            <h1 className="text-base flex-1 "></h1>
-            <h1 className="text-base flex-[2]">PRODUCT</h1>
-            <h1 className="text-base flex-1">PRICE</h1>
-            <h1 className="text-base flex-1">QUANTITY</h1>
-            <h1 className="text-base flex-1">SUBTOTAL</h1>
+          {/* Desktop  */}
+          <div className="hidden sm:flex w-full justify-between p-4 border-b border-[#F2F2F2] items-center">
+            <h1 className="text-sm md:text-base flex-1 "></h1>
+            <h1 className="text-sm md:text-base flex-[2]">PRODUCT</h1>
+            <h1 className="text-sm md:text-base flex-1">PRICE</h1>
+            <h1 className="text-sm md:text-base flex-1">QUANTITY</h1>
+            <h1 className="text-sm md:text-base flex-1">SUBTOTAL</h1>
           </div>
           {/* Cart Items  */}
+
           <section className="w-full mb-10">
             <CartItem />
             <CartItem />
