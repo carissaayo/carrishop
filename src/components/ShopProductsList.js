@@ -9,7 +9,7 @@ import soundImg from "../assets/imgs/featured-sound.png";
 
 const ShopProductsList = () => {
   return (
-    <section className="w-[100%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 mx-auto md:mx-0 ">
+    <section className="w-[80%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 mx-auto md:mx-0 ">
       <FeaturedProduct
         type="Laptop"
         name="Notebook 360 Flip"

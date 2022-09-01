@@ -11,24 +11,27 @@ const ShopSidebar = ({ values, setValues, sideBar, setSideBar }) => {
         sideBar ? "translate-x-0" : "translate-x-[-100%] "
       }`}
     >
-        <div className="flex items-center justify-end w-[90%] mb-10 ">
-          <X
-            className=" text-xl sm:text-3xl cursor-pointer"
-            onClick={() => setSideBar(false)}
-          />
-          <p className="uppercase font-bold">close</p>
-        </div>
+      <div className="flex items-center justify-end w-[90%] mb-10 ">
+        <X
+          className=" text-xl sm:text-3xl cursor-pointer"
+          onClick={() => setSideBar(false)}
+        />
+        <p className="uppercase font-bold cursor-pointer" onClick={() => setSideBar(false)}>
+          close
+        </p>
+      </div>
 
-        <section className={` w-full sm:w-[95%] h-full overflow-y-scroll pb-14  `}>
-          {/* Categories */}
-          <Categories />
-          {/* Filters */}
-          <Filter />
-          {/* Colors */}
-          <Colors />
-          {/* Price Filter */}
-          <PriceFilter values={values} setValues={setValues} />
-       
+      <section
+        className={` w-full sm:w-[95%] h-full overflow-y-scroll pb-14  `}
+      >
+        {/* Categories */}
+        <Categories />
+        {/* Filters */}
+        <Filter />
+        {/* Colors */}
+        <Colors />
+        {/* Price Filter */}
+        <PriceFilter values={values} setValues={setValues} />
       </section>
     </main>
   );

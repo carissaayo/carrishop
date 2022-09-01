@@ -61,6 +61,13 @@ const [values, setValues] = useState([50]);
 
     return () => window.removeEventListener("scroll", scrollUp);
   }, []);
+
+  useEffect(() => {
+    if(window.innerWidth > 840){
+      setSideBar(false)
+      console.log(window.innerWidth);
+    }
+  },[window.innerWidth])
   // Setting Cookies
   useEffect(() => {
     user && setCookie("access_token", user?.access_token);
@@ -80,16 +87,16 @@ const [values, setValues] = useState([50]);
     <CookiesProvider>
       <BrowserRouter>
         <main
-          className={`${
-            sideBar ? "h-screen overflow-hidden" : "h-full"
-          } relative`}
+          className={`${sideBar ? "h-screen md:h-full " : "h-full"} relative ${
+            window.innerWidth < 840 && " overflow-hidden"
+          }`}
         >
           <div
             className={`${
               sideBar
-                ? "fixed flex w-full top-0 left-0 md:hidden z-50 h-full"
+                ? "fixed md:relative flex w-full top-0 left-0 md:hidden z-50 md:z-10 h-full "
                 : "hidden"
-            }`}
+            } `}
           >
             {/* Mobilr SIdebar when onn Shop page */}
             <ShopSidebar
@@ -105,138 +112,137 @@ const [values, setValues] = useState([50]);
               onClick={() => setSideBar(false)}
             ></div>
           </div>
-          <section className="">
-            {/* <LoginComponent/> */}
-            <Navbar />
-            <main className="w-full h-full  md:flex justify-between gap-4 ">
-              <SideNav />
-              <section className="lg:flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
-                <Routes>
-                  <Route path="*" element={<Error />} />
-                  <Route path="/">
-                    <Route
-                      index
-                      element={
-                        <Home
-                          showScroll={showScroll}
-                          setShowScroll={setShowScroll}
-                        />
-                      }
-                    />
-                    <Route path="contact" element={<Contact />} />
-                    <Route path="sell-to-us" element={<SellToUs />} />
-                    <Route
-                      path="buy"
-                      element={
-                        <Shop
-                          values={values}
-                          setValues={setValues}
-                          sideBar={sideBar}
-                          setSideBar={setSideBar}
-                        />
-                      }
-                    />
 
-                    <Route path="privacy-policy" element={<PrivacyPolicy />} />
-                    <Route path="register" element={<Register />} />
-                    <Route
-                      path="recover-email"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <EmailRecovery />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route path="reset-password" element={<ResetPassword />} />
-                    <Route
-                      path="verify-reset"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <ChangePassword />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="account-verification"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <AccountVerification />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route path="login" element={<Login />} />
-                    <Route
-                      path="logout"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <Logout />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Route>
+          {/* <LoginComponent/> */}
+          <Navbar />
+          <main className="w-full h-full  md:flex justify-between gap-4 ">
+            <SideNav />
+            <section className="lg:flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
+              <Routes>
+                <Route path="*" element={<Error />} />
+                <Route path="/">
+                  <Route
+                    index
+                    element={
+                      <Home
+                        showScroll={showScroll}
+                        setShowScroll={setShowScroll}
+                      />
+                    }
+                  />
+                  <Route path="contact" element={<Contact />} />
+                  <Route path="sell-to-us" element={<SellToUs />} />
+                  <Route
+                    path="buy"
+                    element={
+                      <Shop
+                        values={values}
+                        setValues={setValues}
+                        sideBar={sideBar}
+                        setSideBar={setSideBar}
+                      />
+                    }
+                  />
 
-                  <Route path="/users">
-                    <Route
-                      path="means-of-identity"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <UserInformation />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="verify-invite-code"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <InviteCodeValidity />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path=":userId"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <User />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Route>
+                  <Route path="privacy-policy" element={<PrivacyPolicy />} />
+                  <Route path="register" element={<Register />} />
+                  <Route
+                    path="recover-email"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <EmailRecovery />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="reset-password" element={<ResetPassword />} />
+                  <Route
+                    path="verify-reset"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <ChangePassword />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="account-verification"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <AccountVerification />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route path="login" element={<Login />} />
+                  <Route
+                    path="logout"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <Logout />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Route>
 
-                  <Route path="/appointment">
-                    <Route
-                      path="book-appointment"
-                      element={
-                        <ProtectedRoute user={user}>
-                          <BookAppointment />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="get-appointment"
-                      element={
-                        <ProtectedRoute user={user && user}>
-                          <GetAppointment />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Route>
-                  <Route path="/gadgets">
-                    <Route path="all" element={<AllGadgets />} />
-                    <Route path=":gadgetID" element={<SearchGadget />} />
-                    <Route path="name" element={<SingleProduct />} />
-                  </Route>
-                </Routes>
-                <a
-                  href="#"
-                  className={`${
-                    showScroll ? "bottom-40" : " bottom-[-30%]"
-                  } fixed  right-[2rem] z-30 transition-translate duration-300 w-[50px] h-[50px] rounded-full hover:[transform:translateY(-.25rem)] bg-primaryColor flex items-center justify-center`}
-                >
-                  <ChevronDoubleUp size={30} />
-                </a>
-              </section>
-            </main>
-          </section>
+                <Route path="/users">
+                  <Route
+                    path="means-of-identity"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <UserInformation />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="verify-invite-code"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <InviteCodeValidity />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path=":userId"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <User />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Route>
+
+                <Route path="/appointment">
+                  <Route
+                    path="book-appointment"
+                    element={
+                      <ProtectedRoute user={user}>
+                        <BookAppointment />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="get-appointment"
+                    element={
+                      <ProtectedRoute user={user && user}>
+                        <GetAppointment />
+                      </ProtectedRoute>
+                    }
+                  />
+                </Route>
+                <Route path="/gadgets">
+                  <Route path="all" element={<AllGadgets />} />
+                  <Route path=":gadgetID" element={<SearchGadget />} />
+                  <Route path="name" element={<SingleProduct />} />
+                </Route>
+              </Routes>
+              <a
+                href="#"
+                className={`${
+                  showScroll ? "bottom-40" : " bottom-[-30%]"
+                } fixed  right-[2rem] z-30 transition-translate duration-300 w-[50px] h-[50px] rounded-full hover:[transform:translateY(-.25rem)] bg-primaryColor flex items-center justify-center`}
+              >
+                <ChevronDoubleUp size={30} />
+              </a>
+            </section>
+          </main>
         </main>
       </BrowserRouter>
     </CookiesProvider>
