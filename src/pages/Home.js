@@ -16,16 +16,15 @@ const Home = () => {
   return (
     <main className="w-full h-full">
       {/* <Navbar openMobile={openMobile} setOpenMobile={setOpenMobile} /> */}
-      <Search mobile/>
+      <Search mobile />
       <Hero />
       <OptionList />
       <FeatureProductsList />
-      <CardList phone title="phones" />
-      <CardList title="laptops" />
+      <CardList phone title="phones" text="View all" />
+      <CardList title="laptops" text="View all" />
       <CardList title="Fast Selling" text="View all fast selling products" />
       <CTA />
       <Footer />
-   
     </main>
   );
 };

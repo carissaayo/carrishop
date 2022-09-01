@@ -1,5 +1,8 @@
+
 import cartImg from "../assets/imgs/cart-item.jfif"
 import CartItem from "../components/CartItem";
+import CardList from "../components/HomeComponents/CardList";
+import Footer from "../components/HomeComponents/Footer";
 
 const Cart = () => {
   return (
@@ -9,7 +12,7 @@ const Cart = () => {
       </div>
 
       {/* Cart */}
-      <section className=" w-[95%] sm:w-[90%] mx-auto md:mx-0 md:w-full flex flex-col 2xl:flex-row justify-between gap-8">
+      <section className=" w-[95%] sm:w-[90%] mx-auto md:mx-0 md:w-full flex flex-col 2xl:flex-row justify-between gap-8 mb-20">
         <section className="flex-[5]">
           {/* Desktop  */}
           <div className="hidden sm:flex w-full justify-between p-4 border-b border-[#F2F2F2] items-center">
@@ -95,6 +98,11 @@ const Cart = () => {
           </div>
         </section>
       </section>
+
+      {/* Similar Products */}
+      <CardList title="You may be interested in..." text="" />
+
+      <Footer />
     </main>
   );
 }

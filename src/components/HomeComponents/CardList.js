@@ -11,9 +11,9 @@ const ItemHeader = ({title,text}) => {
       </h1>
       <Link to="/" className=" font-bold flex items-center ">
         <p className={`${text ? "hidden sm:block" : ""}  sm:text-base`}>
-          {text ? text : "See All"}
+          {text ? text : ""}
         </p>
-        <span className="ml-2">
+        <span className={`${text ? " block " :"hidden"} ml-2`}>
           <ChevronRight size={30} />
         </span>
       </Link>
