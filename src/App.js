@@ -87,9 +87,11 @@ const [values, setValues] = useState([50]);
     <CookiesProvider>
       <BrowserRouter>
         <main
-          className={`${sideBar ? "h-screen md:h-full " : "h-full"} relative ${
-            window.innerWidth < 840 && " overflow-hidden"
-          }`}
+          className={`${
+            sideBar && window.innerWidth < 840
+              ? "h-screen md:h-full overflow-hidden "
+              : "h-full "
+          } relative`}
         >
           <div
             className={`${
