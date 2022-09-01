@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import {List} from "react-bootstrap-icons";
 
 
 
@@ -47,7 +48,12 @@ const Shop = () => {
         <section className="flex-[6] mb-20">
           <Search mobile />
           <ShopOptionList />
-          
+          <div className="flex w-full justify-between items-center">
+            <div className="flex items-center">
+              <List className="text-xl" />
+            </div>
+          </div>
+
           <ShopProductsList />
           <ShopProductsList />
           <ShopProductsList />
