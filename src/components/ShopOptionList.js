@@ -10,7 +10,7 @@ import laptopImg from "../assets/imgs/shop3.png";
 const ShopOptionList = () => {
   return (
     <section className="shop-bg relative w-full  h-[400px]  mb-20 mx-auto md:mx-0 text-primaryColor flex flex-col items-center justify-center  gap-10 ">
-      <div className="overlay"></div>
+      <div className="overlay z-10"></div>
       <h1 className="font-bold text-3xl z-20">Shop</h1>
       <section className="flex items-center justify-between  w-full">
         <div className="flex items-center justify-center xs:flex-1 cursor-pointer z-20">

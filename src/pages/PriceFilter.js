@@ -6,7 +6,7 @@ const PriceFilter = ({values,setValues}) => {
     const MIN = 50;
     const MAX = 1_000_000;
   return (
-    <section className="w-[45%] lg:w-full mb-10 pl-4 ">
+    <section className="w-[80%] mx-auto md:mx-0 md:w-[45%] lg:w-full mb-10 pl-4 ">
       <div className="flex justify-between w-[95%] items-center ">
         <p className="font-bold text-xl">Price</p>
         <button className="text-[#FCA311] text-lg">Apply</button>
@@ -90,7 +90,7 @@ const PriceFilter = ({values,setValues}) => {
         </p>
       </div>
 
-      <div className="w-full">
+      <div className="w-full flex items-center justify-center md:block">
         <button className="bg-[#FCA311] p-4 px-12 font-bold text-lg text-primaryColor rounded-full">
           Filter
         </button>
