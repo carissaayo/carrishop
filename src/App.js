@@ -40,6 +40,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import LoginComponent from "./components/Login";
 import Shop from "./pages/Shop";
 import ShopSidebar from "./components/ShopSidebar";
+import About from "./pages/About";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -135,6 +136,8 @@ const [values, setValues] = useState([50]);
                   <Route path="contact" element={<Contact />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
                   <Route path="cart" element={<Cart />} />
+
+                  <Route path="about-us" element={<About />} />
                   <Route
                     path="buy"
                     element={

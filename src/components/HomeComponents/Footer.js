@@ -3,7 +3,7 @@ import { Facebook,Twitter, Instagram } from "react-bootstrap-icons";
 
 const Footer = () => {
   return (
-    <footer className="hidden md:block bg-black text-primaryColor  h-full md:h-[50vh] py-auto py-8">
+    <footer className="hidden md:block bg-black text-primaryColor  h-full md:h-[55vh] lg:h-[45vh] py-auto py-8">
       <section className="flex  justify-center md:justify-between   px-10 py-5 pb-[60px] flex-wrap md:gap-[30px] items-center">
         <div className="  mb-[20px] md:mb-0 w-[80%] md:w-auto">
           <h1 className=" font-bold text-[32px] flex-[2]">
