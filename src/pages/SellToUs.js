@@ -1,12 +1,9 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight } from 'react-bootstrap-icons';
+import { CloudArrowDown } from 'react-bootstrap-icons';
 import Footer from '../components/HomeComponents/Footer';
-import FeaturedProduct from '../components/HomeComponents/FeaturedProduct';
 
-import phoneImg from "../assets/imgs/featured-phone.png"
-import tabletImg from "../assets/imgs/featured-tablet.png";
-import soundImg from "../assets/imgs/featured-sound.png";
-import notebookImg from "../assets/imgs/ultrabook.png";
+
 import sell1 from "../assets/imgs/sell1.png";
 import sell2 from "../assets/imgs/sell2.png";
 import sell3 from "../assets/imgs/sell3.png";
@@ -14,33 +11,75 @@ import sell4 from "../assets/imgs/sell4.png";
 import appointment from "../assets/imgs/appointment.png";
 import wallet from "../assets/imgs/wallet.png";
 import verify from "../assets/imgs/verify.png";
-import grid1 from "../assets/imgs/grid1.png";
-import grid2 from "../assets/imgs/grid2.png";
-import grid3 from "../assets/imgs/grid3.png";
-import grid5 from "../assets/imgs/grid5.jfif";
-import grid6 from "../assets/imgs/grid6.png";
-import grid7 from "../assets/imgs/grid7.jfif";   
-
-
-const ItemHeader = ({ title, text }) => {
-  return (
-    <div className="flex  justify-between items-center h-[35px] w-full md:w-[90%] lg:w-[95%] xl:w-full  ">
-      <h1 className="font-bold sm:text-2xl capitalize border-b-2 border-secondaryColor ">
-        {title}
-      </h1>
-      <Link to="/" className=" font-bold flex items-center ">
-        <p className={`${text ? "hidden sm:block" : ""}  sm:text-base`}>
-          {text ? text : "See All"}
-        </p>
-        <span className="ml-2">
-          <ChevronRight size={30} />
-        </span>
-      </Link>
-    </div>
-  );
-};
 
 const SellToUs = () => {
+
+  const [image1, setImage1] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+      const [selectedFile, setSelectedFile] = useState([]);
+      const [preview1, setPreview1] = useState("");
+      const [preview2, setPreview2] = useState("");
+      const [preview3, setPreview3] = useState("");
+      const [preview, setPreview] = useState("");
+ const files = [];
+ let firstImage = "";
+
+ const handleGadgetDetailsSubmit = (e) => {
+   const image1 = e.target.files[0];
+   const image2 = e.target.files[1];
+   const image3 = e.target.files[2];
+   if (image1) {
+     firstImage = URL.createObjectURL(image1);
+     console.log(firstImage);
+   }
+
+   console.log(image1);
+   console.log(image2);
+   console.log(image3);
+ };
+
+     const onSelectFile = (e) => {
+       if (!e.target.files || e.target.files.length === 0) {
+         setSelectedFile(false);
+         return;
+       }
+
+       // I've kept this example simple by using the first image instead of multiple
+       setImage1(e.target.files[0]);
+       setImage2(e.target.files[1]);
+       setImage3(e.target.files[2]);
+     };
+
+     
+      // create a preview as a side effect, whenever selected file is changed
+      useEffect(() => {
+        if (!image1||!image2||!image3) {
+          // setPreview(false);
+          console.log(preview1);
+          return;
+        }
+
+        const image1ObjectUrl = URL.createObjectURL(image1);
+        const image2ObjectUrl = URL.createObjectURL(image2);
+        const image3ObjectUrl = URL.createObjectURL(image3);
+        setPreview1(image1ObjectUrl);
+        setPreview2(image2ObjectUrl);
+        setPreview3(image3ObjectUrl);
+
+        // free memory when ever this component is unmounted
+        return () => {
+          URL.revokeObjectURL(image1ObjectUrl);
+          URL.revokeObjectURL(image2ObjectUrl);
+          URL.revokeObjectURL(image3ObjectUrl);
+        
+        };
+      }, [image1,image2,image3]);
+
+
+
+
+
   return (
     <main className="h-full w-full">
       {/* Banner */}
@@ -134,115 +173,375 @@ const SellToUs = () => {
         </section>
       </section>
 
-      {/* Card List */}
-      <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
-        <ItemHeader title="Top Categories" text="View all categories" />
-        {/* Cards Container */}
-        <section className="w-[90%] sm:w-[70%] md:w-[80%] lg:w-[95%] xl:w-full   lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center   grid  ">
-          {/* item */}
-          <div className="bg-[#F6F6F6] gaming flex  flex-col items-start pl-8">
-            <div className="flex  items-end relative">
-              <img src={grid1} alt="" className=" " />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">
-                Gaming & Consoles
-              </h4>
-              <h2 className="xl:text-lg font-bold">NEW GAMING EXPERIENCE</h2>
-            </div>
-          </div>
+      {/* Product Details */}
+      <main className="w-full h-full bg-[#EEEEEE] mb-20 py-10">
+        <h1 className="font-bold sm:text-2xl capitalize text-center mb-10">
+          What are you selling?
+        </h1>
 
-          {/* item */}
-          <div className="bg-[#F6F6F6] phone flex  flex-col items-start pl-8 w-full">
-            <div className="flex  justify-end w-full relative">
-              <img src={grid2} alt="" className=" " />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Phones</h4>
-              <h2 className="xl:text-lg font-bold">Iphone 13 Pro Max</h2>
-            </div>
-          </div>
+        {/* Gadget Name */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Gadget Name
+            <span className="text-[#FF0000]">*</span>
+          </h1>
 
-          {/* item */}
-          <div className="bg-[#F6F6F6] audio flex  flex-col items-start pl-8 w-full">
-            <div className="flex  justify-end w-full  relative">
-              <img src={grid3} alt="" className="" />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Accessories</h4>
-              <h2 className="xl:text-lg font-bold">BLUETOOTH SPEAKERS</h2>
-            </div>
-          </div>
-
-          {/* item */}
-          <div className="bg-[#F6F6F6] mouse flex  flex-col items-start pl-8 w-full">
-            <div className="flex  justify-end w-full  relative">
-              <img src={grid5} alt="" className=" " />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Accessories</h4>
-              <h2 className="xl:text-lg font-bold">NEW WIRELESS MOUSES</h2>
-            </div>
-          </div>
-
-          {/* item */}
-          <div className="bg-[#F6F6F6] camera flex  flex-col items-start pl-8 w-full">
-            <div className="flex  justify-end w-full  relative">
-              <img src={grid6} alt="" className=" " />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="xl:text-lg font-bold">ULTRA-HD DIGITAL CAMERA</h2>
-            </div>
-          </div>
-
-          {/* item */}
-          <div className="bg-[#F6F6F6] powerbank flex  flex-col items-start pl-8 w-full">
-            <div className="flex  justify-end w-full  relative">
-              <img src={grid3} alt="" className="" />
-            </div>
-            <div className="justify-self-center mb-10">
-              <h4 className="text-[#A5A5A5] text-base mb-5">Audio</h4>
-              <h2 className="xl:text-lg font-bold">43410 mA POWER BANK</h2>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      {/* Fast Selling */}
-      <main className="w-full flex flex-col mb-[80px] justify-center items-center h-full  px-4 md:px-0">
-        <ItemHeader
-          title="Fast Selling"
-          text="View all fast selling products "
-        />
-        <section className="w-[90%] sm:w-[70%] md:w-[90%] lg:w-[95%] xl:w-full  flex lg:border-y border-[#EEEEEE] rounded-l-3xl gap-4 lg:gap-10 items-center justify-between flex-wrap xl:flex-nowrap pt-10 ">
-          <FeaturedProduct
-            type="Phone"
-            name="Redmi Note 9c"
-            image={phoneImg}
-            price="769,999"
+          <input
+            type="text"
+            className=" w-full sm:w-[70%] border-b border-[#E0E0E0] outline-none focus:border-b-2 p-2"
+            placeholder="Your Answer"
           />
-          <FeaturedProduct
-            type="Laptop"
-            name="Notebook 360 Flip"
-            image={notebookImg}
-            price="769,999"
+        </div>
+
+        {/* Gadget category */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Select Category <span className="text-[#FF0000]">*</span>
+          </h1>
+          <section className="w-full ">
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Phone"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="phone" className="font-bold ">
+                Phone
+              </label>
+            </div>
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Laptop"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Laptop
+              </label>
+            </div>
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Television"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Television
+              </label>
+            </div>
+
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Tablets"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Tablets
+              </label>
+            </div>
+
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Games / Consoles"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Games / Consoles
+              </label>
+            </div>
+
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Home Theatre/ Speakers"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Home Theatre/ Speakers
+              </label>
+            </div>
+
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="gadget"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="Other"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                Other
+              </label>
+            </div>
+          </section>
+        </div>
+
+        {/* Gadget Brand */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Select Brand <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <select
+            className="w-[70%] border border-[#E0E0E0] outline-none focus:border-b-2 p-4"
+            name="Brand"
+          >
+            <option value="" disabled>
+              Select Brand
+            </option>
+            <option value="Apple">Apple</option>
+            <option value="Window">Window</option>
+            <option value="Android">Android</option>
+            <option value="LG">LG </option>
+          </select>
+        </div>
+
+        {/* Gadget Description */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Enter Description <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <input
+            type="text"
+            className="w-full sm:w-[70%] border-b border-[#E0E0E0] outline-none focus:border-b-2 p-2"
+            placeholder="Your Answer"
+            name="description"
+          />
+        </div>
+
+        {/* Gadget Image */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Add Image <span className="text-[#FF0000]">*</span>
+          </h1>
+          <div className="mb-5">
+            <p className="text-[#505050]">Add at least 3 photos</p>
+            <p className="text-[#8E8E8E]">
+              First picture - is the title picture. You can change the order of
+              photos: just grab your photos and drag
+            </p>
+          </div>
+          <label className="flex h-full w-[max-content]">
+            <input
+              type="file"
+              className="w-0 h-0 "
+              placeholder="Your Answer"
+              name="description"
+              multiple
+              onChange={onSelectFile}
+              // onChange={(e) => handleGadgetDetailsSubmit(e)}
+            />
+            <p className="flex bg-primaryColor border border-[#FCA311] px-6 py-4 items-center w-[150px] gap-2 text-[#FCA311]">
+              <CloudArrowDown className="text-2xl" />
+              <span className="">Add File</span>
+            </p>
+          </label>
+          <div className="w-full flex gap-10 pt-5">
+            {preview1 && <img src={preview1} className="w-20 h-10 block" />}
+            {preview2 && <img src={preview2} className="w-20 h-10 block" />}{" "}
+            {preview3 && <img src={preview3} className="w-20 h-10 block" />}
+          </div>
+        </div>
+
+        {/* Gadget Receipt */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Reciept ? <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <section className="w-full ">
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="reciept"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="yes-receipt"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="phone" className="font-bold ">
+                Yes
+              </label>
+            </div>
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="reciept"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="no-receipt"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="gadget" className="font-bold ">
+                No
+              </label>
+            </div>
+          </section>
+        </div>
+
+        {/* Seller Location*/}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Your Location <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <select
+            type="text"
+            className="w-[70%] sm:w-[30%] border border-[#E0E0E0] outline-none focus:border-b-2 p-4"
+            name="Location"
+          >
+            <option value="Select Location" disabled>
+              Select Location
+            </option>
+            <option value="Ilorin">Ilorin</option>
+            <option value="Ibadan">Ibadan</option>
+          </select>
+        </div>
+
+        {/* Gadget Faults */}
+        <div className="sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Faults? <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <section className="w-full ">
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="fault"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="yes-fault"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="fault" className="font-bold ">
+                Yes
+              </label>
+            </div>
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="fault"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="no-fault"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="fault" className="font-bold ">
+                No
+              </label>
+            </div>
+          </section>
+        </div>
+
+        {/* Gadget Accessories */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Accessories ? <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <section className="w-full ">
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="accessory"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="yes-accessory"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="accessory" className="font-bold ">
+                Yes
+              </label>
+            </div>
+            <div className="flex gap-4 mb-5">
+              <input
+                type="radio"
+                name="accessory"
+                className="radio cursor-pointer w-[30px] h-[30px]"
+                value="no-accessory"
+              />
+              <div className="custom-radio">
+                <p className=""></p>
+              </div>
+              <label htmlFor="accessory" className="font-bold ">
+                No
+              </label>
+            </div>
+          </section>
+        </div>
+
+        {/* Appointment Date */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-4 sm:px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Appointment Date <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <input
+            type="date"
+            className="w-full sm:w-[50%] md:w-[30%] border-b border-[#E0E0E0] outline-none focus:border-b-2 p-2"
+            placeholder="Your Answer"
+            name="description"
+          />
+        </div>
+
+        {/* Gadget Price */}
+        <div className="w-[95%] sm:w-[80%] bg-primaryColor mx-auto  px-8 py-12 mb-10">
+          <h1 className="mb-5">
+            Selling Price <span className="text-[#FF0000]">*</span>
+          </h1>
+
+          <input
+            type="text"
+            className=" w-full sm:w-[70%] border-b border-[#E0E0E0] outline-none focus:border-b-2 p-2 mb-5"
+            placeholder="Your Answer"
+            name="description"
           />
 
-          <FeaturedProduct
-            type="Tablet"
-            name="Ipad Revolve"
-            image={tabletImg}
-            price="769,999"
-          />
-          <FeaturedProduct
-            type="Home & Entertainment"
-            name="Sound System"
-            image={soundImg}
-            price="769,999"
-            addedToCart
-          />
-        </section>
+          <div className="flex gap-4 items-center">
+            <input
+              type="checkbox"
+              name=""
+              id=""
+              className="w-6 h-6 cursor-pointer"
+            />
+            <p className="">Is this price negotiable?</p>
+          </div>
+        </div>
       </main>
 
       <Footer />

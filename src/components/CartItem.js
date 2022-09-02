@@ -16,7 +16,7 @@ const CartItem = () => {
       </div>
 
       {/* Mobile */}
-      <div className="cart-item w-full sm:hidden border-b border-[#F2F2F2] pb-10 mb-10">
+      <div className="cart-item w-[90%] sm:hidden border-b border-[#F2F2F2] pb-10 mb-10 ">
         <div className="block item-image">
           <img src={cartImg} alt="" className="w-[80%]  h-full" />
         </div>

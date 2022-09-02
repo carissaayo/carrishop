@@ -4,7 +4,7 @@ import Footer from "../components/HomeComponents/Footer";
 const PrivacyPolicy = () => {
   return (
     <main className="w-full h-full">
-      <div className="w-full bg-black text-primaryColor flex flex-col items-center justify-center h-[20vh] gap-5">
+      <div className="w-full  flex flex-col items-center justify-center h-[20vh] gap-5">
         <h1 className="text-2xl font-bold ">Privacy Policy </h1>
         <h2 className="text-lg">HOME / PRIVACY POLICY</h2>
       </div>

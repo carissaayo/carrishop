@@ -17,8 +17,7 @@ html{
 
 /* Rating package styles start */
 .wrapper {
-  /* border: 3px solid blue; */
-  /* width: 300px; */
+  
   width: 50%;
   margin-bottom: 20px;
 }
@@ -244,17 +243,6 @@ background-color: rgba(0, 0, 0, 0.394);
   grid-template-columns: 100px 1fr  ;  
 }
 }
-/* 
-@media screen and (max-width:400px){
-  .cart-item{
-display: block ;
- 
-   
-}
-
-} */
-
-
 
 .item-image{
   grid-area:image;
@@ -274,60 +262,36 @@ display: block ;
 }
 
 
+/* Sell to US Category  Starts*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-.bannerstyles{
-  display: grid;
-  grid-template-columns: 1fr 1fr 150px 150px ;
-  grid-template-rows: 1fr 1fr ;
-  grid-template-areas: "word word images images"
-                       "word word images images";
+.radio:checked{
+  display: none;
+ 
 }
 
-
-.words{
-  grid-area: word;
+.radio:focus-visible {
+    outline-offset: 0;
 }
 
-.images{
-  grid-area: images;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-justify-items: end;
-grid-template-areas: "one two"
-                      "three four";
-/* position: absolute;
-left: -60% ;
-top:35% */
-position: relative;
-top:30%;
-gap: 0px;
+.custom-radio{
+display: hidden;
 }
 
-.one{
-grid-area:one
-}
+.radio:checked ~ .custom-radio{
+  width:30px;
+height: 30px;
+border-radius: 50%;
+border: 0.5px solid #FCA311;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-right: 1rem;
 
-.two{
-  grid-area: two;
 }
-
-.three{
-  grid-area: three;
+.radio:checked ~ .custom-radio  p{
+  width:16px;
+  height:16px;
+  border-radius: 50%;
+  background-color: #FCA311;
 }
-
-.four{
-  grid-area: four;
-}
+/* Sell to US Category  Ends*/

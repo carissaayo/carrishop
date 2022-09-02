@@ -1,14 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Search, ChevronRight,Check2 } from "react-bootstrap-icons";
-import contact1 from "../assets/imgs/contact1.jfif";
-import contact2 from "../assets/imgs/contact2.jfif";
-import contact3 from "../assets/imgs/contact.3.jfif";
+import { Search, CaretUpFill,Check2, CaretDownFill } from "react-bootstrap-icons";
 import customerCare from "../assets/imgs/customer-care.jfif";
 import whatsappImg from "../assets/imgs/whatsapp.png"
 import Footer from "../components/HomeComponents/Footer";
 
 
 const Contact = () => {
+  const [openContent1, setOpenContent1] = useState(false);
+  const [openContent2, setOpenContent2] = useState(false);
+  const [openContent3, setOpenContent3] = useState(false)
+  const [openContent4, setOpenContent4] = useState(false);
+  const [openContent5, setOpenContent5] = useState(false);
   return (
     <main className="h-full w-full">
       {/* Question Section */}
@@ -36,72 +39,236 @@ const Contact = () => {
           </div>
         </div>
       </section>
-      {/* FAQs Scetion */}
-      <section className="w-full h-full mb-20 px-4 xs:px-10 md:px-0">
-        <h1 className="font-bold border-b-2 border-[#FCA311] w-[max-content] pb-4  text-base xs:text-xl ">
+
+      <section className="h-full w-full pt-10 mb-40">
+        <h1 className="font-bold text-sm sm:text-lg md:text-xl text-center mb-10 w-[90%] md:w-full mx-[auto] md:mx-0">
           Frequently Asked Questions
         </h1>
 
-        {/* FAQS container */}
-        <div className="border-t border-[#eeeeee] flex items-center h-full  lg:mx-0 py-10 lg:py-0  lg:h-[90vh] xl:h-[80vh] w-[100%] lg:w-full justify-center lg:justify-between gap-14 lg:gap-6 xl:gap-12 mb-20 flex-wrap lg:flex-nowrap ">
-          {/* FAQ item */}
-          <div className=" border border-[#eeeeee] lg:h-[70vh] xl:h-[65vh]  2xl:h-[60vh] py-8 px-4 xl:px-8 flex flex-col items-start gap-8 rounded-md w-full sm:w-[90%] md:w-[60%] lg:w-[auto]">
-            <img src={contact1} alt="" className="w-[200px]" />
-            <h2 className="text-xl xl:text-[22px]">How to buy on Fairshop</h2>
-            <p className=" xl:text-base">
-              Buying on FairShop is fairly easy. Learn more about how to
-              purchase on FairShop
-            </p>
-            <Link
-              to="/contact"
-              className="flex items-center gap-4 w-[max-content]"
+        {/* FAQ 1*/}
+        <div
+          className={`${
+            openContent1
+              ? "border-2 border-[#EEEEEE]"
+              : "border-2 border-[#EEEEEE] border-b-0"
+          } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
+        >
+          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+            How does it work?
+            <span
+              className="relative"
+              onClick={() => setOpenContent1(!openContent1)}
             >
-              <div className="w-[40px] h-[40px] rounded-full bg-secondaryColor flex items-center justify-center">
-                <ChevronRight className="text-xl text-[white]" />
-              </div>
-              <p className="text-secondaryColor">Learn More</p>
-            </Link>
-          </div>
+              <CaretDownFill
+                className={`${
+                  openContent1 && "rotate-180"
+                }  text-xl icon cursor-pointer`}
+              />
+            </span>
+          </h2>
+          <p
+            className={`${
+              !openContent1 && "hidden"
+            } text-xs sm:text-sm md:text-base  p-6`}
+          >
+            When visitors leave comments on the site we collect the data shown
+            in the comments form, and also the visitor’s IP address and browser
+            user agent string to help spam detection. An anonymized string
+            created from your email address (also called a hash) may be provided
+            to the Gravatar service to see if you are using it. The Gravatar
+            service privacy policy is available here:
+            <a
+              href="https://automattic.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://automattic.com/privacy/
+            </a>
+            . After approval of your comment, your profile picture is visible to
+            the public in the context of your comment.
+          </p>
+        </div>
 
-          {/* FAQ item */}
-          <div className="border border-[#eeeeee] lg:h-[70vh] xl:h-[65vh]  2xl:h-[60vh] p-8 flex flex-col items-start gap-8 rounded-md py-8 px-4 xl:px-8 w-full sm:w-[90%] md:w-[60%] lg:w-[auto]">
-            <img src={contact2} alt="" className="w-[200px]" />
-            <h2 className="text-xl xl:text-[22px]">How to sell to FairShop</h2>
-            <p>
-              Buying on FairShop is fairly easy. Learn more about how to
-              purchase on FairShop
-            </p>
-            <Link to="/contact" className="flex items-center gap-4">
-              <div className="w-[40px] h-[40px] rounded-full bg-secondaryColor flex items-center justify-center">
-                <ChevronRight className="text-xl text-[white]" />
-              </div>
-              <p className="text-secondaryColor">Learn More</p>
-            </Link>
-          </div>
+        {/* FAQ 2*/}
+        <div
+          className={`${
+            openContent2
+              ? "border-2 border-[#EEEEEE]"
+              : "border-2 border-[#EEEEEE] border-b-0"
+          } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
+        >
+          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+            How does my account settings work?
+            <span
+              className="relative"
+              onClick={() => setOpenContent2(!openContent2)}
+            >
+              <CaretDownFill
+                className={`${
+                  openContent2 && "rotate-180"
+                }  text-xl icon cursor-pointer`}
+              />
+            </span>
+          </h2>
+          <p
+            className={`${
+              !openContent2 && "hidden"
+            } text-xs sm:text-sm md:text-base  p-6`}
+          >
+            When visitors leave comments on the site we collect the data shown
+            in the comments form, and also the visitor’s IP address and browser
+            user agent string to help spam detection. An anonymized string
+            created from your email address (also called a hash) may be provided
+            to the Gravatar service to see if you are using it. The Gravatar
+            service privacy policy is available here:
+            <a
+              href="https://automattic.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://automattic.com/privacy/
+            </a>
+            . After approval of your comment, your profile picture is visible to
+            the public in the context of your comment.
+          </p>
+        </div>
 
-          {/* FAQ item */}
-          <div className=" border border-[#eeeeee] lg:h-[70vh] xl:h-[65vh]  2xl:h-[60vh] p-8 flex flex-col items-start gap-8 rounded-md py-8 px-4 xl:px-8 w-full sm:w-[90%] md:w-[60%] lg:w-[auto]">
-            <img src={contact3} alt="" className="w-[200px]" />
-            <h2 className="text-xl xl:text-[22px]">
-              FairShop Affiliate Program
-            </h2>
-            <p>
-              Buying on FairShop is fairly easy. Learn more about how to
-              purchase on FairShop
-            </p>
-            <Link to="/contact" className="flex items-center gap-4">
-              <div className="w-[40px] h-[40px] rounded-full bg-secondaryColor flex items-center justify-center">
-                <ChevronRight className="text-xl text-[white]" />
-              </div>
-              <p className="text-secondaryColor">Learn More</p>
-            </Link>
-          </div>
+        {/* FAQ 3*/}
+        <div
+          className={`${
+            openContent3
+              ? "border-2 border-[#EEEEEE]"
+              : "border-2 border-[#EEEEEE] border-b-0"
+          } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
+        >
+          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+            How can i sell my device?
+            <span
+              className="relative"
+              onClick={() => setOpenContent3(!openContent3)}
+            >
+              <CaretDownFill
+                className={`${
+                  openContent3 && "rotate-180"
+                }  text-xl icon cursor-pointer`}
+              />
+            </span>
+          </h2>
+          <p
+            className={`${
+              !openContent3 && "hidden"
+            } text-xs sm:text-sm md:text-base  p-6`}
+          >
+            When visitors leave comments on the site we collect the data shown
+            in the comments form, and also the visitor’s IP address and browser
+            user agent string to help spam detection. An anonymized string
+            created from your email address (also called a hash) may be provided
+            to the Gravatar service to see if you are using it. The Gravatar
+            service privacy policy is available here:
+            <a
+              href="https://automattic.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://automattic.com/privacy/
+            </a>
+            . After approval of your comment, your profile picture is visible to
+            the public in the context of your comment.
+          </p>
+        </div>
+
+        {/* FAQ 4*/}
+        <div
+          className={`${
+            openContent4
+              ? "border-2 border-[#EEEEEE]"
+              : "border-2 border-[#EEEEEE] border-b-0"
+          } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
+        >
+          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+            Can i visit your office without an appointment?
+            <span
+              className="relative"
+              onClick={() => setOpenContent4(!openContent4)}
+            >
+              <CaretDownFill
+                className={`${
+                  openContent4 && "rotate-180"
+                }  text-xl icon cursor-pointer`}
+              />
+            </span>
+          </h2>
+          <p
+            className={`${
+              !openContent4 && "hidden"
+            } text-xs sm:text-sm md:text-base  p-6`}
+          >
+            When visitors leave comments on the site we collect the data shown
+            in the comments form, and also the visitor’s IP address and browser
+            user agent string to help spam detection. An anonymized string
+            created from your email address (also called a hash) may be provided
+            to the Gravatar service to see if you are using it. The Gravatar
+            service privacy policy is available here:
+            <a
+              href="https://automattic.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://automattic.com/privacy/
+            </a>
+            . After approval of your comment, your profile picture is visible to
+            the public in the context of your comment.
+          </p>
+        </div>
+
+        {/* FAQ 5*/}
+        <div
+          className={`${
+            openContent5
+              ? "border-2 border-[#EEEEEE]"
+              : "border-2 border-[#EEEEEE] border-b-0"
+          } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
+        >
+          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+            How do i change my default shipping address?
+            <span
+              className="relative"
+              onClick={() => setOpenContent5(!openContent5)}
+            >
+              <CaretDownFill
+                className={`${
+                  openContent5 && "rotate-180"
+                }  text-xl icon cursor-pointer`}
+              />
+            </span>
+          </h2>
+          <p
+            className={`${
+              !openContent5 && "hidden"
+            } text-xs sm:text-sm md:text-base  p-6`}
+          >
+            When visitors leave comments on the site we collect the data shown
+            in the comments form, and also the visitor’s IP address and browser
+            user agent string to help spam detection. An anonymized string
+            created from your email address (also called a hash) may be provided
+            to the Gravatar service to see if you are using it. The Gravatar
+            service privacy policy is available here:
+            <a
+              href="https://automattic.com/privacy/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              https://automattic.com/privacy/
+            </a>
+            . After approval of your comment, your profile picture is visible to
+            the public in the context of your comment.
+          </p>
         </div>
       </section>
 
       {/* Customer Care */}
       <section className="flex w-full h-full 2xl:h-[70vh] items-center flex-col 2xl:flex-row justify-center bg-[#F5F5F5] mb-40 sm:mb-20 gap-8 pl-4 xs:px-8 py-8 2xl-py-0">
-        <div className=" 2xl:flex-1 order-2 2xl:order-1">
+        <div className=" 2xl:flex-1 order-[2] md:order-1">
           <img
             src={customerCare}
             alt="customer-care"
@@ -109,7 +276,7 @@ const Contact = () => {
           />
         </div>
 
-        <div className=" 2xl:flex-1 flex flex-col gap-3">
+        <div className=" 2xl:flex-1 flex flex-col gap-3 order-1 md:order-[2]">
           <h3 className="font-bold text-2xl sm:text-[30px]">
             Need more detailed
             <br />
