@@ -41,6 +41,8 @@ import LoginComponent from "./components/Login";
 import Shop from "./pages/Shop";
 import ShopSidebar from "./components/ShopSidebar";
 import About from "./pages/About";
+import Checkout from "./pages/Checkout";
+import CheckoutLogin from "./components/CheckoutLogin";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -50,7 +52,7 @@ function App() {
     (state) => state.appointment
   );
   const [showScroll, setShowScroll] = useState(false);
-  
+  const [checkoutLogin, setCheckoutLogin] = useState(false)
   
   // For the price filter functionality
 const [values, setValues] = useState([50]);
@@ -92,6 +94,10 @@ const [values, setValues] = useState([50]);
             sideBar && window.innerWidth < 840
               ? "h-screen md:h-full overflow-hidden "
               : "h-full "
+          } ${
+            setCheckoutLogin 
+              ? "h-screen  overflow-hidden "
+              : "h-full "
           } relative`}
         >
           <div
@@ -101,7 +107,7 @@ const [values, setValues] = useState([50]);
                 : "hidden"
             } `}
           >
-            {/* Mobilr SIdebar when onn Shop page */}
+            {/* Mobile SIdebar when onn Shop page */}
             <ShopSidebar
               values={values}
               setValues={setValues}
@@ -116,11 +122,32 @@ const [values, setValues] = useState([50]);
             ></div>
           </div>
 
+          {/* Checkout Login */}
+          <div
+            className={`${
+              checkoutLogin
+                ? "fixed  flex w-full top-0 left-0  z-50 h-full "
+                : "hidden"
+            } `}
+          >
+            {/* Mobile Sidebar when onn Shop page */}
+            <div
+              className={` w-[10%] xs:w-[20%] sm:w-[40%] 2xl:w-[60%]  bg-[black] sm:opacity-75 transform-display duration-500 ease-linear ${
+                checkoutLogin ? "block" : "hidden "
+              }`}
+              onClick={() => setCheckoutLogin(false)}
+            ></div>
+            <CheckoutLogin
+              checkoutLogin={checkoutLogin}
+              setCheckoutLogin={setCheckoutLogin}
+            />
+          </div>
+
           {/* <LoginComponent/> */}
           <Navbar />
           <main className="w-full h-full  md:flex justify-between gap-4 ">
             <SideNav />
-            <section className="lg:flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
+            <section className="flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
               <Routes>
                 <Route path="*" element={<Error />} />
                 <Route path="/">
@@ -136,6 +163,10 @@ const [values, setValues] = useState([50]);
                   <Route path="contact" element={<Contact />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
                   <Route path="cart" element={<Cart />} />
+                  <Route
+                    path="checkout"
+                    element={<Checkout setCheckoutLogin={setCheckoutLogin} />}
+                  />
 
                   <Route path="about-us" element={<About />} />
                   <Route

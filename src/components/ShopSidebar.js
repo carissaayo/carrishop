@@ -7,7 +7,7 @@ import Filter from "./Filter";
 const ShopSidebar = ({ values, setValues, sideBar, setSideBar }) => {
   return (
     <main
-      className={`md:hidden bg-primaryColor w-[80%] sm:w-[70%] h-full bg-primaryColor pt-10  z-50  transform-translate duration-500 ease-in-out ${
+      className={`md:hidden w-[80%] sm:w-[70%] h-full bg-primaryColor pt-10  z-50  transform-translate duration-500 ease-in-out ${
         sideBar ? "translate-x-0" : "translate-x-[-100%] "
       }`}
     >

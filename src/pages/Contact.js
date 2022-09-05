@@ -15,16 +15,16 @@ const Contact = () => {
   return (
     <main className="h-full w-full">
       {/* Question Section */}
-      <section className="w-full  bg-[#FCA311] mb-20 flex items-center flex-col justify-center h-[80vh]">
+      <section className="w-full  bg-[#FCA311] mb-20 flex items-center flex-col justify-center h-[50vh]">
         <div className="w-[90%] md:w-[70%]  flex   items-center justify-center gap-8    flex-col h-[60vh] text-primaryColor  ">
           <h1 className="text-2xl sm:text-4xl lg:text-[48px]  font-bold leading-[48px]">
             We're happy to help
           </h1>
           <p className="text-center text-base sm:text-lg lg:text-xl w-full sm:w-[500px]   xs:px-6 sm:px-4 md:px-0">
-            Need a quick answer? Enter your questions below for instant
-            responses
+            Go through our frequently asked questions to find answers to
+            questions you might have
           </p>
-          <div className="bg-primaryColor w-full flex items-center justify-center h-[30vh] gap-10 flex-col">
+          {/* <div className="bg-primaryColor w-full flex items-center justify-center h-[30vh] gap-10 flex-col">
             <p className="text-[black] xm:text-xl sm:text-2xl font-bold">
               What would you like to know?
             </p>
@@ -36,7 +36,7 @@ const Contact = () => {
                 placeholder="e.g How can I sell my device on Fairshop?"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 

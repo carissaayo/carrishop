@@ -298,6 +298,54 @@ margin-right: 1rem;
 
 
 
+/* checkout page Starts */
+
+.checkout-radio:checked{
+  display: none;
+ 
+}
+
+.checkout-radio:focus-visible {
+    outline-offset: 0;
+}
+
+.checkout-custom-radio{
+display: hidden;
+}
+
+.checkout-radio:checked ~ .checkout-custom-radio{
+  width:20px;
+height: 20px;
+border-radius: 50%;
+border: 0.5px solid #FCA311;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-left: 8px;
+
+}
+.checkout-radio:checked ~ .checkout-custom-radio  p{
+  width:12px;
+  height:12px;
+  border-radius: 50%;
+  background-color: #FCA311;
+}
+
+
+
+/* Delivery Payment */
+
+.delivery.checkout-radio:checked ~ .checkout-custom-radio.delivery{
+border: 0.5px solid #242424;
+
+}
+.checkout-radio:checked ~ .checkout-custom-radio.delivery  p{
+  background-color: #242424;
+}
+/* Checkout page Ends */
+
+
+/* About page Starts */
 .about-img{
   transform: scaleX(-1);
   z-index:2;
@@ -310,4 +358,5 @@ margin-right: 1rem;
   height: 100%;
   z-index: 3;
 }
-  
+
+/* About page Ends */

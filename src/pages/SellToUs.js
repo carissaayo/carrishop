@@ -101,7 +101,7 @@ const SellToUs = () => {
           </div>
         </div>
         {/* Images Section */}
-        <div className=" pt-10  flex-[2] 2xl:flex-[3] flex   items-center lg:items-start order-1 lg:order-2  flex-wrap sm:flex-nowrap m mb-10 gap-8 md:gap-0 md:mb-0">
+        <div className=" pt-10  flex-[2] 2xl:flex-[3] flex  sm:w-[80%] md:w-full items-center lg:items-start order-1 lg:order-2  flex-wrap sm:flex-nowrap mb-10 gap-8 md:gap-0 md:mb-0">
           <img
             src={sell1}
             alt=""
@@ -120,7 +120,7 @@ const SellToUs = () => {
           <img
             src={sell4}
             alt=""
-            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
+            className="w-[35%] xs:w-[40%] sm:w-[120px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
           />
         </div>
       </section>

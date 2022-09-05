@@ -1,4 +1,5 @@
 
+import { Link } from "react-router-dom";
 import cartImg from "../assets/imgs/cart-item.jfif"
 import CartItem from "../components/CartItem";
 import CardList from "../components/HomeComponents/CardList";
@@ -31,22 +32,22 @@ const Cart = () => {
           </section>
 
           {/* Coupon Con*/}
-          <section className="w-full flex flex-col gap-10 md:gap-0 md:flex-row justify-between mb-10 ">
+          <section className="w-full flex flex-col gap-10 md:gap-0 lg:flex-row justify-between mb-10 ">
             {/* Coupon */}
-            <div className="flex flex-col sm:flex-row lg:flex-[4] gap-6 order-[2] md:order-1">
+            <div className="flex flex-col sm:flex-row lg:flex-[4] gap-6 order-[2] lg:order-1">
               <input
                 type="text"
                 className="mx-auto sm:mx-0 w-[80%] sm:w-[60%] md:w-[50%] outline-[#EEEEEE] border-[#EEEEEE] border p-3"
                 placeholder="Coupon Code"
               />
-              <button className="mx-auto sm:mx-0 sm:w-[50%] md:w-auto bg-[#FCA311] p-4 rounded-full px-6 text-primaryColor">
+              <button className="mx-auto sm:mx-0 sm:w-[50%] lg:w-[45%] bg-[#FCA311] p-4 rounded-full px-6 text-primaryColor">
                 APPLY COUPON
               </button>
             </div>
 
             {/* Update Cart */}
-            <div className="w-full flex flex-col items-center justify-center md:block   lg:flex-1 order-1 md:order-2">
-              <button className="md:bg-[#FAFAFA] p-4 rounded-full px-6 bg-[#FCA311] text-primaryColor md:text-[#8D8D8D] w-[80%] md:w-auto ">
+            <div className="w-full flex flex-col items-center justify-center lg:block   lg:flex-1 order-1 lg:order-2">
+              <button className="lg:bg-[#FAFAFA] p-4 rounded-full px-6 bg-[#FCA311] text-primaryColor md:text-[#8D8D8D] w-[80%] lg:w-auto mb-5 lg:mb-0 ">
                 UPDATE CART
               </button>
             </div>
@@ -92,9 +93,9 @@ const Cart = () => {
               <h3 className="text-xl">Total</h3>
               <p className="text-[#FCA311] text-xl">₦100,000</p>
             </div>
-            <button className="sm:w-[60%] 2xl:w-[90%]  bg-[#FCA311] p-4 px-6 text-primaryColor rounded-full">
+            <Link to="/checkout" className="sm:w-[60%] 2xl:w-[90%]  bg-[#FCA311] p-4 px-6 text-primaryColor rounded-full text-center">
               PROCEED TO CHECKOUT
-            </button>
+            </Link>
           </div>
         </section>
       </section>
