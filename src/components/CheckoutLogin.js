@@ -11,16 +11,18 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
     >
       <div className="flex items-center justify-between w-[90%] mb-5 mx-auto">
         <h1 className="font-bold">SIGN IN</h1>
-        <div className="flex items-center"><X
-          className=" text-xl sm:text-3xl cursor-pointer"
-          onClick={() => setCheckoutLogin(false)}
-        />
-        <p
-          className="uppercase font-bold cursor-pointer"
-          onClick={() => setCheckoutLogin(false)}
-        >
-          close
-        </p></div>
+        <div className="flex items-center">
+          <X
+            className=" text-xl sm:text-3xl cursor-pointer"
+            onClick={() => setCheckoutLogin(false)}
+          />
+          <p
+            className="uppercase font-bold cursor-pointer"
+            onClick={() => setCheckoutLogin(false)}
+          >
+            close
+          </p>
+        </div>
       </div>
 
       <section
@@ -40,7 +42,7 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
               id="email"
               //   value={email}
               //   onChange={(e) => setEmail(e.target.value)}
-              className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+              className="border rounded-full w-full border-[#EEEEEE] h-[30px] sm:h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
             />
           </div>
 
@@ -55,7 +57,7 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
               placeholder="Password"
               //   value={password}
               //   onChange={(e) => setPassword(e.target.value)}
-              className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+              className="border rounded-full w-full border-[#EEEEEE] h-[30px] sm:h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
             />
           </div>
 
@@ -64,7 +66,7 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
               <p className="text-[red]">{message}</p>
             </div>
           )} */}
-          <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
+          <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-3 sm:p-5 mb-5 sm:mb-10">
             <button type="submit" className="uppercase text-primaryColor">
               Login
             </button>
@@ -88,13 +90,12 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
         </div>
 
         <div className="w-[80%] mx-auto border-t border-[#EEEEEE] flex items-center justify-center flex-col py-6">
-          <Person className="text-[90px]" />
+          <Person className="text-[60px] sm:text-[90px]" />
           <p className="mb-5">No account yet?</p>
-          
-            <Link to="/register" className="p-2 border-b border-[#FCA311] mb-10">
-              CREATE AN ACCOUNT
-            </Link>
-        
+
+          <Link to="/register" className="p-2 border-b border-[#FCA311] mb-10">
+            CREATE AN ACCOUNT
+          </Link>
         </div>
       </section>
     </main>
