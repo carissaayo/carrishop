@@ -96,7 +96,7 @@ const [values, setValues] = useState([50]);
               : "h-full "
           } ${
             setCheckoutLogin 
-              ? "h-screen  overflow-hidden "
+              ? "h-screen overflow-y-hidden "
               : "h-full "
           } relative`}
         >
@@ -126,11 +126,11 @@ const [values, setValues] = useState([50]);
           <div
             className={`${
               checkoutLogin
-                ? "fixed  flex w-full top-0 left-0  z-50 h-full "
+                ? "fixed  flex w-full top-0 left-0  z-50  "
                 : "hidden"
             } `}
           >
-            {/* Mobile Sidebar when onn Shop page */}
+            {/* */}
             <div
               className={` w-[10%] xs:w-[20%] sm:w-[40%] 2xl:w-[60%]  bg-[black] sm:opacity-75 transform-display duration-500 ease-linear ${
                 checkoutLogin ? "block" : "hidden "
@@ -145,7 +145,7 @@ const [values, setValues] = useState([50]);
 
           {/* <LoginComponent/> */}
           <Navbar />
-          <main className="w-full h-full  md:flex justify-between gap-4 ">
+          <main className="w-full h-full  md:flex justify-between gap-4 z-10">
             <SideNav />
             <section className="flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
               <Routes>

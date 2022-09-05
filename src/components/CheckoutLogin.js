@@ -5,7 +5,7 @@ import googleLogo from "../assets/imgs/google-icon.png"
 const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
   return (
     <main
-      className={`w-[90%] xs:w-[80%]   sm:w-[60%] 2xl:w-[40%] h-full bg-primaryColor pt-10  z-50  transform-translate duration-500 ease-in-out  ${
+      className={`w-[90%] xs:w-[80%]   sm:w-[60%] 2xl:w-[40%] h-full bg-primaryColor pt-5  z-50  transform-translate duration-500 ease-in-out  ${
         checkoutLogin ? "translate-x-0 " : "translate-x-[100%] "
       }`}
     >
@@ -24,7 +24,7 @@ const CheckoutLogin = ({ setCheckoutLogin, checkoutLogin }) => {
       </div>
 
       <section
-        className={` w-full sm:w-[95%]  pb-14  bg-primaryColor relative`}
+        className={` w-full sm:w-[95%]    bg-primaryColor relative h-full `}
       >
         <form
           className="w-[90%] mx-auto h-full mb-5"
