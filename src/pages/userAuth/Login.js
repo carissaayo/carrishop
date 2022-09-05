@@ -33,6 +33,7 @@ if(user?.fullname)window.history.back()
   }
  }, [handleSubmit]);
 
+ 
   return (
     <main className="register w-full h-full">
       <div className="w-full register-bg text-primaryColor flex flex-col items-center justify-center h-[20vh] gap-5 relative mb-20">
