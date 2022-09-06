@@ -20,8 +20,14 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("hello");
     dispatch(registerUser({email, password,fullname,phone}));
+    if(done)
+    {
+      navigate("/")
+    }
   };
+
 
   return (
     <main className="register w-full h-full">

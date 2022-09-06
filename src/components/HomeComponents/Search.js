@@ -1,13 +1,15 @@
 import { SearchIcon } from "@heroicons/react/solid";
 
-const Search = ({ mobile }) => {
+const Search = ({ mobile,user }) => {
   return (
     <section
       className={` border-2 border-[#FCA311]   items-center justify-center xs:justify-between  rounded-3xl pl-4 xs:pl-3 h-[50px] ${
+        user ? "w-[50%]  hidden lg:flex " : " "
+      }  ${
         mobile
           ? "w-[80%] xs:w-[90%] mx-auto   flex lg:hidden mb-12 xs:gap-4"
-          : "  w-2/5  hidden lg:flex lg:flex-[5] "
-      } `}
+          : "    hidden lg:flex  "
+      }`}
     >
       <input
         type="text"
