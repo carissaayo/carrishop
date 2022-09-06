@@ -1,136 +1,201 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import Footer from '../components/HomeComponents/Footer';
-import StatesSelect from '../components/StatesSelect';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Footer from "../components/HomeComponents/Footer";
+import StatesSelect from "../components/StatesSelect";
+import { useSelector } from "react-redux";
 
 const Checkout = ({ setCheckoutLogin }) => {
+  const { user } = useSelector((state) => state.user);
+  const [newAddress, setNewAddress] = useState(false)
+
   return (
     <main className="w-full h-full z-10">
       <div className="w-full flex items-center justify-center h-[20vh] border-[#F2F2F2] border-b-2  mb-20">
         <h1 className="text-3xl font-bold ">Checkout</h1>
       </div>
       <section className=" h-full sm:w-[90%] mx-auto md:mx-0 md:w-full mb-40 md:mb-20">
-        {/* Login Link */}
-        <p className="font-bold text-lg mb-10 w-[90%] mx-auto sm:w-full">
-          Returning Customer?{" "}
-          <button
-            className="text-[#FCA311] ml-2"
-            onClick={() => setCheckoutLogin(true)}
-          >
-            Login
-          </button>
-        </p>
+        {/* Login Link If not Logged in */}
+        {!user && (
+          <p className="font-bold text-lg mb-10 w-[90%] mx-auto sm:w-full">
+            Returning Customer?{" "}
+            <button
+              className="text-[#FCA311] ml-2"
+              onClick={() => setCheckoutLogin(true)}
+            >
+              Login
+            </button>
+          </p>
+        )}
 
-        <h1 className="font-bold text-2xl mb-10 w-[90%] mx-auto sm:w-full">
-          Billing Details
-        </h1>
+        {!user && (
+          <h1 className="font-bold text-2xl mb-10 w-[90%] mx-auto sm:w-full">
+            Billing Details
+          </h1>
+        )}
 
         {/* Details  and Order Con */}
         <section className="w-full flex flex-col     2xl:flex-row gap-10 mb-20">
           {/*Details  */}
           <div className="w-[90%] mx-auto sm:w-full lg:flex-1">
-            {/* Name  */}
-            <div className=" w-full    mb-10 sm:flex gap-4">
-              <div className="sm:w-[50%] 2xl:w-[45%]">
-                {" "}
-                <h1 className="mb-5">
-                  First Name
-                  <span className="text-[#FF0000] ml-2">*</span>
-                </h1>
-                <input
-                  type="text"
-                  className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                  placeholder=""
-                />
+            {/* Default Address */}
+            <section className="border border-[#EEEEEE] mb-10">
+              <div className="flex items-center h-[100px] justify-between w-full  pl-4 pr-10 border-b border-[#EEEEEE]">
+                <div className="flex gap-4 items-center ">
+                  <input
+                    type="radio"
+                    name="address"
+                    id=""
+                    value="default-address"
+                    onClick={() => setNewAddress(false)}
+                    defaultChecked
+                    className="rounded-xl w-[20px] h-[20px] ml-2 cursor-pointer checkout-radio"
+                  />
+                  <div className="checkout-custom-radio   ml-0">
+                    <p className=""></p>
+                  </div>
+
+                  <p className="text-xl text-[#FCA311] font-bold ">
+                    Default Address
+                  </p>
+                </div>
+                <button className="text-[#FCA311] font-bold uppercase">
+                  Change
+                </button>
               </div>
-              <div className="sm:w-[50%] 2xl:w-[45%]">
-                <h1 className="mb-5">
-                  Last Name
-                  <span className="text-[#FF0000] ml-2">*</span>
-                </h1>
-                <input
-                  type="text"
-                  className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                  placeholder=""
-                />
+              <div className={`${newAddress ?"hidden":" flex "} w-full py-10 flex-col  pl-6 gap-4 `}>
+                <h2 className="">Mustapha San</h2>
+                <p className="">
+                  No. 9 Okoye street, afromedia, H Close, Amuwo Odofin, Mile 2,
+                  Lagos
+                </p>
+                <p className="">+234 7082137552</p>
               </div>
-            </div>
+            </section>
 
-            {/* Phone Number */}
-            <div className="w-full mb-10">
-              {" "}
-              <h1 className="mb-5">
-                Phone Number
-                <span className="text-[#FF0000] ml-2">*</span>
-              </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
+            {/* New Address */}
+            <section className="border border-[#EEEEEE] mb-10 p-4 py-6">
+              <div className="flex gap-4 items-center ">
+                <input
+                  type="radio"
+                  name="address"
+                  value="new-address"
+                  onClick={() => setNewAddress(true)}
+                 
+                  className="rounded-xl w-[20px] h-[20px] ml-2 cursor-pointer checkout-radio"
+                />
+                <div className="checkout-custom-radio   ">
+                  <p className=""></p>
+                </div>
 
-            {/* Email Address */}
-            <div className="w-full mb-10">
-              {" "}
-              <h1 className="mb-5">
-                Email Address
-                <span className="text-[#FF0000] ml-2">*</span>
-              </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
+                <p className="text-xl text-[#FCA311] font-bold">New Address</p>
+              </div>
+            </section>
+            {newAddress && (
+              <>
+                {/* Name  */}
+                <div className=" w-full    mb-10 sm:flex gap-4">
+                  <div className="sm:w-[50%] 2xl:w-[45%]">
+                    {" "}
+                    <h1 className="mb-5">
+                      First Name
+                      <span className="text-[#FF0000] ml-2">*</span>
+                    </h1>
+                    <input
+                      type="text"
+                      className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                      placeholder=""
+                    />
+                  </div>
+                  <div className="sm:w-[50%] 2xl:w-[45%]">
+                    <h1 className="mb-5">
+                      Last Name
+                      <span className="text-[#FF0000] ml-2">*</span>
+                    </h1>
+                    <input
+                      type="text"
+                      className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                      placeholder=""
+                    />
+                  </div>
+                </div>
 
-            {/* State */}
-            <div className="w-full mb-10">
-              <h1 className="mb-5">
-                State <span className="text-[#FF0000] ml-2">*</span>
-              </h1>
+                {/* Phone Number */}
+                <div className="w-full mb-10">
+                  {" "}
+                  <h1 className="mb-5">
+                    Phone Number
+                    <span className="text-[#FF0000] ml-2">*</span>
+                  </h1>
+                  <input
+                    type="text"
+                    className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                    placeholder=""
+                  />
+                </div>
 
-              <StatesSelect />
-            </div>
+                {/* Email Address */}
+                <div className="w-full mb-10">
+                  {" "}
+                  <h1 className="mb-5">
+                    Email Address
+                    <span className="text-[#FF0000] ml-2">*</span>
+                  </h1>
+                  <input
+                    type="text"
+                    className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                    placeholder=""
+                  />
+                </div>
 
-            {/* City */}
-            <div className="w-full mb-10">
-              {" "}
-              <h1 className="mb-5">
-                City
-                <span className="text-[#FF0000] ml-2">*</span>
-              </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
+                {/* State */}
+                <div className="w-full mb-10">
+                  <h1 className="mb-5">
+                    State <span className="text-[#FF0000] ml-2">*</span>
+                  </h1>
 
-            {/* Street Address */}
-            <div className="w-full mb-10">
-              {" "}
-              <h1 className="mb-5">
-                Street Address
-                <span className="text-[#FF0000] ml-2">*</span>
-              </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
+                  <StatesSelect />
+                </div>
 
-            {/* Create An Account */}
-            <div className="flex gap-4 items-center mb-10">
-              <input
-                type="checkbox"
-                name=""
-                id=""
-                className="w-6 h-6 cursor-pointer"
-              />
-              <p className="">Create an account</p>
-            </div>
+                {/* City */}
+                <div className="w-full mb-10">
+                  {" "}
+                  <h1 className="mb-5">
+                    City
+                    <span className="text-[#FF0000] ml-2">*</span>
+                  </h1>
+                  <input
+                    type="text"
+                    className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                    placeholder=""
+                  />
+                </div>
+
+                {/* Street Address */}
+                <div className="w-full mb-10">
+                  {" "}
+                  <h1 className="mb-5">
+                    Street Address
+                    <span className="text-[#FF0000] ml-2">*</span>
+                  </h1>
+                  <input
+                    type="text"
+                    className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                    placeholder=""
+                  />
+                </div>
+
+                {/* Create An Account */}
+                <div className="flex gap-4 items-center mb-10">
+                  <input
+                    type="checkbox"
+                    name=""
+                    id=""
+                    className="w-6 h-6 cursor-pointer"
+                  />
+                  <p className="">Create an account</p>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Order */}
@@ -259,4 +324,4 @@ const Checkout = ({ setCheckoutLogin }) => {
   );
 };
 
-export default Checkout
+export default Checkout;

@@ -332,6 +332,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 margin-left: 8px;
+cursor: pointer;
 
 }
 .checkout-radio:checked ~ .checkout-custom-radio  p{

@@ -52,11 +52,7 @@ let info = [];
 //      }
 //   }, [userId]);
 
-if(error) return (
-  <div className="flex h-screen w-full items-center justify-center">
-    <h1 >Error</h1>
-  </div>
-);
+
 
   return (
     <main className="w-full h-full pt-6">
