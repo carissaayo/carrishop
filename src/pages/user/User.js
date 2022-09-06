@@ -44,13 +44,13 @@ let info = [];
   }
   };
 
-  useEffect(() => {
-     if(user){
-console.log("lo");
+//   useEffect(() => {
+//      if(user){
+// console.log("lo");
 
-         loadUserInfo()
-     }
-  }, [userId]);
+//          loadUserInfo()
+//      }
+//   }, [userId]);
 
 if(error) return (
   <div className="flex h-screen w-full items-center justify-center">
@@ -69,7 +69,7 @@ if(error) return (
         {/* Details */}
         <button className="flex items-center py-4 border-b-2 border-[#FCA311] gap-2">
           <PersonFill className="text-[#FCA311]" />
-          <span className="text-lg font-bold text-[#FCA311]">
+          <span className="sm:text-lg font-bold text-[#FCA311]">
             Profile Details
           </span>
         </button>
@@ -77,19 +77,19 @@ if(error) return (
         {/* Change Password */}
         <button className="flex items-center py-4   gap-2">
           <PersonFill className="" />
-          <span className="text-lg font-bold ">Change Password</span>
+          <span className="sm:text-lg font-bold ">Change Password</span>
         </button>
 
         {/* Address Book */}
         <button className="flex items-center py-4   gap-2">
           <PersonLinesFill className="" />
-          <span className="text-lg font-bold ">Address Book</span>
+          <span className="sm:text-lg font-bold ">Address Book</span>
         </button>
 
         {/* Verification */}
-        <button className="flex items-center py-4   gap-2">
+        <button className=" hidden md:flex items-center py-4   gap-2">
           <CalendarCheck className="" />
-          <span className="text-lg font-bold ">Verification</span>
+          <span className="sm:text-lg font-bold ">Verification</span>
         </button>
       </section>
 

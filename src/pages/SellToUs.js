@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { CloudArrowDown } from 'react-bootstrap-icons';
 import Footer from '../components/HomeComponents/Footer';
 
-
-import sell1 from "../assets/imgs/sell1.png";
-import sell2 from "../assets/imgs/sell2.png";
-import sell3 from "../assets/imgs/sell3.png";
-import sell4 from "../assets/imgs/sell4.png";
 import appointment from "../assets/imgs/appointment.png";
 import wallet from "../assets/imgs/wallet.png";
 import verify from "../assets/imgs/verify.png";
@@ -55,8 +50,6 @@ const SellToUs = () => {
       // create a preview as a side effect, whenever selected file is changed
       useEffect(() => {
         if (!image1||!image2||!image3) {
-          // setPreview(false);
-          console.log(preview1);
           return;
         }
 
@@ -83,45 +76,14 @@ const SellToUs = () => {
   return (
     <main className="h-full w-full">
       {/* Banner */}
-      <section className="w-full  h-full bg-[#F5F5F5] mb-20 flex  flex-col gap-0 md-gap-5 lg:flex-row items-start md:items-center lg:items-start  justify-between  xl:h-[60vh] 2xl:h-[70vh]  relative ">
-        <div className="flex-[2] flex items-start pt-10 md:pt-0 md:items-center h-full xl:h-[70%]  justify-center words order-2 lg:order-1">
-          <div className=" w-[90%] lg:w-[80%] px-2 xl:px-6 flex flex-col gap-8 mb-20 lg:mb-0">
-            <h1 className=" text-2xl lg:text-4xl ">
-              SELLING JUST GOT <span className="text-[#FCA311]">EASIER!</span>
-            </h1>
-            <p className=" text-lg lg:text-xl">
-              Sell your fairly used gadgets and receive payments immediately
-            </p>
-            <Link
-              to="/appointment/book-appointment"
-              className="bg-secondaryColor w-[max-content] p-4 rounded-3xl text-lg xl:text-xl"
-            >
-              Book An Appointment
-            </Link>
-          </div>
-        </div>
-        {/* Images Section */}
-        <div className=" pt-10  flex-[2] 2xl:flex-[3] flex  sm:w-[80%] md:w-full items-center lg:items-start order-1 lg:order-2  flex-wrap sm:flex-nowrap mb-10 gap-8 md:gap-0 md:mb-0">
-          <img
-            src={sell1}
-            alt=""
-            className="w-[35%] xs:w-[40%] sm:w-[150px]  lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 one"
-          />
-          <img
-            src={sell2}
-            alt=""
-            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px]  rotate-[30deg] md:rotate-0 z-20 three"
-          />
-          <img
-            src={sell3}
-            alt=""
-            className="w-[35%] xs:w-[40%] sm:w-[150px] lg:w-[110px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0 two z-10"
-          />
-          <img
-            src={sell4}
-            alt=""
-            className="w-[35%] xs:w-[40%] sm:w-[120px] lg:w-[100px] xl:w-[130px] 2xl:w-[auto] 2xl:max-w-[200px] h-[200px] md:h-[300px] lg:h-[350px] xl:h-[400px] 2xl:h-[500px] rotate-[30deg] md:rotate-0   four"
-          />
+      <section className="w-full   bg-[#F5F5F5] mb-20 flex  items-center   md:pl-10 lg:pl-20  h-[60vh]  radial ">
+        <div className=" mx-auto  md:mx-0 w-[90%] xs:w-[80%]  md:w-[70%] lg:w-[50%] px-2 xl:px-6 flex flex-col gap-8 ">
+          <h1 className="text-3xl xs:text-[40px] lg:text-[50px] leading-[40px] md:leading-[60px] ">
+            SELLING JUST GOT <span className="text-[#FCA311]">EASIER!</span>
+          </h1>
+          <p className="text-lg sm:text-xl md:text-[24px] font-bold">
+            Sell your fairly used gadgets and receive payments immediately
+          </p>
         </div>
       </section>
 
@@ -367,7 +329,9 @@ const SellToUs = () => {
           </label>
           <div className="w-full flex gap-10 pt-5">
             {preview1 && <img src={preview1} className="w-20 h-10 block" />}
-            {preview2 && <img src={preview2} className="w-20 h-10 block" />}{" "}
+            {preview2 && (
+              <img src={preview2} className="w-20 h-10 block" />
+            )}{" "}
             {preview3 && <img src={preview3} className="w-20 h-10 block" />}
           </div>
         </div>
@@ -541,6 +505,12 @@ const SellToUs = () => {
             />
             <p className="">Is this price negotiable?</p>
           </div>
+        </div>
+
+        <div className="w-[95%] sm:w-[80%]  mx-auto  px-8 mb-10 flex items-center justify-center">
+          <button className="uppercase rounded-full p-4 bg-[#FCA311] w-[90%] sm:w-[70%] text-center text-primaryColor ">
+            Sell now
+          </button>
         </div>
       </main>
 

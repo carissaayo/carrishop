@@ -130,6 +130,16 @@ background-color: rgba(0, 0, 0, 0.394);
 
 }
 
+
+.radial{
+    background: radial-gradient(circle at right top, #f9f9f9 0%, #FCA311 12%, #F5F5F5 30%);
+}
+
+@media screen and (max-width:840px) {
+  .radial{
+    background:#F5F5F5 ;
+  }
+}
 @media screen and (max-width:1098px){
   .grid{
   grid-template-columns: 1fr  ;
