@@ -12,9 +12,6 @@ const [openAvatar, setOpenAvatar] = useState(false)
     (state) => state.user
   );
   const navigate = useNavigate();
-  const handleSignOut=()=>{
-    navigate("/logout");
-  }
  
    const [scrolled, setScrolled] = useState(false);
 
@@ -40,8 +37,8 @@ const [openAvatar, setOpenAvatar] = useState(false)
   return (
     <header
       className={`${
-        scrolled ? " top-0 transition-[all .2s linear] z-40 " : ""
-      } sticky w-full h-[90px]  flex bg-primaryColor md:justify-between items-center  px-2 sm:px-10   gap-4 sm:gap-8 md:gap-4 2xl:gap-10 z-30 `}
+        scrolled ? " top-0 left-0 transition-[all .2s linear] z-40 " : ""
+      } sticky w-full h-[90px]  flex bg-primaryColor md:justify-between items-center  px-2 sm:px-10   gap-4 sm:gap-8 md:gap-4 2xl:gap-10  `}
     >
       <div
         className={` flex md:hidden flex-col gap-2  items-center ${

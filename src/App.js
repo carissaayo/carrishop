@@ -92,14 +92,14 @@ const [values, setValues] = useState([50]);
         <main
           className={`${
             sideBar && window.innerWidth < 840
-              ? "h-screen md:h-full overflow-hidden "
+              ? "h-screen md:h-full overflow-y-hidden "
               : "h-full "
           } ${
-            setCheckoutLogin 
-              ? "h-screen overflow-y-hidden "
-              : "h-full "
+            checkoutLogin ? "h-screen overflow-y-hidden " : "h-full "
           } relative`}
         >
+         
+          <Navbar />
           <div
             className={`${
               sideBar
@@ -126,7 +126,7 @@ const [values, setValues] = useState([50]);
           <div
             className={`${
               checkoutLogin
-                ? "fixed  flex w-full top-0 left-0  z-50  "
+                ? "fixed flex w-full top-0 left-0  z-50  "
                 : "hidden"
             } `}
           >
@@ -143,8 +143,6 @@ const [values, setValues] = useState([50]);
             />
           </div>
 
-          {/* <LoginComponent/> */}
-          <Navbar />
           <main className="w-full h-full  md:flex justify-between gap-4 z-10">
             <SideNav />
             <section className="flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
