@@ -396,7 +396,7 @@ border: 0.5px solid #242424;
 
 @media screen and (max-width:400px) {
   .slide{
-  width: 60% !important;
+  width: 55% !important;
 }
 
 }
