@@ -1,12 +1,24 @@
 import { useNavigate, Link ,useParams} from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUserInfo,loading,getUser, updateUserInfo } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import { CalendarCheck, PersonFill, PersonLinesFill } from "react-bootstrap-icons";
+
+import { CalendarCheck, PencilFill, PersonFill, PersonLinesFill,  ShieldLockFill, } from "react-bootstrap-icons";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+
+// components
 import Footer from "../../components/HomeComponents/Footer";
+import AddressItem from "../../components/AddressItem";
+import ChangePassword from "../../components/ChangePassword";
+import AddressCon from "../../components/AddressCon";
 
 const User = () => {
+  const [current, setCurrent] = useState("profile")
   const navigate = useNavigate();
   const {userId} = useParams()
 
@@ -61,36 +73,80 @@ let info = [];
       </div>
 
       {/* Account Headers */}
-      <section className="w-full flex border-b border-[#E8E9EB] items-center justify-between mb-10">
-        {/* Details */}
-        <button className="flex items-center py-4 border-b-2 border-[#FCA311] gap-2">
-          <PersonFill className="text-[#FCA311]" />
-          <span className="sm:text-lg font-bold text-[#FCA311]">
-            Profile Details
-          </span>
-        </button>
+      <section className="  border-b border-[#E8E9EB] mb-10 w-full flex justify-between">
+        <Swiper
+          spaceBetween={10}
+          slidesPerView={4}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          className="hi"
+        >
+          {/* Details */}
+          {/* <SwiperSlide> */}
+          <button
+            className={`flex items-center py-4  gap-2 ${
+              current === "profile"
+                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                : ""
+            }`}
+            onClick={() => setCurrent("profile")}
+          >
+            <PersonFill className="" />
+            <span className="sm:text-lg font-bold ">Profile Details</span>
+          </button>
+          {/* </SwiperSlide> */}
+          {/* Change Password */}
+          {/* <SwiperSlide> */}
+          <button
+            className={`flex items-center py-4  gap-2 ${
+              current === "change-password"
+                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                : ""
+            }`}
+            onClick={() => setCurrent("change-password")}
+          >
+            <ShieldLockFill className="" />
+            <span className="sm:text-lg font-bold ">Change Password</span>
+          </button>
+          {/* </SwiperSlide> */}
 
-        {/* Change Password */}
-        <button className="flex items-center py-4   gap-2">
-          <PersonFill className="" />
-          <span className="sm:text-lg font-bold ">Change Password</span>
-        </button>
-
-        {/* Address Book */}
-        <button className="flex items-center py-4   gap-2">
-          <PersonLinesFill className="" />
-          <span className="sm:text-lg font-bold ">Address Book</span>
-        </button>
-
-        {/* Verification */}
-        <button className=" hidden md:flex items-center py-4   gap-2">
-          <CalendarCheck className="" />
-          <span className="sm:text-lg font-bold ">Verification</span>
-        </button>
+          {/* Address Book */}
+          {/* <SwiperSlide> */}
+          <button
+            className={`flex items-center py-4  gap-2 ${
+              current === "address"
+                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                : ""
+            }`}
+            onClick={() => setCurrent("address")}
+          >
+            <PersonLinesFill className="" />
+            <span className="sm:text-lg font-bold ">Address Book</span>
+          </button>
+          {/* </SwiperSlide> */}
+          {/* Verification */}
+          {/* <SwiperSlide> */}
+          <button
+            className={`hidden md:flex items-center py-4  gap-2 ${
+              current === "verification"
+                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                : ""
+            }`}
+            onClick={() => setCurrent("verification")}
+          >
+            <CalendarCheck className="" />
+            <span className="sm:text-lg font-bold ">Verification</span>
+          </button>
+          {/* </SwiperSlide> */}
+        </Swiper>
       </section>
 
       {/* Profile Details */}
-      <section className="w-[80%] mx-auto md:mx-0 md:w-full mb-20">
+      <section
+        className={`${
+          current === "profile" ? "block " : "hidden"
+        } w-[80%] mx-auto md:mx-0 md:w-full mb-20`}
+      >
         {/* Profile Picture */}
         <div className="w-full mb-10">
           <h1 className="font-bold text-lg">Profile Picture</h1>
@@ -177,6 +233,127 @@ let info = [];
         </section>
       </section>
 
+      {/* Change Password */}
+      <ChangePassword current={current} />
+
+      {/* Address Con */}
+      <AddressCon current={current} />
+
+      {/* Verification */}
+      <section
+        className={`${
+          current === "verification" ? "block " : "hidden"
+        } w-[80%] mx-auto md:mx-0 md:w-full mb-20`}
+      >
+        <section className="w-full  ">
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Date of Birth*/}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-5 md:mb-0">
+              <h1 className="mb-5">Date of Birth</h1>
+              <input
+                type="date"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+
+            {/* User’s Profile Picture */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">User’s Profile Picture</h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Id Type*/}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Id Type</h1>
+              <select
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              >
+                <option value="" disabled>
+                  Select Id Type
+                </option>
+
+                <option value="NIN">NIN</option>
+                <option value="Driver's License">Driver's License</option>
+              </select>
+            </div>
+
+            {/* Upload id image  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Upload id image</h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Next of Kin Full Name */}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Next of Kin Full Name</h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+
+            {/* Relationship with next of kin  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Relationship with next of kin</h1>
+              <select
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              >
+                <option value="" disabled>
+                  Choose Relationship
+                </option>
+
+                <option value="Parent">Parent</option>
+                <option value="Child">Child</option>
+                <option value="Sibling">Sibling</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Next of Kin address  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Next of Kin address </h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+
+            {/* Next of Kin phone number   */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Next of Kin phone number </h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              />
+            </div>
+          </div>
+
+          <div className="w-full flex items-center justify-center mb-20">
+            <button className="bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor">
+              SAVE
+            </button>
+          </div>
+        </section>
+      </section>
       <Footer />
     </main>
   );

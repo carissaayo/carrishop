@@ -95,7 +95,7 @@ const SideNav = () => {
           </NavLink>
         )}
         {user && (
-          <NavLink to="/profile">
+          <NavLink to="/users/name">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
                 <Person

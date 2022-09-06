@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { CookiesProvider, useCookies } from "react-cookie";
 import { ChevronDoubleUp } from "react-bootstrap-icons";
 import { getUser, loading } from "./redux/reducers/userSlice";
-import "./App.css";
 
 // pages
 import AccountVerification from "./pages/userAuth/AccountVerification";
@@ -43,6 +42,8 @@ import ShopSidebar from "./components/ShopSidebar";
 import About from "./pages/About";
 import Checkout from "./pages/Checkout";
 import CheckoutLogin from "./components/CheckoutLogin";
+
+import "./App.css";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
