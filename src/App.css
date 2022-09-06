@@ -371,3 +371,32 @@ border: 0.5px solid #242424;
 }
 
 /* About page Ends */
+
+
+.slide{
+  width: 29% !important;
+}
+.slider{
+  width: 95% !important;
+}
+
+@media screen and (max-width:840px) {
+  .slide{
+  width: 40% !important;
+}
+
+}
+
+@media screen and (max-width:470px) {
+  .slide{
+  width: 50% !important;
+}
+
+}
+
+@media screen and (max-width:400px) {
+  .slide{
+  width: 60% !important;
+}
+
+}

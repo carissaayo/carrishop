@@ -37,7 +37,7 @@ const AddressCon = ({current}) => {
         <AddressItem />
       </section>
 
-      <div className=" w-[90%] md:w-full md:flex-1 mb-10 xl:mb-0  flex xl:block justify-end ">
+      <div className=" w-[90%] md:w-full md:flex-1 mb-10 xl:mb-0  flex xl:block justify-end order-1 xl:order-2">
         <button className="w-[80%] xs:w-[50%] sm:w-[30%] xl:w-[90%] bg-[#FCA311] p-4 px-6 text-primaryColor rounded-full text-center ">
           NEW ADDRESS
         </button>

@@ -67,77 +67,224 @@ let info = [];
 
 
   return (
-    <main className="w-full h-full pt-6">
+    <main className="w-full h-full pt-6 ">
       <div className="flex w-full h-[20vh] justify-center items-center ">
         <h1 className="font-bold text-3xl">My Account</h1>
       </div>
 
-      {/* Account Headers */}
-      <section className="  border-b border-[#E8E9EB] mb-10 w-full flex justify-between">
+      {/* Account Headers Desktop*/}
+      <section className=" hidden lg:flex border-b border-[#E8E9EB] mb-10   justify-between w-full">
+        {/* Details */}
+
+        <button
+          className={`flex items-center py-4  gap-2 ${
+            current === "profile"
+              ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+              : ""
+          }`}
+          onClick={() => setCurrent("profile")}
+        >
+          <PersonFill className="" />
+          <span className="text-base lg:text-lg font-bold ">
+            Profile Details
+          </span>
+        </button>
+
+        {/* Change Password */}
+
+        <button
+          className={`flex items-center py-4  gap-2 ${
+            current === "change-password"
+              ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+              : ""
+          }`}
+          onClick={() => setCurrent("change-password")}
+        >
+          <ShieldLockFill className="" />
+          <span className="text-base lg:text-lg font-bold ">
+            Change Password
+          </span>
+        </button>
+
+        {/* Address Book */}
+
+        <button
+          className={`flex items-center py-4  gap-2 ${
+            current === "address"
+              ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+              : ""
+          }`}
+          onClick={() => setCurrent("address")}
+        >
+          <PersonLinesFill className="" />
+          <span className="text-base lg:text-lg font-bold ">Address Book</span>
+        </button>
+
+        {/* Verification */}
+        <button
+          className={`hidden md:flex items-center py-4  gap-2 ${
+            current === "verification"
+              ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+              : ""
+          }`}
+          onClick={() => setCurrent("verification")}
+        >
+          <CalendarCheck className="" />
+          <span className="text-base lg:text-lg font-bold ">Verification</span>
+        </button>
+      </section>
+
+      {/* Account Headers Mobile till 1098px*/}
+      <section className=" hidden border-b border-[#E8E9EB] mb-10  md:flex lg:hidden justify-between max-w-[900px]">
         <Swiper
-          spaceBetween={10}
-          slidesPerView={4}
+          spaceBetween={15}
+          slidesPerView={3}
           onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => console.log(swiper)}
-          className="hi"
+          className="slider"
         >
           {/* Details */}
-          {/* <SwiperSlide> */}
-          <button
-            className={`flex items-center py-4  gap-2 ${
-              current === "profile"
-                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
-                : ""
-            }`}
-            onClick={() => setCurrent("profile")}
-          >
-            <PersonFill className="" />
-            <span className="sm:text-lg font-bold ">Profile Details</span>
-          </button>
-          {/* </SwiperSlide> */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "profile"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("profile")}
+            >
+              <PersonFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Profile Details
+              </span>
+            </button>
+          </SwiperSlide>
           {/* Change Password */}
-          {/* <SwiperSlide> */}
-          <button
-            className={`flex items-center py-4  gap-2 ${
-              current === "change-password"
-                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
-                : ""
-            }`}
-            onClick={() => setCurrent("change-password")}
-          >
-            <ShieldLockFill className="" />
-            <span className="sm:text-lg font-bold ">Change Password</span>
-          </button>
-          {/* </SwiperSlide> */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "change-password"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("change-password")}
+            >
+              <ShieldLockFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Change Password
+              </span>
+            </button>
+          </SwiperSlide>
 
           {/* Address Book */}
-          {/* <SwiperSlide> */}
-          <button
-            className={`flex items-center py-4  gap-2 ${
-              current === "address"
-                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
-                : ""
-            }`}
-            onClick={() => setCurrent("address")}
-          >
-            <PersonLinesFill className="" />
-            <span className="sm:text-lg font-bold ">Address Book</span>
-          </button>
-          {/* </SwiperSlide> */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "address"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("address")}
+            >
+              <PersonLinesFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Address Book
+              </span>
+            </button>
+          </SwiperSlide>
           {/* Verification */}
-          {/* <SwiperSlide> */}
-          <button
-            className={`hidden md:flex items-center py-4  gap-2 ${
-              current === "verification"
-                ? "border-b-2 border-[#FCA311] text-[#FCA311]"
-                : ""
-            }`}
-            onClick={() => setCurrent("verification")}
-          >
-            <CalendarCheck className="" />
-            <span className="sm:text-lg font-bold ">Verification</span>
-          </button>
-          {/* </SwiperSlide> */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "verification"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("verification")}
+            >
+              <CalendarCheck className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Verification
+              </span>
+            </button>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+
+      {/* Account Headers Mobile till 840px*/}
+      <section className="md:hidden  border-b border-[#E8E9EB] mb-10  flex justify-between max-w-[900px]">
+        <Swiper
+          spaceBetween={25}
+          slidesPerView={2}
+          onSlideChange={() => console.log("slide change")}
+          onSwiper={(swiper) => console.log(swiper)}
+          className="slider"
+        >
+          {/* Details */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "profile"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("profile")}
+            >
+              <PersonFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Profile Details
+              </span>
+            </button>
+          </SwiperSlide>
+          {/* Change Password */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "change-password"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("change-password")}
+            >
+              <ShieldLockFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Change Password
+              </span>
+            </button>
+          </SwiperSlide>
+
+          {/* Address Book */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "address"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("address")}
+            >
+              <PersonLinesFill className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Address Book
+              </span>
+            </button>
+          </SwiperSlide>
+          {/* Verification */}
+          <SwiperSlide className="slide">
+            <button
+              className={`flex items-center py-4  gap-2 ${
+                current === "verification"
+                  ? "border-b-2 border-[#FCA311] text-[#FCA311]"
+                  : ""
+              }`}
+              onClick={() => setCurrent("verification")}
+            >
+              <CalendarCheck className="" />
+              <span className="text-base lg:text-lg font-bold ">
+                Verification
+              </span>
+            </button>
+          </SwiperSlide>
         </Swiper>
       </section>
 
