@@ -24,19 +24,7 @@ const Contact = () => {
             Go through our frequently asked questions to find answers to
             questions you might have
           </p>
-          {/* <div className="bg-primaryColor w-full flex items-center justify-center h-[30vh] gap-10 flex-col">
-            <p className="text-[black] xm:text-xl sm:text-2xl font-bold">
-              What would you like to know?
-            </p>
-            <div className="border border-[#eeeeee] w-[90%] rounded-md flex h-[50px] items-center px-4 gap-4">
-              <Search className="hidden sm:block text-xl text-[#c4c4c4]" />
-              <input
-                type="text"
-                className="w-[100%] h-[80%] outline-none text-black "
-                placeholder="e.g How can I sell my device on Fairshop?"
-              />
-            </div>
-          </div> */}
+         
         </div>
       </section>
 
@@ -53,16 +41,14 @@ const Contact = () => {
               : "border-2 border-[#EEEEEE] border-b-0"
           } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
         >
-          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+          <h2
+            className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6 cursor-pointer"
+            onClick={() => setOpenContent1(!openContent1)}
+          >
             How does it work?
-            <span
-              className="relative"
-              onClick={() => setOpenContent1(!openContent1)}
-            >
+            <span className="relative">
               <CaretDownFill
-                className={`${
-                  openContent1 && "rotate-180"
-                }  text-xl icon cursor-pointer`}
+                className={`${openContent1 && "rotate-180"}  text-xl icon `}
               />
             </span>
           </h2>
@@ -97,16 +83,14 @@ const Contact = () => {
               : "border-2 border-[#EEEEEE] border-b-0"
           } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
         >
-          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+          <h2
+            className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  cursor-pointer"
+            onClick={() => setOpenContent2(!openContent2)}
+          >
             How does my account settings work?
-            <span
-              className="relative"
-              onClick={() => setOpenContent2(!openContent2)}
-            >
+            <span className="relative">
               <CaretDownFill
-                className={`${
-                  openContent2 && "rotate-180"
-                }  text-xl icon cursor-pointer`}
+                className={`${openContent2 && "rotate-180"}  text-xl icon `}
               />
             </span>
           </h2>
@@ -141,12 +125,12 @@ const Contact = () => {
               : "border-2 border-[#EEEEEE] border-b-0"
           } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
         >
-          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+          <h2
+            className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  cursor-pointer"
+            onClick={() => setOpenContent3(!openContent3)}
+          >
             How can i sell my device?
-            <span
-              className="relative"
-              onClick={() => setOpenContent3(!openContent3)}
-            >
+            <span className="relative">
               <CaretDownFill
                 className={`${
                   openContent3 && "rotate-180"
@@ -185,16 +169,14 @@ const Contact = () => {
               : "border-2 border-[#EEEEEE] border-b-0"
           } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
         >
-          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+          <h2
+            className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6 cursor-pointer "
+            onClick={() => setOpenContent4(!openContent4)}
+          >
             Can i visit your office without an appointment?
-            <span
-              className="relative"
-              onClick={() => setOpenContent4(!openContent4)}
-            >
+            <span className="relative">
               <CaretDownFill
-                className={`${
-                  openContent4 && "rotate-180"
-                }  text-xl icon cursor-pointer`}
+                className={`${openContent4 && "rotate-180"}  text-xl icon `}
               />
             </span>
           </h2>
@@ -229,12 +211,12 @@ const Contact = () => {
               : "border-2 border-[#EEEEEE] border-b-0"
           } w-[90%] md:w-full   mb-10 mx-[auto] md:mx-0`}
         >
-          <h2 className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6  ">
+          <h2
+            className="font-bold mb-5 text-sm sm:text-base md:text-lg flex w-full justify-between faq-header border-b-2 border-[#EEEEEE] p-6 cursor-pointer "
+            onClick={() => setOpenContent5(!openContent5)}
+          >
             How do i change my default shipping address?
-            <span
-              className="relative"
-              onClick={() => setOpenContent5(!openContent5)}
-            >
+            <span className="relative">
               <CaretDownFill
                 className={`${
                   openContent5 && "rotate-180"
@@ -267,7 +249,8 @@ const Contact = () => {
       </section>
 
       {/* Customer Care */}
-      <section className="flex w-full h-full 2xl:h-[70vh] items-center flex-col 2xl:flex-row justify-center bg-[#F5F5F5] mb-40 sm:mb-20 gap-8 pl-4 xs:px-8 py-8 2xl-py-0">
+      <section 
+      className="flex w-full h-full 2xl:h-[70vh] items-center flex-col 2xl:flex-row justify-center bg-[#F5F5F5] mb-40 sm:mb-20 gap-8 pl-4 xs:px-8 py-8 2xl-py-0">
         <div className=" 2xl:flex-1 order-[2] md:order-1">
           <img
             src={customerCare}
