@@ -381,7 +381,7 @@ console.log("lo");
           <h1 className="font-bold text-lg mb-3">Profile Picture</h1>
           {userInfo?.profile_picture && (
             <img
-              src={userInfo.profile_picture}
+              src={userInfo?.profile_picture}
               alt=""
               className="rounded-full h-[200px] w-[200px]"
             />
