@@ -44,6 +44,7 @@ import ShopSidebar from "./components/ShopSidebar";
 import CheckoutLogin from "./components/CheckoutLogin";
 
 import "./App.css";
+import HistoryItem from "./pages/HistoryItem";
 
 function App() {
   const [cookies, setCookie] = useCookies(["cookie-name"]);
@@ -161,7 +162,7 @@ const [values, setValues] = useState([50]);
                   <Route path="contact" element={<Contact />} />
 
                   <Route path="history" element={<History />} />
-
+                  <Route path="history/item" element={<HistoryItem />} />
                   <Route path="sell-to-us" element={<SellToUs />} />
                   <Route path="cart" element={<Cart />} />
                   <Route
