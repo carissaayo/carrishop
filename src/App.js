@@ -26,6 +26,12 @@ import SingleProduct from "./pages/gadget/SingleProduct";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import Error from "./pages/Error";
 import Cart from "./pages/Cart";
+import History from "./pages/History";
+import About from "./pages/About";
+import Checkout from "./pages/Checkout";
+import SellToUs from "./pages/SellToUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Shop from "./pages/Shop";
 
 
 
@@ -34,13 +40,7 @@ import Cart from "./pages/Cart";
 import Loading from "./components/Loading";
 import SideNav from "./components/SideNav";
 import Navbar from "./components/HomeComponents/Navbar";
-import SellToUs from "./pages/SellToUs";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import LoginComponent from "./components/Login";
-import Shop from "./pages/Shop";
 import ShopSidebar from "./components/ShopSidebar";
-import About from "./pages/About";
-import Checkout from "./pages/Checkout";
 import CheckoutLogin from "./components/CheckoutLogin";
 
 import "./App.css";
@@ -74,7 +74,7 @@ const [values, setValues] = useState([50]);
  
   // Setting Cookies
   useEffect(() => {
-    user && setCookie("access_token", user?.access_token);
+    user?.access_token && setCookie("access_token", user?.access_token);
     let userToken = localStorage.getItem("user");
     userToken = userToken ? JSON.parse(userToken) : {};
 
@@ -99,7 +99,6 @@ const [values, setValues] = useState([50]);
             checkoutLogin ? "h-screen overflow-y-hidden " : "h-full "
           } relative`}
         >
-         
           <Navbar />
           <div
             className={`${
@@ -160,6 +159,9 @@ const [values, setValues] = useState([50]);
                     }
                   />
                   <Route path="contact" element={<Contact />} />
+
+                  <Route path="history" element={<History />} />
+
                   <Route path="sell-to-us" element={<SellToUs />} />
                   <Route path="cart" element={<Cart />} />
                   <Route

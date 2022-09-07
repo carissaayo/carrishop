@@ -36,7 +36,7 @@ const SideNav = () => {
           )}
         </NavLink>
 
-        {user && (
+        {user?.fullname && (
           <NavLink to="/history">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
@@ -51,7 +51,7 @@ const SideNav = () => {
           </NavLink>
         )}
 
-        {user && (
+        {user?.fullname && (
           <NavLink to="/affiliates">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
@@ -65,7 +65,7 @@ const SideNav = () => {
             )}
           </NavLink>
         )}
-        {!user && (
+        {!user?.fullname && (
           <NavLink to="/about-us" className=" ">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center ">
@@ -80,7 +80,7 @@ const SideNav = () => {
           </NavLink>
         )}
 
-        {!user && (
+        {!user?.fullname && (
           <NavLink to="/contact">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
@@ -94,7 +94,7 @@ const SideNav = () => {
             )}
           </NavLink>
         )}
-        {user && (
+        {user?.fullname && (
           <NavLink to="/users/name">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">

@@ -16,9 +16,6 @@ const [openAvatar, setOpenAvatar] = useState(false)
    const [scrolled, setScrolled] = useState(false);
 
 
-   const openUser= ()=>{
-
-   }
    useEffect(() => {
      const onScroll = () => {
        if (window.scrollY > 120) {
@@ -38,11 +35,11 @@ const [openAvatar, setOpenAvatar] = useState(false)
     <header
       className={`${
         scrolled ? " top-0 left-0 transition-[all .2s linear] z-40 " : ""
-      } sticky w-full h-[90px]  flex bg-primaryColor md:justify-between items-center  px-2 sm:px-10   gap-4 sm:gap-8 md:gap-4 2xl:gap-10  `}
+      } fixed md:sticky w-full h-[90px]  flex bg-primaryColor md:justify-between items-center  px-2 sm:px-10   gap-4 sm:gap-8 md:gap-4 2xl:gap-10  `}
     >
       <div
         className={` flex md:hidden flex-col gap-2  items-center ${
-          user ? "" : ""
+          user?.name ? "" : ""
         }`}
       >
         <MenuIcon className="w-10 " />
@@ -51,16 +48,18 @@ const [openAvatar, setOpenAvatar] = useState(false)
       <Link
         to="/"
         className={`${
-          user ? "" : "flex-[2] sm:flex-[3] md:flex-[5] lg:flex-[3]"
+          user?.fullname ? "" : "w-[max-content]  md:flex-[5] lg:flex-[3]"
         } font-bold text-[32px]  `}
       >
         <img src={logo} alt="Fairshop logo" className="w-[200px]" />
       </Link>
 
-      <Search user={user && user} />
+      <Search user={user?.fullname && user} />
       <section
         className={`${
-          user ? "flex-1 md:flex-none" : "  flex-[2] sm:flex-[2] md:flex-[1.5]  2xl:flex-1  "
+          user?.fullname
+            ? "flex-1 md:flex-none"
+            : "  flex-[2] sm:flex-[5] md:flex-[1.5]  2xl:flex-1  "
         } flex h-full items-center justify-end`}
       >
         <Link to="/cart" className="relative cursor-pointer ">
@@ -69,9 +68,9 @@ const [openAvatar, setOpenAvatar] = useState(false)
             0
           </p>
         </Link>
-        <p className="font-bold">&#8358; 0.00 </p>
+        <p className="font-bold hidden md:block">&#8358; 0.00 </p>
       </section>
-      {!user && (
+      {!user?.fullname && (
         <section className="flex h-full gap-2 items-center flex-[0.4] sm:flex-[1] md:flex-[3] 2xl:flex-[2] justify-end  ">
           <UserIcon
             className="w-8 sm:w-10 cursor-pointer "

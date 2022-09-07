@@ -28,10 +28,9 @@ export const userLogin = createAsyncThunk(
       code = res.data.statusCode;
 
       if (code === 200) {
-        if (saveSession) {
-          
-          localStorage.setItem("user", JSON.stringify(res.data.data));
-        }
+        console.log(res.data);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        
       }
       return { message, code, user };
     } catch (error) {
