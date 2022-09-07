@@ -37,9 +37,9 @@ import Shop from "./pages/Shop";
 
 
 // Components
-import Loading from "./components/Loading";
-import SideNav from "./components/SideNav";
-import Navbar from "./components/HomeComponents/Navbar";
+import Loading from "./components/auxComponents/Loading";
+import SideNav from "./components/auxComponents/SideNav";
+import Navbar from "./components/auxComponents/Navbar";
 import ShopSidebar from "./components/ShopSidebar";
 import CheckoutLogin from "./components/CheckoutLogin";
 

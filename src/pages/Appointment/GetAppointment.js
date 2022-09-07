@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import axios from "axios";
 import GoBack from "../../components/HomeComponents/GoBack";
-import Navbar from "../../components/HomeComponents/Navbar";
+import Navbar from "../../components/auxComponents/Navbar";
 
 const GetAppointment = () => {
    

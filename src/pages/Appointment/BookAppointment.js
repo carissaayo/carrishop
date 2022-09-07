@@ -6,7 +6,7 @@ import {
 } from "../../redux/reducers/appointmentSlice";
 
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../../components/HomeComponents/Navbar";
+import Navbar from "../../components/auxComponents/Navbar";
 import GoBack from "../../components/HomeComponents/GoBack";
 
 const BookAppointment = () => {

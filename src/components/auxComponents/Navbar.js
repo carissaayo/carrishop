@@ -4,7 +4,7 @@ import { ShoppingBagIcon,UserIcon } from "@heroicons/react/outline";
 import {  useSelector } from "react-redux";
 import { useState ,useEffect} from "react";
 import logo from "../../assets/imgs/new-logo.png"
-import Search from "./Search";
+import Search from "../HomeComponents/Search";
 
 const Navbar = ({ openMobile, setOpenMobile }) => {
 const [openAvatar, setOpenAvatar] = useState(false)

@@ -6,7 +6,7 @@ import {
   clearAccounDetails,
 } from "../../redux/reducers/userSlice";
 import { useNavigate, Link } from "react-router-dom";
-import Navbar from "../../components/HomeComponents/Navbar";
+import Navbar from "../../components/auxComponents/Navbar";
 import GoBack from "../../components/HomeComponents/GoBack";
 
 const AccountVerification = () => {
