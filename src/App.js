@@ -143,7 +143,7 @@ const [values, setValues] = useState([50]);
             />
           </div>
 
-          <main className="w-full h-full  md:flex justify-between gap-4 z-10">
+          <main className="w-full h-full  md:flex justify-between gap-4 z-10 pt-20 md:pt-0">
             <SideNav />
             <section className="flex-[5] xl:flex-[11] h-full   md:px-0 md:pr-4 xl:pr-8 ">
               <Routes>
