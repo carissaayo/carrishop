@@ -3,7 +3,7 @@ import {Headset,InfoCircle,ClockHistory,BagCheck,Bag, PeopleFill, Person} from "
 import { useSelector } from "react-redux";
 
 const SideNav = () => {
-    const { user } = useSelector((state) => state.user);
+    const { user,userInfo } = useSelector((state) => state.user);
   return (
     <section className="w-full md:w-[150px] md:min-w-[150px] bg-primaryColor md:z-10  fixed md:relative z-30 bottom-0 left-0 h-[10vh] md:h-auto p-6 px-3 sm:px-10 md:px-0">
       <section
@@ -95,14 +95,19 @@ const SideNav = () => {
           </NavLink>
         )}
         {user?.fullname && (
-          <NavLink to="/users/name">
+          <NavLink to="/users/:userId">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
-                <Person
-                  className={`text-[20px] sm:text-[30px] md:text-[40px] ${
-                    isActive ? " text-secondaryColor" : ""
-                  } `}
-                />
+                {userInfo?.profile_picture ? (
+                  <img src={userInfo?.profile_picture} alt=""  className="rounded-full w-[30px] h-[30px] md:w-[40px] md:h-[40px]"/>
+                ) : (
+                  <Person
+                    className={`text-[20px] sm:text-[30px] md:text-[40px] ${
+                      isActive ? " text-secondaryColor" : ""
+                    } `}
+                  />
+                )}
+
                 <p className="text-xs sm:text-base">My Account</p>
               </div>
             )}

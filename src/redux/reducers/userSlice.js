@@ -209,6 +209,7 @@ state.error = code !== 200 ? true : false;
       state.userInfo = info;
       state.pending = false;
        state.done = code === 200 ? true : false;
+       console.log(state.userInfo);
     },
     clearAccounDetails: (state) => {
       state.done = false;

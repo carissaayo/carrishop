@@ -18,14 +18,19 @@ import ChangePassword from "../../components/ChangePassword";
 import AddressCon from "../../components/AddressCon";
 
 const User = () => {
-  const [current, setCurrent] = useState("profile")
-  const navigate = useNavigate();
-  const {userId} = useParams()
-
   let dispatch = useDispatch();
   const { pending, error, user, userInfo } = useSelector(
     (state) => state.user
   );
+  const [current, setCurrent] = useState("profile");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("");
+  const [date_of_birth, setDate_of_birth] = useState("")
+  const navigate = useNavigate();
+  const {userId} = useParams()
+
   const loadUserInfo =async () => {
 let message = "";
 let code = 0;
@@ -56,13 +61,13 @@ let info = [];
   }
   };
 
-//   useEffect(() => {
-//      if(user){
-// console.log("lo");
+  useEffect(() => {
+     if(user){
+console.log("lo");
 
-//          loadUserInfo()
-//      }
-//   }, [userId]);
+         loadUserInfo()
+     }
+  }, [userId ]);
 
 
 
@@ -373,7 +378,14 @@ let info = [];
       >
         {/* Profile Picture */}
         <div className="w-full mb-10">
-          <h1 className="font-bold text-lg">Profile Picture</h1>
+          <h1 className="font-bold text-lg mb-3">Profile Picture</h1>
+          {userInfo?.profile_picture && (
+            <img
+              src={userInfo.profile_picture}
+              alt=""
+              className="rounded-full h-[200px] w-[200px]"
+            />
+          )}
         </div>
 
         <section className="w-full  ">
@@ -384,7 +396,13 @@ let info = [];
               <input
                 type="text"
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
+                value={firstname}
+                placeholder={
+                  userInfo
+                    ? userInfo?.fullname?.split(" ")[0]
+                    : firstname
+                }
+                onChange={(e) => setFirstname(e.target.value)}
               />
             </div>
 
@@ -394,7 +412,13 @@ let info = [];
               <input
                 type="text"
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
+                placeholder={
+                  userInfo
+                    ? userInfo?.fullname?.split(" ")[1]
+                    : lastname
+                }
+                value={lastname}
+                onChange={(e) => setLastname(e.target.value)}
               />
             </div>
           </div>
@@ -406,7 +430,9 @@ let info = [];
               <input
                 type="email"
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
+                placeholder={userInfo ? userInfo?.email : email}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -416,7 +442,9 @@ let info = [];
               <input
                 type="text"
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
+                placeholder={userInfo ? userInfo?.phone : phone}
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
               />
             </div>
           </div>
@@ -438,13 +466,19 @@ let info = [];
               </select>
             </div>
 
-            {/* Phone Number  */}
+            {/* DOB  */}
             <div className="w-full sm:w-[80%] md:w-[45%] ">
-              <h1 className="mb-5">Phone Number</h1>
+              <h1 className="mb-5">Birthday</h1>
               <input
                 type="text"
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
+                placeholder={
+                  userInfo
+                    ? userInfo?.date_of_birth?.slice(0, 10)
+                    : date_of_birth
+                }
+                value={date_of_birth}
+                onChange={(e) => setDate_of_birth(e.target.value)}
               />
             </div>
           </div>
