@@ -38,7 +38,7 @@ const [details, setDetails] = useState(false)
         </div>
 
         {/* Items Con */}
-        <section className="w-[90%] mx-auto md:mx-0 md:w-full pt-10 mb-20">
+        <section className="w-[90%] mx-auto md:mx-0 md:w-full pt-10 mb-32">
           {/* Item */}
           <div className="border border-[#EEEEEE] p-4 px-2 sm:px-4 flex flex-col sm:flex-row justify-between items-center xs:items-start gap-4 sm:gap-0 mb-10">
             <div className="flex  flex-col sm:flex-row gap-2 xs:gap-8 items-center sm:items-start ">
