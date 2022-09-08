@@ -1,16 +1,19 @@
 import { useNavigate, Link } from "react-router-dom";
-import { useState } from "react";
-import { registerUser } from "../../redux/reducers/userSlice";
+import { useEffect, useState } from "react";
+import { blankDetails, closeSnap, registerUser } from "../../redux/reducers/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import registerBg from "../../assets/imgs/bg-register.jfif";
 import Footer from "../../components/HomeComponents/Footer";
 import Loading from "../../components/auxComponents/Loading";
+import { X } from "react-bootstrap-icons";
 
 const Register = () => {
   const navigate = useNavigate();
   let dispatch = useDispatch();
-  const { done, message, error, pending } = useSelector((state) => state.user);
+   const { done, message, error, user, pending, openSnap } = useSelector(
+     (state) => state.user
+   );
 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -20,12 +23,27 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!email || !password|| !fullname || !phone) {
+      dispatch(blankDetails(["Please fill in the required inputs","register"]));
+      return;
+    }
+  
     console.log("hello");
     dispatch(registerUser({ email, password, fullname, phone }));
     if (done) {
-      navigate("/login");
+      // setTimeout(()=>{
+      //    navigate("/login");
+      // },[3000])
+      // navigate("/login");
     }
   };
+
+  useEffect(() => {
+    const snack = done && setTimeout(() => navigate("/login"), 2000);
+
+    return ()=>clearTimeout(snack);
+  }, [done])
+  
 
   return (
     <main className=" w-full h-full">
@@ -33,6 +51,27 @@ const Register = () => {
         <h1 className="text-3xl font-bold ">My Account </h1>
       </div>
 
+      {/* SnackBar */}
+      <div className={`snackbar  ${openSnap ? "show" : ""}`}>
+        <div className="flex justify-end ">
+          <X
+            className="text-2xl cursor-pointer"
+            onClick={() => dispatch(closeSnap())}
+          />
+        </div>
+        {error && (
+          <p className="mb-5">
+            {message}
+          </p>
+        )}
+        {done && (
+          <div className="h-[10vh]">
+
+          <p className="mb-4">You have registered succesfully</p>
+          <p className="">Please wait while you're being redicted to the login page</p>
+          </div>
+        )}
+      </div>
       <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20  relative">
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-[1.5] ">
           <h1 className="font-bold text-2xl mb-10">REGISTER</h1>
@@ -122,8 +161,6 @@ const Register = () => {
                 <p className="text-[red]">{message[0]}</p>
               </div>
             )}
-
-     
 
             <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
               <button type="submit" className="uppercase text-primaryColor">

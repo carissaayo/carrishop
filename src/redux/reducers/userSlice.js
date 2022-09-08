@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { act } from "react-dom/test-utils";
 
 // Login User
 export const userLogin = createAsyncThunk(
@@ -192,9 +193,10 @@ export const userSlice = createSlice({
     error: false,
     user: undefined,
     done: false,
+    loginDone:false,
     message: "",
     userInfo: {},
-    openSnap:false
+    openSnap:false,
   },
   reducers: {
     loading: (state) => {
@@ -224,14 +226,23 @@ state.error = code !== 200 ? true : false;
     },
     closeSnap :(state)=>{
         state.error = false;
-
       state.openSnap = false;
     },
     blankDetails:(state,action)=>{
-      console.log(action.payload);
+      
         state.openSnap = true;
         state.error=true;
-          state.message = [`${action.payload[0]} can't be blanked`]
+        if(action.payload[1] === "register"
+        ){
+state.message = `${action.payload[0]} `;
+        }
+        else if (action.payload[1] === "login") {
+          state.message = `${action.payload[0]} can't be blanked`;
+        }
+    },
+    resetDone: (state) => {
+      state.loginDone= false;
+      state.openSnap= false
     }
   },
   extraReducers: {
@@ -246,7 +257,7 @@ state.error = code !== 200 ? true : false;
       const { message, code,user } = action.payload;
       console.log(message, code);
       state.pending = false;
-      state.done = code === 200 ? true : false;
+      state.Logindone = code === 200 ? true : false;
       state.user= user
       state.message = message;
       state.error = code !== 200 ? true : false;
@@ -270,6 +281,7 @@ state.error = code !== 200 ? true : false;
       state.done = code === 200 ? true : false;
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.openSnap= true
     },
     [registerUser.rejected]: (state, action) => {
       state.pending = false;
@@ -348,6 +360,7 @@ export const {
   clearAccounDetails,
   closeSnap,
   blankDetails,
+  resetDone
 } = userSlice.actions;
 
 export default userSlice.reducer;

@@ -402,6 +402,7 @@ border: 0.5px solid #242424;
 /* The snackbar - position it at the bottom and in the middle of the screen */
 .snackbar {
   visibility: hidden; /* Hidden by default. Visible on click */
+  transform:translateY(200%) ;
   width: 70%; /* Set a default minimum width */
 /* Divide value of min-width by 2 */
   background-color: #333; /* Black background color */
@@ -409,10 +410,11 @@ border: 0.5px solid #242424;
   text-align: center; /* Centered text */
   border-radius: 2px; /* Rounded borders */
   padding: 16px; /* Padding */
-  position: relative; /* Sit on top of the screen */
+  position:fixed; /* Sit on top of the screen */
   z-index: 60; /* Add a z-index if needed */
   left: 10%; /* Center the snackbar */
-  top: -20px; /* 30px from the bottom */
+  top:200px; /* 30px from the bottom */
+  transition: transform 0.5s ease-in-out;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -420,10 +422,23 @@ border: 0.5px solid #242424;
   visibility: visible; /* Show the snackbar */
   /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
   However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  /* -webkit-animation: fadein 0.5s;
+  animation: fadein 0.5s */
+  transform: translateY(0%);
 }
 
+@media screen and (max-width: 640px) {
+  .snackbar{
+    width: 90%;
+    left:5%
+  }
+}
+/* @media screen and (max-width: 430px) {
+  .snackbar{
+    width: 90%;
+    left:5%
+  }
+} */
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
   from {bottom: 0; opacity: 0;}

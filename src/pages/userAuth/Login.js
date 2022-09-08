@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { userLogin,loading,getUserInfo, closeSnap, blankDetails } from "../../redux/reducers/userSlice";
+import { userLogin,loading,getUserInfo, closeSnap, blankDetails, resetDone } from "../../redux/reducers/userSlice";
 import { useDispatch,useSelector } from "react-redux";
 import Footer from "../../components/HomeComponents/Footer";
 import Loading from "../../components/auxComponents/Loading";
@@ -8,26 +8,26 @@ import { X } from "react-bootstrap-icons";
 const Login = () => {
 let navigate =useNavigate()
   let dispatch = useDispatch();
-    const { done, message, error,user,pending,openSnap} = useSelector((state) => state.user);
+    const { loginDone, message, error,user,pending,openSnap} = useSelector((state) => state.user);
     
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
   const [password, setPassword] = useState("");
   const [snackBar, setSnackBar] = useState(false)
-//  const [blankDetails, setBlankDetails] = useState(false)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email &&  !password) {
-      dispatch(blankDetails(["Email and Password"]));
+      dispatch(blankDetails(["Email and Password","login"]));
       return;
     }
       if (!email ){
-        dispatch(blankDetails(["Email"]));
+        dispatch(blankDetails(["Email", "login"]));
         return
       }
 
       if ( !password) {
-        dispatch(blankDetails(["Password"]));
+        dispatch(blankDetails(["Password","login"]));
         return;
 
       }
@@ -55,10 +55,13 @@ let navigate =useNavigate()
 // if(user?.fullname)window.history.back()
 
  useEffect(() => {
-  if(done){
+  if(loginDone){
         window.open("/", "_self");
   }
  }, [handleSubmit]);
+ useEffect(() => {
+  dispatch(resetDone())
+ },[])
 
  
   return (
@@ -66,7 +69,7 @@ let navigate =useNavigate()
       <div className="w-full  flex flex-col items-center justify-center h-[20vh]  relative ">
         <h1 className="text-2xl font-bold z-20">My Account </h1>
       </div>
-      <button onClick={() => dispatch(closeSnap())}>Show Snackbar</button>
+   
       <div className={`snackbar  ${openSnap ? "show" : ""}`}>
         <div className="flex justify-end ">
           <X
