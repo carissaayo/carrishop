@@ -86,7 +86,7 @@ const [values, setValues] = useState([50]);
   }, [user]);
 
   useEffect(() => {}, []);
-  if (pending || appointmentPending) return <Loading />;
+  // if (pending || appointmentPending) return <Loading />;
 
   return (
     <CookiesProvider>

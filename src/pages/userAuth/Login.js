@@ -1,20 +1,37 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { userLogin,loading,getUserInfo } from "../../redux/reducers/userSlice";
+import { userLogin,loading,getUserInfo, closeSnap, blankDetails } from "../../redux/reducers/userSlice";
 import { useDispatch,useSelector } from "react-redux";
 import Footer from "../../components/HomeComponents/Footer";
+import Loading from "../../components/auxComponents/Loading";
+import { X } from "react-bootstrap-icons";
 const Login = () => {
 let navigate =useNavigate()
   let dispatch = useDispatch();
-    const { done, message, error,user} = useSelector((state) => state.user);
+    const { done, message, error,user,pending,openSnap} = useSelector((state) => state.user);
     
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
   const [password, setPassword] = useState("");
- 
+  const [snackBar, setSnackBar] = useState(false)
+//  const [blankDetails, setBlankDetails] = useState(false)
   const handleSubmit = async (e) => {
     e.preventDefault();
-      if (!email || !password)return
+    if (!email &&  !password) {
+      dispatch(blankDetails(["Email and Password"]));
+      return;
+    }
+      if (!email ){
+        dispatch(blankDetails(["Email"]));
+        return
+      }
+
+      if ( !password) {
+        dispatch(blankDetails(["Password"]));
+        return;
+
+      }
+
     try {
       dispatch(loading)
       dispatch(userLogin({email,password,saveSession}));
@@ -24,8 +41,18 @@ let navigate =useNavigate()
     }
 
   };
+
   
-if(user?.fullname)window.history.back()
+  
+//   useEffect(()=>{
+   
+//     const  snack=  error && setTimeout(()=> setSnackBar(true), 1000);
+
+    
+// return ()=>clearTimeout(snack);
+//   },[handleSubmit])
+
+// if(user?.fullname)window.history.back()
 
  useEffect(() => {
   if(done){
@@ -36,16 +63,25 @@ if(user?.fullname)window.history.back()
  
   return (
     <main className="register w-full h-full">
-      <div className="w-full register-bg text-primaryColor flex flex-col items-center justify-center h-[20vh] gap-5 relative mb-20">
-        <div className="overlay"></div>
+      <div className="w-full  flex flex-col items-center justify-center h-[20vh]  relative ">
         <h1 className="text-2xl font-bold z-20">My Account </h1>
-        <h2 className="text-lg z-20">HOME / My Account</h2>
+      </div>
+      <button onClick={() => dispatch(closeSnap())}>Show Snackbar</button>
+      <div className={`snackbar  ${openSnap ? "show" : ""}`}>
+        <div className="flex justify-end ">
+          <X
+            className="text-2xl cursor-pointer"
+            onClick={() => dispatch(closeSnap())}
+          />
+        </div>
+        <p className="mb-5">{error && message[0]}</p>
       </div>
 
-      <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20">
+      <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20 relative">
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-[1.5] ">
           <h1 className="font-bold text-2xl mb-10 uppercase">Login</h1>
           <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
+            {/* Email */}
             <div className="flex flex-col gap-4 mb-10">
               <label htmlFor="email" className="uppercase">
                 Email <span className="text-[#E20000]">*</span>
@@ -74,19 +110,19 @@ if(user?.fullname)window.history.back()
                 className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
               />
             </div>
-            {/* <div className="mb-8 flex gap-5">
-              <p className="">Don't have an Account?</p>
-              <Link to="/register" className="text-secondaryColor">
-                Register
-              </Link>
-            </div> */}
+            {pending && <Loading />}
+
             {error && (
-              <div className="w-[300px]">
-                <p className="text-[red]">{message}</p>
+              <div className="mb-10">
+                <p className="text-[red]">{message[0]}</p>
               </div>
             )}
-            <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
-              <button type="submit" className="uppercase text-primaryColor">
+
+            <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center py-5 mb-10">
+              <button
+                type="submit"
+                className="w-full uppercase text-primaryColor"
+              >
                 Login
               </button>
             </div>

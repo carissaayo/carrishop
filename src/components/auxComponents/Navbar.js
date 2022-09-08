@@ -71,17 +71,23 @@ const [openAvatar, setOpenAvatar] = useState(false)
         <p className="font-bold hidden md:block">&#8358; 0.00 </p>
       </section>
       {!user?.fullname && (
-        <section className="flex h-full gap-2 items-center flex-[0.4] sm:flex-[1] md:flex-[3] 2xl:flex-[2] justify-end  ">
+        <section className="flex h-full gap-2 md:gap-8 items-center flex-[0.4] sm:flex-[1] md:flex-[3] 2xl:flex-[2] justify-end  ">
           <UserIcon
-            className="w-8 sm:w-10 cursor-pointer "
+            className="block md:hidden w-8 sm:w-10 cursor-pointer "
             onClick={() => setOpenAvatar(!openAvatar)}
           />
           {/* Desktop */}
-          <Link to="/register" className=" cursor-pointer hidden md:block ">
+          <Link
+            to="/register"
+            className=" cursor-pointer hidden md:block font-bold text-lg "
+          >
             Register
           </Link>
-          <span className=" hidden md:block">or</span>
-          <Link to="/login" className="cursor-pointer hidden md:block">
+          {/* <span className=" hidden md:block">or</span> */}
+          <Link
+            to="/login"
+            className="cursor-pointer hidden md:block font-bold text-lg"
+          >
             Sign in
           </Link>
 

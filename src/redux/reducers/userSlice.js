@@ -194,6 +194,7 @@ export const userSlice = createSlice({
     done: false,
     message: "",
     userInfo: {},
+    openSnap:false
   },
   reducers: {
     loading: (state) => {
@@ -221,6 +222,17 @@ state.error = code !== 200 ? true : false;
       state.user = {};
       state.done = false;
     },
+    closeSnap :(state)=>{
+        state.error = false;
+
+      state.openSnap = false;
+    },
+    blankDetails:(state,action)=>{
+      console.log(action.payload);
+        state.openSnap = true;
+        state.error=true;
+          state.message = [`${action.payload[0]} can't be blanked`]
+    }
   },
   extraReducers: {
     // Login Reducer
@@ -238,6 +250,7 @@ state.error = code !== 200 ? true : false;
       state.user= user
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.openSnap = state.error === true ? true : false;
     },
     [userLogin.rejected]: (state, action) => {
       state.pending = false;
@@ -327,7 +340,14 @@ state.error = code !== 200 ? true : false;
 });
 
 // Action creators are generated for each case reducer function
-export const { deleteUser, getUser, loading, updateUserInfo, clearAccounDetails } =
-  userSlice.actions;
+export const {
+  deleteUser,
+  getUser,
+  loading,
+  updateUserInfo,
+  clearAccounDetails,
+  closeSnap,
+  blankDetails,
+} = userSlice.actions;
 
 export default userSlice.reducer;

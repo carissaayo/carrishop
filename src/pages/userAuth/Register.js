@@ -1,16 +1,16 @@
 import { useNavigate, Link } from "react-router-dom";
-import {  useState } from "react";
+import { useState } from "react";
 import { registerUser } from "../../redux/reducers/userSlice";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import registerBg from "../../assets/imgs/bg-register.jfif"
+import registerBg from "../../assets/imgs/bg-register.jfif";
 import Footer from "../../components/HomeComponents/Footer";
+import Loading from "../../components/auxComponents/Loading";
 
 const Register = () => {
   const navigate = useNavigate();
   let dispatch = useDispatch();
-    const {done,message,error} = useSelector((state) => state.user);
-
+  const { done, message, error, pending } = useSelector((state) => state.user);
 
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -21,26 +21,23 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("hello");
-    dispatch(registerUser({email, password,fullname,phone}));
-    if(done)
-    {
-      navigate("/")
+    dispatch(registerUser({ email, password, fullname, phone }));
+    if (done) {
+      navigate("/login");
     }
   };
 
-
   return (
-    <main className="register w-full h-full">
-      <div className="w-full register-bg text-primaryColor flex flex-col items-center justify-center h-[20vh] gap-5 relative mb-20">
-        <div className="overlay"></div>
-        <h1 className="text-2xl font-bold z-20">My Account </h1>
-        <h2 className="text-lg z-20">HOME / PRIVACY POLICY</h2>
+    <main className=" w-full h-full">
+      <div className="w-full flex flex-col items-center justify-center h-[20vh] gap-5  mb-20">
+        <h1 className="text-3xl font-bold ">My Account </h1>
       </div>
 
-      <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20">
+      <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20  relative">
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-[1.5] ">
           <h1 className="font-bold text-2xl mb-10">REGISTER</h1>
           <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
+            {/* Name */}
             <div className="flex flex-col gap-4 mb-10">
               <label htmlFor="fullname" className="uppercase">
                 Full Name <span className="text-[#E20000]">*</span>
@@ -55,20 +52,8 @@ const Register = () => {
                 className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
               />
             </div>
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="inviteCode" className="uppercase">
-                Invite Code <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="text"
-                name=""
-                id="inviteCode"
-                placeholder="invite code"
-                value={invite_code}
-                onChange={(e) => setInvite_code(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
+
+            {/* Email */}
             <div className="flex flex-col gap-4 mb-10">
               <label htmlFor="email" className="uppercase">
                 Email <span className="text-[#E20000]">*</span>
@@ -82,6 +67,8 @@ const Register = () => {
                 className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
               />
             </div>
+
+            {/* Number */}
             <div className="flex flex-col gap-4 mb-10">
               <label htmlFor="number" className="uppercase">
                 Number <span className="text-[#E20000]">*</span>
@@ -96,12 +83,14 @@ const Register = () => {
                 className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
               />
             </div>
+
+            {/* Passord */}
             <div className="flex flex-col gap-4 mb-10">
               <label htmlFor="password" className="uppercase">
                 Password <span className="text-[#E20000]">*</span>
               </label>
               <input
-                type="text"
+                type="password"
                 name=""
                 id="password"
                 placeholder="Password"
@@ -110,18 +99,31 @@ const Register = () => {
                 className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
               />
             </div>
+
+            {/* Invite Code */}
+            <div className="flex flex-col gap-4 mb-10">
+              <label htmlFor="inviteCode" className="uppercase">
+                Invite Code
+              </label>
+              <input
+                type="text"
+                name=""
+                id="inviteCode"
+                placeholder="invite code"
+                value={invite_code}
+                onChange={(e) => setInvite_code(e.target.value)}
+                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+              />
+            </div>
+            {pending && <Loading />}
+
             {error && (
-              <div className="w-[300px]">
-                <p className="text-[red]">{message}</p>
+              <div className="mb-10">
+                <p className="text-[red]">{message[0]}</p>
               </div>
             )}
 
-            {/* <div className="mb-8 flex gap-5">
-              <p className="">Already have an Account?</p>
-              <Link to="/login" className="text-secondaryColor">
-                Login
-              </Link>
-            </div> */}
+     
 
             <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
               <button type="submit" className="uppercase text-primaryColor">
@@ -163,4 +165,3 @@ const Register = () => {
 };
 
 export default Register;
-
