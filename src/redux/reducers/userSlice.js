@@ -238,6 +238,7 @@ state.message = `${action.payload[0]} `;
         }
         else if (action.payload[1] === "login") {
           state.message = `${action.payload[0]} can't be blanked`;
+          console.log(action.payload[0]);
         }
     },
     resetDone: (state) => {

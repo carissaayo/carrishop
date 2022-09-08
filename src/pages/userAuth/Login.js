@@ -8,7 +8,7 @@ import { X } from "react-bootstrap-icons";
 const Login = () => {
 let navigate =useNavigate()
   let dispatch = useDispatch();
-    const { loginDone, message, error,user,pending,openSnap} = useSelector((state) => state.user);
+    const {done, loginDone, message, error,user,pending,openSnap} = useSelector((state) => state.user);
     
   const [email, setEmail] = useState("");
   const [saveSession, setSaveSession] = useState(false);
@@ -69,7 +69,7 @@ let navigate =useNavigate()
       <div className="w-full  flex flex-col items-center justify-center h-[20vh]  relative ">
         <h1 className="text-2xl font-bold z-20">My Account </h1>
       </div>
-
+      {/* SnackBar */}
       <div className={`snackbar  ${openSnap ? "show" : ""}`}>
         <div className="flex justify-end ">
           <X
@@ -77,7 +77,15 @@ let navigate =useNavigate()
             onClick={() => dispatch(closeSnap())}
           />
         </div>
-        <p className="mb-5">{error && message[0]}</p>
+        {error && <p className="mb-5">{message}</p>}
+        {done && (
+          <div className="h-[10vh]">
+            <p className="mb-4">You have registered succesfully</p>
+            <p className="">
+              Please wait while you're being redicted to the login page
+            </p>
+          </div>
+        )}
       </div>
 
       <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20 relative">
@@ -116,14 +124,6 @@ let navigate =useNavigate()
                   className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
                 />
               </div>
-              {pending && <Loading />}
-
-              {error && (
-                <div className="mb-10">
-                  <p className="text-[red]">{message[0]}</p>
-                </div>
-              )}
-
               <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center py-5 mb-10">
                 <button
                   type="submit"

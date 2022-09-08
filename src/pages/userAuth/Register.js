@@ -54,115 +54,109 @@ const Register = () => {
             onClick={() => dispatch(closeSnap())}
           />
         </div>
-        {error && (
-          <p className="mb-5">
-            {message}
-          </p>
-        )}
+        {error && <p className="mb-5">{message}</p>}
         {done && (
           <div className="h-[10vh]">
-
-          <p className="mb-4">You have registered succesfully</p>
-          <p className="">Please wait while you're being redicted to the login page</p>
+            <p className="mb-4">You have registered succesfully</p>
+            <p className="">
+              Please wait while you're being redicted to the login page
+            </p>
           </div>
         )}
       </div>
       <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20  relative">
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-[1.5] ">
           <h1 className="font-bold text-2xl mb-10">REGISTER</h1>
-          <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
-            {/* Name */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="fullname" className="uppercase">
-                Full Name <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="text"
-                name=""
-                id="fullname"
-                placeholder="FUll Name"
-                value={fullname}
-                onChange={(e) => setFullname(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
 
-            {/* Email */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="email" className="uppercase">
-                Email <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-
-            {/* Number */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="number" className="uppercase">
-                Number <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="text"
-                name=""
-                id="number"
-                placeholder="Your Number"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-
-            {/* Passord */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="password" className="uppercase">
-                Password <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="password"
-                name=""
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-
-            {/* Invite Code */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="inviteCode" className="uppercase">
-                Invite Code
-              </label>
-              <input
-                type="text"
-                name=""
-                id="inviteCode"
-                placeholder="invite code"
-                value={invite_code}
-                onChange={(e) => setInvite_code(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-            {pending && <Loading />}
-
-            {error && (
-              <div className="mb-10">
-                <p className="text-[red]">{message[0]}</p>
+          {pending ? (
+            <Loading />
+          ) : (
+            <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
+              {/* Name */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="fullname" className="uppercase">
+                  Full Name <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="fullname"
+                  placeholder="FUll Name"
+                  value={fullname}
+                  onChange={(e) => setFullname(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
               </div>
-            )}
 
-            <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
-              <button type="submit" className="uppercase text-primaryColor">
-                Register
-              </button>
-            </div>
-          </form>
+              {/* Email */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="email" className="uppercase">
+                  Email <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
+              </div>
+
+              {/* Number */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="number" className="uppercase">
+                  Number <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="number"
+                  placeholder="Your Number"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
+              </div>
+
+              {/* Passord */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="password" className="uppercase">
+                  Password <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="password"
+                  name=""
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
+              </div>
+
+              {/* Invite Code */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="inviteCode" className="uppercase">
+                  Invite Code
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="inviteCode"
+                  placeholder="invite code"
+                  value={invite_code}
+                  onChange={(e) => setInvite_code(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
+              </div>
+              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
+                <button type="submit" className="uppercase text-primaryColor">
+                  Register
+                </button>
+              </div>
+            </form>
+          )}
         </div>
         <div className="md:w-[10px] md:h-[90%] md:border-r border-[#EEEEEE] flex md:block w-full items-center">
           <div className="flex-[2] h-[10px] border-t border-[#EEEEEE] md:hidden"></div>
