@@ -69,7 +69,7 @@ let navigate =useNavigate()
       <div className="w-full  flex flex-col items-center justify-center h-[20vh]  relative ">
         <h1 className="text-2xl font-bold z-20">My Account </h1>
       </div>
-   
+
       <div className={`snackbar  ${openSnap ? "show" : ""}`}>
         <div className="flex justify-end ">
           <X
@@ -83,53 +83,57 @@ let navigate =useNavigate()
       <section className="w-full h-full flex flex-col md:flex-row gap-4 justify-between mb-40 md:mb-20 relative">
         <div className="w-[90%] mx-[auto] md:mx-0 md:flex-[1.5] ">
           <h1 className="font-bold text-2xl mb-10 uppercase">Login</h1>
-          <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
-            {/* Email */}
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="email" className="uppercase">
-                Email <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-
-            <div className="flex flex-col gap-4 mb-10">
-              <label htmlFor="password" className="uppercase">
-                Password <span className="text-[#E20000]">*</span>
-              </label>
-              <input
-                type="text"
-                name=""
-                id="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
-              />
-            </div>
-            {pending && <Loading />}
-
-            {error && (
-              <div className="mb-10">
-                <p className="text-[red]">{message[0]}</p>
+          {pending ? (
+            <Loading />
+          ) : (
+            <form className="w-full h-full" onSubmit={(e) => handleSubmit(e)}>
+              {/* Email */}
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="email" className="uppercase">
+                  Email <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
               </div>
-            )}
 
-            <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center py-5 mb-10">
-              <button
-                type="submit"
-                className="w-full uppercase text-primaryColor"
-              >
-                Login
-              </button>
-            </div>
-          </form>
+              <div className="flex flex-col gap-4 mb-10">
+                <label htmlFor="password" className="uppercase">
+                  Password <span className="text-[#E20000]">*</span>
+                </label>
+                <input
+                  type="text"
+                  name=""
+                  id="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
+                />
+              </div>
+              {pending && <Loading />}
+
+              {error && (
+                <div className="mb-10">
+                  <p className="text-[red]">{message[0]}</p>
+                </div>
+              )}
+
+              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center py-5 mb-10">
+                <button
+                  type="submit"
+                  className="w-full uppercase text-primaryColor"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
+          )}
         </div>
         <div className="md:w-[10px] md:h-[90%] md:border-r border-[#EEEEEE] flex md:block w-full items-center">
           <div className="flex-[2] h-[10px] border-t border-[#EEEEEE] md:hidden"></div>

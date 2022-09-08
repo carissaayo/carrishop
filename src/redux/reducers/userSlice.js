@@ -241,7 +241,7 @@ state.message = `${action.payload[0]} `;
         }
     },
     resetDone: (state) => {
-      state.loginDone= false;
+      state.done= false;
       state.openSnap= false
     }
   },
@@ -257,7 +257,7 @@ state.message = `${action.payload[0]} `;
       const { message, code,user } = action.payload;
       console.log(message, code);
       state.pending = false;
-      state.Logindone = code === 200 ? true : false;
+      state.loginDone = code === 200 ? true : false;
       state.user= user
       state.message = message;
       state.error = code !== 200 ? true : false;

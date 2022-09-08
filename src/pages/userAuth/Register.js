@@ -30,12 +30,7 @@ const Register = () => {
   
     console.log("hello");
     dispatch(registerUser({ email, password, fullname, phone }));
-    if (done) {
-      // setTimeout(()=>{
-      //    navigate("/login");
-      // },[3000])
-      // navigate("/login");
-    }
+    
   };
 
   useEffect(() => {
