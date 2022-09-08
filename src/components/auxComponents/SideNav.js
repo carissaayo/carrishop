@@ -10,7 +10,7 @@ const SideNav = () => {
         className=" md:fixed flex md:flex-col gap-2 xs:gap-4
        sm:gap-[30px] h-full md:h-[55vh] items-center w-full md:w-[130px]  justify-between bg-primaryColor "
       >
-        <NavLink to="/buy">
+        <NavLink to="/">
           {({ isActive }) => (
             <div className="flex flex-col gap-2   h-full items-center">
               <Bag

@@ -93,15 +93,23 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
           {/* Mobile */}
           <div
-            className={` bg-primaryColor z-70   w-[200px] absolute flex items-center justify-evenly  h-[100px] md:hidden right-2 top-24 rounded-lg transition-translate duration-200 ease-linear ${
+            className={` bg-primaryColor z-70   w-[200px] absolute flex items-center justify-center flex-col gap-4 h-[100px] md:hidden right-2 top-24 rounded-lg transition-translate duration-200 ease-linear ${
               openAvatar ? "translate-y-0" : "translate-y-[-200%]"
             } box-shadow`}
           >
-            <Link to="/login" className="cursor-pointer md:hidden block">
+            <Link
+              to="/login"
+              className="cursor-pointer md:hidden block text-lg font-bold"
+              onClick={() => setOpenAvatar(!openAvatar)}
+            >
               Sign in
             </Link>
-            <span className=" md:hidden block">or</span>
-            <Link to="/register" className=" cursor-pointer md:hidden block ">
+
+            <Link
+              to="/register"
+              className=" cursor-pointer md:hidden block text-xl font-bold"
+              onClick={() => setOpenAvatar(!openAvatar)}
+            >
               Register
             </Link>
           </div>
