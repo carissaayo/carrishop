@@ -77,7 +77,7 @@ let navigate =useNavigate()
             onClick={() => dispatch(closeSnap())}
           />
         </div>
-        {error && <p className="mb-5">{message}</p>}
+        {error && <p className="mb-5">{message[0]}</p>}
         {done && (
           <div className="h-[10vh]">
             <p className="mb-4">You have registered succesfully</p>

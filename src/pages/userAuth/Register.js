@@ -54,7 +54,7 @@ const Register = () => {
             onClick={() => dispatch(closeSnap())}
           />
         </div>
-        {error && <p className="mb-5">{message}</p>}
+        {error && <p className="mb-5">{Array.isArray(message)?message[0]:message}</p>}
         {done && (
           <div className="h-[10vh]">
             <p className="mb-4">You have registered succesfully</p>
@@ -151,7 +151,7 @@ const Register = () => {
                 />
               </div>
               <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
-                <button type="submit" className="uppercase text-primaryColor">
+                <button type="submit" className="uppercase text-primaryColor w-full">
                   Register
                 </button>
               </div>
