@@ -22,12 +22,7 @@ const User = () => {
   const { pending, error, user, userInfo } = useSelector(
     (state) => state.user
   );
-  const [current, setCurrent] = useState("profile");
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
-  const [email, setEmail] = useState("")
-  const [phone, setPhone] = useState("");
-  const [date_of_birth, setDate_of_birth] = useState("")
+ 
   const navigate = useNavigate();
   const {userId} = useParams()
 
@@ -374,7 +369,7 @@ console.log("lo");
       <section
         className={`${
           current === "profile" ? "block " : "hidden"
-        } w-[80%] mx-auto md:mx-0 md:w-full mb-20`}
+        } w-[80%] mx-auto md:mx-0 md:w-full mb-24`}
       >
         {/* Profile Picture */}
         <div className="w-full mb-10">
@@ -393,33 +388,23 @@ console.log("lo");
             {/* First Name */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-5 md:mb-0">
               <h1 className="mb-5">First Name</h1>
-              <input
+              <p
                 type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                value={firstname}
-                placeholder={
-                  userInfo
-                    ? userInfo?.fullname?.split(" ")[0]
-                    : firstname
-                }
-                onChange={(e) => setFirstname(e.target.value)}
-              />
+                className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.fullname?.split(" ")[0]}
+              </p>
             </div>
 
             {/* Last Name */}
             <div className="w-full sm:w-[80%] md:w-[45%] ">
               <h1 className="mb-5">Last Name</h1>
-              <input
+              <p
                 type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder={
-                  userInfo
-                    ? userInfo?.fullname?.split(" ")[1]
-                    : lastname
-                }
-                value={lastname}
-                onChange={(e) => setLastname(e.target.value)}
-              />
+                className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.fullname?.split(" ")[1]}
+              </p>
             </div>
           </div>
 
@@ -427,25 +412,23 @@ console.log("lo");
             {/* Email */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
               <h1 className="mb-5">Email</h1>
-              <input
+              <p
                 type="email"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder={userInfo ? userInfo?.email : email}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+                className=" w-full  border border-[#E0E0E0] p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.email}
+              </p>
             </div>
 
             {/* Phone Number  */}
             <div className="w-full sm:w-[80%] md:w-[45%] ">
               <h1 className="mb-5">Phone Number</h1>
-              <input
+              <p
                 type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder={userInfo ? userInfo?.phone : phone}
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-              />
+                className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.phone}
+              </p>
             </div>
           </div>
 
@@ -453,7 +436,7 @@ console.log("lo");
             {/* Gender */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
               <h1 className="mb-5">Gender</h1>
-              <select
+              {/* <select
                 className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
                 placeholder=""
               >
@@ -463,23 +446,27 @@ console.log("lo");
 
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
-              </select>
+              </select> */}
+              <p
+                type="text"
+                className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.gender}
+              </p>
             </div>
 
             {/* DOB  */}
             <div className="w-full sm:w-[80%] md:w-[45%] ">
               <h1 className="mb-5">Birthday</h1>
-              <input
+              <p
                 type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder={
-                  userInfo
-                    ? userInfo?.date_of_birth?.slice(0, 10)
-                    : date_of_birth
-                }
-                value={date_of_birth}
-                onChange={(e) => setDate_of_birth(e.target.value)}
-              />
+                className=" w-full  border border-[#E0E0E0] p-2 rounded-xl h-[50px]"
+               
+              >
+                {userInfo
+                  ? userInfo?.date_of_birth?.slice(0, 10)
+                  : date_of_birth}
+              </p>
             </div>
           </div>
 

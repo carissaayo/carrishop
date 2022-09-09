@@ -150,8 +150,8 @@ const Register = () => {
                   className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
                 />
               </div>
-              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center p-5 mb-10">
-                <button type="submit" className="uppercase text-primaryColor w-full">
+              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center  mb-10">
+                <button type="submit" className="uppercase text-primaryColor w-full py-5">
                   Register
                 </button>
               </div>

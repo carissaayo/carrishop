@@ -93,13 +93,13 @@ const [openAvatar, setOpenAvatar] = useState(false)
 
           {/* Mobile */}
           <div
-            className={` bg-primaryColor z-70   w-[200px] absolute flex items-center justify-center flex-col gap-4 h-[100px] md:hidden right-2 top-24 rounded-lg transition-translate duration-200 ease-linear ${
+            className={` bg-primaryColor    w-[200px] absolute flex items-center justify-center flex-col gap-4 h-[100px] md:hidden right-2 top-24 rounded-lg transition-translate duration-200 ease-linear  ${
               openAvatar ? "translate-y-0" : "translate-y-[-200%]"
             } box-shadow`}
           >
             <Link
               to="/login"
-              className="cursor-pointer md:hidden block text-lg font-bold"
+              className="cursor-pointer md:hidden block text-lg font-bold "
               onClick={() => setOpenAvatar(!openAvatar)}
             >
               Sign in

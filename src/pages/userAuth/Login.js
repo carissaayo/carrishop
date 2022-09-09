@@ -65,9 +65,9 @@ let navigate =useNavigate()
 
  
   return (
-    <main className="register w-full h-full">
-      <div className="w-full  flex flex-col items-center justify-center h-[20vh]  relative ">
-        <h1 className="text-2xl font-bold z-20">My Account </h1>
+    <main className=" w-full h-full">
+      <div className="w-full  flex flex-col items-center justify-center h-[20vh]   ">
+        <h1 className="text-2xl font-bold">My Account </h1>
       </div>
       {/* SnackBar */}
       <div className={`snackbar  ${openSnap ? "show" : ""}`}>
@@ -77,7 +77,11 @@ let navigate =useNavigate()
             onClick={() => dispatch(closeSnap())}
           />
         </div>
-        {error && <p className="mb-5">{message[0]}</p>}
+        {error && (
+          <p className="mb-5">
+            {Array.isArray(message) ? message[0] : message}
+          </p>
+        )}
         {done && (
           <div className="h-[10vh]">
             <p className="mb-4">You have registered succesfully</p>
@@ -124,10 +128,10 @@ let navigate =useNavigate()
                   className="border rounded-full w-full border-[#EEEEEE] h-[50px] p-4 text-[#A19F9F] outline-[#A19F9F]"
                 />
               </div>
-              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center py-5 mb-10">
+              <div className="flex items-center w-[90%] mx-[auto] rounded-full bg-[#FCA311] justify-center mb-10">
                 <button
                   type="submit"
-                  className="w-full uppercase text-primaryColor"
+                  className="w-full uppercase text-primaryColor py-5 "
                 >
                   Login
                 </button>
