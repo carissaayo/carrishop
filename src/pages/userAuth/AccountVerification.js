@@ -8,8 +8,9 @@ import {
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../../components/auxComponents/Navbar";
 import GoBack from "../../components/HomeComponents/GoBack";
+import { CloudArrowUp } from "react-bootstrap-icons";
 
-const AccountVerification = () => {
+const AccountVerification = ({current}) => {
   const navigate = useNavigate();
   let dispatch = useDispatch();
   const { done, message, error, code, user } = useSelector(
@@ -65,190 +66,145 @@ const AccountVerification = () => {
   };
 
 
-  useEffect(()=>{
-dispatch(clearAccounDetails());
-  },[])
+//   useEffect(()=>{
+// dispatch(clearAccounDetails());
+//   },[])
   return (
-    <main className="w-full h-full">
-      <Navbar />
-      <section className="py-4 px-[4%] sm:px-[3%] md:px-[5%]">
-        <GoBack />
-        <h1 className="text-center text-3xl my-[50px]">Account Verification</h1>
+    <section
+      className={`${
+        current === "verification" ? "block " : "hidden"
+      } w-[80%] mx-auto md:mx-0 md:w-full mb-20`}
+    >
+      <form className="my-[30px] w-full" onSubmit={(e) => handleSubmit(e)}>
+        <section className="w-full  ">
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Date of Birth*/}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-5 md:mb-0">
+              <h1 className="mb-5">Date of Birth</h1>
+              <input
+                type="date"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder="date of birthday"
+                value={date_of_birth}
+                onChange={(e) => setDate_of_birth(e.target.value)}
+              />
+            </div>
 
-        {done ? (
-          <div className="w-full text-center">
-            <span class="material-symbols-outlined mb-[20px]">task_alt</span>
-            <p className="mb-[20px]">Your account information has been sent </p>
+            {/* User’s Profile Picture */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">User’s Profile Picture</h1>
+              <label className="w-full h-[50px] flex items-center justify-between border border-[#EEEEEE] rounded-xl">
+                <p className=" bg-[#F6F6F6] p-3 cursor-pointer">
+                  <CloudArrowUp className="text-2xl text-[#CECECE]" />
+                </p>
+                <input
+                  type="file"
+                  onChange={(e) => handleProfile(e)}
+                  className="h-0 w-0"
+                />
+              </label>
+            </div>
           </div>
-        ) : (
-          <form className="my-[30px] w-full" onSubmit={(e) => handleSubmit(e)}>
-            <div className="grid grid-cols-2 gap-[30px] mb-[10px]">
-              <div className="">
-                <label htmlFor="address">
-                  Address <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="address"
-                  placeholder="address"
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
-              </div>
-              <div className="">
-                <label htmlFor="city">
-                  City <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name="city"
-                  id="city"
-                  placeholder="city"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                />
-              </div>
-              <div className="">
-                <label htmlFor="gender">
-                  Gender<span>*</span>
-                </label>
-                <select
-                  value={gender}
-                  onChange={(e) => setGender(e.target.value)}
-                >
-                  <option defaultValue="true" value="male">
-                    Male
-                  </option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-              <div className="">
-                <label htmlFor="state">
-                  State <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="state"
-                  placeholder="Your Number"
-                  value={stateOfOrigin}
-                  onChange={(e) => setStateOfOrigin(e.target.value)}
-                />
-              </div>
 
-              <div className="">
-                <label htmlFor="number">
-                  Type of ID <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="id_type"
-                  placeholder="id_type"
-                  value={id_type}
-                  onChange={(e) => setId_type(e.target.value)}
-                />
-              </div>
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Id Type*/}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Id Type</h1>
+              <select
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                value={id_type}
+                onChange={(e) => setId_type(e.target.value)}
+              >
+                <option value="" disabled>
+                  Select Id Type
+                </option>
 
-              <div className="flex gap-[20px] items-center">
-                <p> id_file</p>
-                <label className="w-[max-content] h-full flex items-center justify-between border">
-                  <p className=" bg-[gray] border p-2 cursor-pointer">
-                    Choose File
-                  </p>
-                  <input
-                    type="file"
-                    onChange={(e) => handleIdFile(e)}
-                    className="h-0 w-0"
-                  />
-                </label>
-              </div>
-
-              <div className="flex gap-[20px] items-center ">
-                <p>Profile</p>
-                <label className="w-[max-content] h-full flex items-center justify-between border">
-                  <p className=" bg-[gray] border p-2 cursor-pointer">
-                    Choose File
-                  </p>
-                  <input
-                    type="file"
-                    onChange={(e) => handleProfile(e)}
-                    className="h-0 w-0"
-                  />
-                </label>
-              </div>
-              <div className="">
-                <label htmlFor="date_of_birth">
-                  date of birth<span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="date_of_birth"
-                  placeholder="date_of_birth"
-                  value={date_of_birth}
-                  onChange={(e) => setDate_of_birth(e.target.value)}
-                />
-              </div>
-
-              <div className="">
-                <label htmlFor="next_of_kin_name">
-                  next of kin name <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="next_of_kin_name"
-                  placeholder="date_of_birth"
-                  value={next_of_kin_name}
-                  onChange={(e) => setNext_of_kin_name(e.target.value)}
-                />
-              </div>
-
-              <div className="">
-                <label htmlFor="next_of_kin_address">
-                  next of kin address <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="next_of_kin_address"
-                  placeholder="next_of_kin_address"
-                  value={next_of_kin_address}
-                  onChange={(e) => setNext_of_kin_address(e.target.value)}
-                />
-              </div>
-
-              <div className="">
-                <label htmlFor="next_of_kin_phone">
-                  next of kin phone <span>*</span>
-                </label>
-                <input
-                  type="text"
-                  name=""
-                  id="next_of_kin_phone"
-                  placeholder="next_of_kin_phone"
-                  value={next_of_kin_phone}
-                  onChange={(e) => setNext_of_kin_phone(e.target.value)}
-                />
-              </div>
+                <option value="NIN">NIN</option>
+                <option value="Driver's License">Driver's License</option>
+              </select>
             </div>
-            {error && (
-              <div className="w-[300px]">
-                <p className="text-[red]">{message}</p>
-              </div>
-            )}
 
-            <div className="  w-full text-center ">
-              <button type="submit" className="cursor-pointer border p-2">
-                Submit
-              </button>
+            {/* Upload id image  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Upload id image</h1>
+              <label className="w-full h-[50px] flex items-center justify-between border border-[#EEEEEE] rounded-xl">
+                <p className="bg-[#F6F6F6] p-3 cursor-pointer">
+                  <CloudArrowUp className="text-2xl text-[#CECECE]" />
+                </p>
+                <input
+                  type="file"
+                  onChange={(e) => handleIdFile(e)}
+                  className="h-0 w-0"
+                />
+              </label>
             </div>
-          </form>
-        )}
-      </section>
-    </main>
+          </div>
+
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Next of Kin Full Name */}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Next of Kin Full Name</h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+                value={next_of_kin_name}
+                onChange={(e) => setNext_of_kin_name(e.target.value)}
+              />
+            </div>
+
+            {/* Relationship with next of kin  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Relationship with next of kin</h1>
+              <select
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+              >
+                <option value="" disabled>
+                  Choose Relationship
+                </option>
+
+                <option value="Parent">Parent</option>
+                <option value="Child">Child</option>
+                <option value="Sibling">Sibling</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Next of Kin address  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Next of Kin address </h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+                value={next_of_kin_address}
+                onChange={(e) => setNext_of_kin_address(e.target.value)}
+              />
+            </div>
+
+            {/* Next of Kin phone number   */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">Next of Kin phone number </h1>
+              <input
+                type="text"
+                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                placeholder=""
+                value={next_of_kin_phone}
+                onChange={(e) => setNext_of_kin_phone(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="w-full flex items-center justify-center mb-20">
+            <button className="bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor">
+              SAVE
+            </button>
+          </div>
+        </section>
+      </form>
+    </section>
   );
 };
 

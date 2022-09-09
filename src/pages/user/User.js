@@ -16,13 +16,15 @@ import Footer from "../../components/HomeComponents/Footer";
 import AddressItem from "../../components/AddressItem";
 import ChangePassword from "../../components/ChangePassword";
 import AddressCon from "../../components/AddressCon";
+import AccountVerification from "../userAuth/AccountVerification";
 
 const User = () => {
   let dispatch = useDispatch();
   const { pending, error, user, userInfo } = useSelector(
     (state) => state.user
   );
- 
+  const [current, setCurrent] = useState("profile");
+  
   const navigate = useNavigate();
   const {userId} = useParams()
 
@@ -461,11 +463,8 @@ console.log("lo");
               <p
                 type="text"
                 className=" w-full  border border-[#E0E0E0] p-2 rounded-xl h-[50px]"
-               
               >
-                {userInfo
-                  ? userInfo?.date_of_birth?.slice(0, 10)
-                  : date_of_birth}
+                {userInfo && userInfo?.date_of_birth?.slice(0, 10)}
               </p>
             </div>
           </div>
@@ -485,120 +484,9 @@ console.log("lo");
       <AddressCon current={current} />
 
       {/* Verification */}
-      <section
-        className={`${
-          current === "verification" ? "block " : "hidden"
-        } w-[80%] mx-auto md:mx-0 md:w-full mb-20`}
-      >
-        <section className="w-full  ">
-          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
-            {/* Date of Birth*/}
-            <div className="w-full sm:w-[80%] md:w-[45%] mb-5 md:mb-0">
-              <h1 className="mb-5">Date of Birth</h1>
-              <input
-                type="date"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
+     
 
-            {/* User’s Profile Picture */}
-            <div className="w-full sm:w-[80%] md:w-[45%] ">
-              <h1 className="mb-5">User’s Profile Picture</h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
-            {/* Id Type*/}
-            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
-              <h1 className="mb-5">Id Type</h1>
-              <select
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              >
-                <option value="" disabled>
-                  Select Id Type
-                </option>
-
-                <option value="NIN">NIN</option>
-                <option value="Driver's License">Driver's License</option>
-              </select>
-            </div>
-
-            {/* Upload id image  */}
-            <div className="w-full sm:w-[80%] md:w-[45%] ">
-              <h1 className="mb-5">Upload id image</h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
-            {/* Next of Kin Full Name */}
-            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
-              <h1 className="mb-5">Next of Kin Full Name</h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
-
-            {/* Relationship with next of kin  */}
-            <div className="w-full sm:w-[80%] md:w-[45%] ">
-              <h1 className="mb-5">Relationship with next of kin</h1>
-              <select
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              >
-                <option value="" disabled>
-                  Choose Relationship
-                </option>
-
-                <option value="Parent">Parent</option>
-                <option value="Child">Child</option>
-                <option value="Sibling">Sibling</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
-            {/* Next of Kin address  */}
-            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
-              <h1 className="mb-5">Next of Kin address </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
-
-            {/* Next of Kin phone number   */}
-            <div className="w-full sm:w-[80%] md:w-[45%] ">
-              <h1 className="mb-5">Next of Kin phone number </h1>
-              <input
-                type="text"
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              />
-            </div>
-          </div>
-
-          <div className="w-full flex items-center justify-center mb-20">
-            <button className="bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor">
-              SAVE
-            </button>
-          </div>
-        </section>
-      </section>
+      <AccountVerification current={current} />
       <Footer />
     </main>
   );
