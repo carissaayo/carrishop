@@ -9,13 +9,13 @@ import {
 import { useNavigate, Link } from "react-router-dom";
 import Navbar from "../../components/auxComponents/Navbar";
 import GoBack from "../../components/HomeComponents/GoBack";
-import { CloudArrowUp } from "react-bootstrap-icons";
+import { CloudArrowUp, X } from "react-bootstrap-icons";
 import Loading from "../../components/auxComponents/Loading";
 
 const AccountVerification = ({current}) => {
   const navigate = useNavigate();
   let dispatch = useDispatch();
-  const { done, message, error, code, user,pending } = useSelector(
+  const { done, message, error, code, user,pending,openSnap } = useSelector(
     (state) => state.user
   );
 
