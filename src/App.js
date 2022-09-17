@@ -187,18 +187,18 @@ const [values, setValues] = useState([50]);
                   <Route
                     path="recover-email"
                     element={
-                      <ProtectedRoute user={user && user}>
+                      // <ProtectedRoute user={user?.fullname && user}>
                         <EmailRecovery />
-                      </ProtectedRoute>
+                      // </ProtectedRoute>
                     }
                   />
                   <Route path="reset-password" element={<ResetPassword />} />
                   <Route
                     path="verify-reset"
                     element={
-                      <ProtectedRoute user={user && user}>
+                      // <ProtectedRoute user={user && user}>
                         <ChangePassword />
-                      </ProtectedRoute>
+                      // </ProtectedRoute>
                     }
                   />
                   <Route

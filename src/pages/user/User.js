@@ -386,6 +386,7 @@ console.log("lo");
         </div>
 
         <section className="w-full  ">
+          {/* Name */}
           <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
             {/* First Name */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-5 md:mb-0">
@@ -410,6 +411,7 @@ console.log("lo");
             </div>
           </div>
 
+          {/* Email and Phone */}
           <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
             {/* Email */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
@@ -434,21 +436,11 @@ console.log("lo");
             </div>
           </div>
 
+          {/* Gender and DOB */}
           <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
             {/* Gender */}
             <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
               <h1 className="mb-5">Gender</h1>
-              {/* <select
-                className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                placeholder=""
-              >
-                <option value="" disabled>
-                  Select Gender
-                </option>
-
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-              </select> */}
               <p
                 type="text"
                 className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
@@ -469,10 +461,29 @@ console.log("lo");
             </div>
           </div>
 
-          <div className="w-full flex items-center justify-center mb-20">
-            <button className="bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor">
-              SAVE
-            </button>
+          {/* Address and City */}
+          <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+            {/* Address */}
+            <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+              <h1 className="mb-5">Addres</h1>
+              <p
+                type="text"
+                className=" w-full  border border-[#E0E0E0]  p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.address}
+              </p>
+            </div>
+
+            {/* City  */}
+            <div className="w-full sm:w-[80%] md:w-[45%] ">
+              <h1 className="mb-5">City</h1>
+              <p
+                type="text"
+                className=" w-full  border border-[#E0E0E0] p-2 rounded-xl h-[50px]"
+              >
+                {userInfo && userInfo?.city}
+              </p>
+            </div>
           </div>
         </section>
       </section>
@@ -484,7 +495,6 @@ console.log("lo");
       <AddressCon current={current} />
 
       {/* Verification */}
-     
 
       <AccountVerification current={current} />
       <Footer />

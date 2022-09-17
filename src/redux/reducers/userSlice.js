@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { act } from "react-dom/test-utils";
+
 
 // Login User
 export const userLogin = createAsyncThunk(
@@ -126,6 +126,8 @@ export const changePassword = createAsyncThunk(
     const config = {
       headers: {
         "Access-Control-Allow-Origin": "*",
+        "session-key":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZmEwNWZkZGY5ZGYxYjg4NzMxNzliYyIsImV4cCI6MTY2MjcyODQxMy4zMTgsImlhdCI6MTY2MjcyNzIxM30.sxIc4r3sCDOKc4c2rXcFy4zRWgUXdd_FkU_6lDhatCk",
       },
     };
     const url =
@@ -164,13 +166,12 @@ export const accountVerification = createAsyncThunk(
         "Access-Control-Allow-Origin": "*",
         Authorization: `Bearer ${token}`,
         "Content-Type": "multipart/form-data",
-      },
+        },
     };
-    const url =
-      "https://api-staging-fairshop.herokuapp.com/api/v1/users/accounts/verification";
+    const url = `https://api-staging-fairshop.herokuapp.com/api/v1/users/verify-reset`
 
     try {
-      const res = await axios.put(url, newdata, config);
+      const res = await axios.post(url, newdata, config);
       console.log(res.data);
       message = res.data.message;
       code = res.data.statusCode;
@@ -185,6 +186,7 @@ export const accountVerification = createAsyncThunk(
     }
   }
 );
+
 
 export const userSlice = createSlice({
   name: "user",
@@ -303,6 +305,7 @@ state.message = `${action.payload[0]} `;
       state.done = code === 200 ? true : false;
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.openSnap=true
     },
     [resetPassword.rejected]: (state, action) => {
       state.pending = false;
@@ -323,6 +326,7 @@ state.message = `${action.payload[0]} `;
       state.done = code === 200 ? true : false;
       state.message = message;
       state.error = code !== 200 ? true : false;
+      state.openSnap=true
     },
     [changePassword.rejected]: (state, action) => {
       state.pending = false;

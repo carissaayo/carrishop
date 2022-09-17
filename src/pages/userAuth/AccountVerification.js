@@ -1,21 +1,18 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   accountVerification,
   loading,
-  clearAccounDetails,
   closeSnap,
 } from "../../redux/reducers/userSlice";
 import { useNavigate, Link } from "react-router-dom";
-import Navbar from "../../components/auxComponents/Navbar";
-import GoBack from "../../components/HomeComponents/GoBack";
 import { CloudArrowUp, X } from "react-bootstrap-icons";
 import Loading from "../../components/auxComponents/Loading";
 
 const AccountVerification = ({current}) => {
   const navigate = useNavigate();
   let dispatch = useDispatch();
-  const { done, message, error, code, user,pending,openSnap } = useSelector(
+  const { done, message, error,  user,pending,openSnap,userInfo } = useSelector(
     (state) => state.user
   );
 
@@ -37,6 +34,7 @@ const AccountVerification = ({current}) => {
   const newdata = new FormData();
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
     newdata.append("address", address);
     newdata.append("city", city);
@@ -68,16 +66,13 @@ const AccountVerification = ({current}) => {
   };
 
 
-//   useEffect(()=>{
-// dispatch(clearAccounDetails());
-//   },[])
   return (
     <section
       className={`${
         current === "verification" ? "block relative " : "hidden"
       } w-[80%] mx-auto md:mx-0 md:w-full mb-20 `}
     >
-      {" "}
+   
       {/* SnackBar */}
       <div className={`snackbar  ${openSnap ? "show" : ""}`}>
         <div className="flex justify-end ">
@@ -95,7 +90,8 @@ const AccountVerification = ({current}) => {
           <div className="h-[10vh]">
             <p className="mb-4">Your infomation has been sent</p>
             <p className="">
-              Please go to details section snd refresh to see your updated details
+              Please go to details section snd refresh to see your updated
+              details
             </p>
           </div>
         )}
@@ -112,7 +108,7 @@ const AccountVerification = ({current}) => {
                 <input
                   type="date"
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
-                  placeholder="date of birthday"
+                  disabled={userInfo?.date_of_birth}
                   value={date_of_birth}
                   onChange={(e) => setDate_of_birth(e.target.value)}
                 />
@@ -129,6 +125,7 @@ const AccountVerification = ({current}) => {
                     type="file"
                     onChange={(e) => handleProfile(e)}
                     className="h-0 w-0"
+                    disabled={userInfo?.profile_picture}
                   />
                 </label>
               </div>
@@ -140,6 +137,7 @@ const AccountVerification = ({current}) => {
                 <h1 className="mb-5">Id Type</h1>
                 <select
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                  disabled={userInfo?.id_type}
                   value={id_type}
                   onChange={(e) => setId_type(e.target.value)}
                 >
@@ -163,6 +161,7 @@ const AccountVerification = ({current}) => {
                     type="file"
                     onChange={(e) => handleIdFile(e)}
                     className="h-0 w-0"
+                    disabled={userInfo?.profile_picture}
                   />
                 </label>
               </div>
@@ -175,27 +174,56 @@ const AccountVerification = ({current}) => {
                 <input
                   type="text"
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                  disabled={userInfo?.next_of_kin?.name}
                   placeholder=""
                   value={next_of_kin_name}
                   onChange={(e) => setNext_of_kin_name(e.target.value)}
                 />
               </div>
 
-              {/* Relationship with next of kin  */}
+              {/*Gender  */}
               <div className="w-full sm:w-[80%] md:w-[45%] ">
-                <h1 className="mb-5">Relationship with next of kin</h1>
+                <h1 className="mb-5">Gender</h1>
                 <select
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
                   placeholder=""
+                  disabled={userInfo?.gender}
                 >
                   <option value="" disabled>
-                    Choose Relationship
+                    Select Gender
                   </option>
 
-                  <option value="Parent">Parent</option>
-                  <option value="Child">Child</option>
-                  <option value="Sibling">Sibling</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
                 </select>
+              </div>
+            </div>
+            {/* Address and City */}
+            <div className="flex flex-wrap justify-between mb-10 flex-col md:flex-row">
+              {/* Address */}
+              <div className="w-full sm:w-[80%] md:w-[45%] mb-10 md:mb-0">
+                <h1 className="mb-5">Addres</h1>
+                <input
+                  type="text"
+                  className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                  disabled={userInfo?.address}
+                  placeholder=""
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+
+              {/* City  */}
+              <div className="w-full sm:w-[80%] md:w-[45%] ">
+                <h1 className="mb-5">City</h1>
+                <input
+                  type="text"
+                  className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                  disabled={userInfo?.city}
+                  placeholder=""
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
+                />
               </div>
             </div>
 
@@ -205,6 +233,7 @@ const AccountVerification = ({current}) => {
                 <h1 className="mb-5">Next of Kin address </h1>
                 <input
                   type="text"
+                  disabled={userInfo?.next_of_kin?.address}
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
                   placeholder=""
                   value={next_of_kin_address}
@@ -218,6 +247,7 @@ const AccountVerification = ({current}) => {
                 <input
                   type="text"
                   className=" w-full  border border-[#E0E0E0] outline-none focus:border-2 p-2 rounded-xl h-[50px]"
+                  disabled={userInfo?.next_of_kin?.phone}
                   placeholder=""
                   value={next_of_kin_phone}
                   onChange={(e) => setNext_of_kin_phone(e.target.value)}
@@ -227,8 +257,9 @@ const AccountVerification = ({current}) => {
 
             <div className="w-full flex items-center justify-center mb-20">
               <button
+                disabled={userInfo?.is_registration_complete}
                 type="submit"
-                className="bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor"
+                className={`disabled:bg-[grey] disabled:pointer-events-none bg-[#FCA311] w-3/4  md:w-1/2 rounded-full h-[50px] text-primaryColor`}
               >
                 SAVE
               </button>

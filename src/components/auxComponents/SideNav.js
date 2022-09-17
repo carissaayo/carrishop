@@ -51,7 +51,7 @@ const SideNav = () => {
           </NavLink>
         )}
 
-        {user?.fullname && (
+        {/* {user?.fullname && (
           <NavLink to="/affiliates">
             {({ isActive }) => (
               <div className="flex flex-col gap-2   h-full items-center">
@@ -64,7 +64,7 @@ const SideNav = () => {
               </div>
             )}
           </NavLink>
-        )}
+        )} */}
         {!user?.fullname && (
           <NavLink to="/about-us" className=" ">
             {({ isActive }) => (

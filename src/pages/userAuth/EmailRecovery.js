@@ -54,7 +54,7 @@ const EmailRecovery = () => {
 
             <div className="">
               <label htmlFor="email">
-                Email <span>*</span>
+                Phone <span>*</span>
               </label>
               <input
                 type="text"
